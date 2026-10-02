@@ -28,6 +28,6 @@ Fonds transparents. Le SVG est vectoriel (texte converti en tracés) ; les PNG f
 
 ## OneWeb Review (`review/`)
 
-- `review/index.html` : page finale, autonome et minifiée (à publier telle quelle, ex. `surge review malo-oneweb-review.surge.sh`).
+- `review/index.html` + `review/Malo-OneWeb.vcf` : page finale minifiée et fiche contact, à publier ensemble (ex. `surge review malo-oneweb-review.surge.sh`). Le `.vcf` est régénéré par `build.sh` depuis le bloc `DONNÉES CLIENT`.
 - `review/src/` : source lisible. Les données client sont dans le bloc `DONNÉES CLIENT` de `review.html` (nom, téléphone, liens, Place ID, note et nombre d'avis).
 - Recompiler après modification : `npm i -D tailwindcss@3 html-minifier-terser` puis `TW=. ./review/src/build.sh` (avec `TW` = dossier contenant `node_modules`).

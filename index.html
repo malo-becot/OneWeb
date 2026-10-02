@@ -541,7 +541,7 @@ header.top .burger{color:#fff;border-color:rgba(255,255,255,.2)}
         <div class="ico-box"><svg><use href="#i-vip"/></svg></div>
         <span class="tag">Meilleur rapport qualité‑prix</span>
         <h3>OneWeb VIP</h3>
-        <p>Promotions exclusives, 29€ de maintenance offerts chaque mois, OneWeb Review à 15€/mois et garantie de non‑augmentation des tarifs.</p>
+        <p>35€ de maintenance offerts chaque mois, nom de domaine offert, OneWeb Review à 15€/mois, promotions exclusives et garantie de non‑augmentation des tarifs.</p>
         <div class="price">99€ <small>/ an</small></div>
         <a class="link-chev" href="#vip">Estimer mes économies <span>›</span></a>
       </article>
@@ -693,7 +693,9 @@ header.top .burger{color:#fff;border-color:rgba(255,255,255,.2)}
           <h2 class="rv">L'abonnement qui se rentabilise rapidement.</h2>
           <p class="lead rv">Pour les clients qui souhaitent bénéficier du meilleur suivi, au meilleur tarif, tout au long de l'année.</p>
           <ul class="perks rv">
-            <li><svg><use href="#i-gift"/></svg><div>29€ de maintenance offerts chaque mois<span>Déduits de votre formule OneWeb Care.</span></div></li>
+            <li><svg><use href="#i-gift"/></svg><div>35€ de maintenance offerts chaque mois<span>Déduits de votre formule OneWeb Care : la formule Essentiel est entièrement couverte.</span></div></li>
+            <li><svg><use href="#i-globe"/></svg><div>Nom de domaine offert<span>Une économie de 15€ par an.</span></div></li>
+            <li><svg><use href="#i-site"/></svg><div>Hébergement offert<span>Sous certaines conditions, à voir ensemble.</span></div></li>
             <li><svg><use href="#i-qr"/></svg><div>OneWeb Review à 15€/mois<span>Au lieu de 19€/mois.</span></div></li>
             <li><svg><use href="#i-lock"/></svg><div>Garantie de non‑augmentation<span>Vos tarifs restent inchangés.</span></div></li>
             <li><svg><use href="#i-tag"/></svg><div>Promotions exclusives<span>Des offres réservées aux membres VIP, ainsi que d'autres avantages.</span></div></li>
@@ -719,7 +721,7 @@ header.top .burger{color:#fff;border-color:rgba(255,255,255,.2)}
             <div><div class="k">Avec VIP / an</div><div class="v" id="withVip">0€</div></div>
           </div>
           <div class="saving"><span class="k" id="saveLabel">Vous économisez</span><span class="v" id="save">0€</span></div>
-          <small>Estimation indicative : VIP 99€/an, Care réduit de 29€/mois et Review à 15€/mois.</small>
+          <small>Estimation indicative : VIP 99€/an, Care réduit de 35€/mois, Review à 15€/mois et nom de domaine (15€/an) offert. Hébergement non inclus dans le calcul.</small>
         </div>
       </div>
     </div>
@@ -783,7 +785,7 @@ header.top .burger{color:#fff;border-color:rgba(255,255,255,.2)}
       <details><summary>Qu'est-ce qui est compris dans les 300€ ?<i></i></summary><p>Ce tarif comprend la conception sur mesure de votre site one page, du premier échange jusqu'à la mise en ligne. Nous faisons le point ensemble dès le départ sur vos contenus (textes, photos, logo) et vos besoins, afin que tout soit clair avant de commencer.</p></details>
       <details><summary>La maintenance est-elle obligatoire ?<i></i></summary><p>Non. OneWeb Care est une option destinée à celles et ceux qui préfèrent confier les mises à jour et les modifications de leur site. Vous choisissez la formule (29€, 49€ ou 99€/mois) selon le niveau de maintenance souhaité.</p></details>
       <details><summary>Comment fonctionne OneWeb Review ?<i></i></summary><p>Vous recevez un QR code personnalisé. En le scannant, vos clients accèdent à une application à votre nom : ils peuvent vous laisser un avis Google, suivre vos réseaux sociaux, consulter votre site, enregistrer votre numéro ou vous appeler. Le tout pour 19€/mois (15€/mois avec l'offre VIP).</p></details>
-      <details><summary>L'offre VIP est-elle avantageuse ?<i></i></summary><p>Dès que vous souscrivez une formule OneWeb Care, oui : les 29€ de maintenance offerts chaque mois représentent 348€ par an, pour un abonnement VIP de 99€/an. Le simulateur ci-dessus vous permet d'estimer vos économies.</p></details>
+      <details><summary>L'offre VIP est-elle avantageuse ?<i></i></summary><p>Dès que vous souscrivez une formule OneWeb Care, oui : les 35€ de maintenance offerts chaque mois représentent 420€ par an, auxquels s'ajoutent le nom de domaine offert (15€/an) et, sous certaines conditions, l'hébergement, pour un abonnement VIP de 99€/an. Le simulateur ci-dessus vous permet d'estimer vos économies.</p></details>
       <details><summary>Intervenez-vous en dehors de l'Occitanie ?<i></i></summary><p>Mon activité est principalement centrée sur l'Occitanie, mais une grande partie de l'accompagnement peut se faire à distance. N'hésitez pas à me contacter pour en discuter.</p></details>
     </div>
   </div>
@@ -923,8 +925,8 @@ const animate = (el, to) => {
 };
 const calc = () => {
   const r = rev.checked;
-  const noVip = care * 12 + (r ? 19 * 12 : 0);
-  const withVip = 99 + Math.max(care - 29, 0) * 12 + (r ? 15 * 12 : 0);
+  const noVip = care * 12 + (r ? 19 * 12 : 0) + 15; // 15€/an : nom de domaine
+  const withVip = 99 + Math.max(care - 35, 0) * 12 + (r ? 15 * 12 : 0);
   const save = noVip - withVip;
   animate(document.getElementById('noVip'), noVip);
   animate(document.getElementById('withVip'), withVip);

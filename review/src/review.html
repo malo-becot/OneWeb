@@ -41,10 +41,10 @@ __ICONS__
     <p style="--d:.5s" class="in mt-2 text-center text-xs text-slate-400">Prend moins de 15 secondes, sans inscription</p>
 
     <!-- 3. Boutons secondaires -->
-    <button id="vcf" type="button" style="--d:.58s" class="in tap relative overflow-hidden mt-6 flex w-full items-center justify-center gap-2 rounded-2xl border border-slate-800 bg-slate-800/60 px-3 py-4 font-semibold transition hover:bg-slate-800 active:scale-[.98]">
+    <a id="vcf" href="Malo-OneWeb.vcf" type="text/vcard" style="--d:.58s" class="in tap relative overflow-hidden mt-6 flex w-full items-center justify-center gap-2 rounded-2xl border border-slate-800 bg-slate-800/60 px-3 py-4 font-semibold transition hover:bg-slate-800 active:scale-[.98]">
       <svg class="h-5 w-5 shrink-0 text-sky-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="8" r="4"/><path d="M2 21a8 8 0 0 1 16 0M19 8v6M16 11h6"/></svg>
       <span id="vcfTxt" class="whitespace-nowrap text-[15px]">Enregistrer dans mes contacts</span>
-    </button>
+    </a>
 
     <div class="mt-3 grid grid-cols-2 gap-3">
       <a id="call" href="#" style="--d:.66s" class="in btn2"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg>Appeler</a>
@@ -112,25 +112,13 @@ function toast(msg) {
   clearTimeout(t._h); t._h = setTimeout(function () { t.classList.add('translate-y-24', 'opacity-0'); }, 2600);
 }
 
+// La fiche .vcf est un vrai fichier publié à côté de la page (généré par build.sh) :
+// iPhone l'ouvre directement dans Contacts, Android la télécharge et propose « Ouvrir » -> Importer.
 $('vcf').addEventListener('click', function () {
-  var e = function (s) { return s.replace(/[\\,;]/g, '\\$&'); };
-  var v = [
-    'BEGIN:VCARD', 'VERSION:3.0',
-    'N:;' + e(C.name) + ';;;', 'FN:' + e(C.name), 'ORG:' + e(C.name), 'TITLE:' + e(C.activity),
-    'TEL;TYPE=CELL,VOICE:' + C.tel, 'EMAIL;TYPE=INTERNET:' + C.email,
-    'URL:' + C.web, 'X-SOCIALPROFILE;TYPE=instagram:' + C.insta,
-    'ADR;TYPE=WORK:;;;;' + e(C.region) + ';;France',
-    'PHOTO;ENCODING=b;TYPE=JPEG:__PHOTO__',
-    'END:VCARD'
-  ].join('\r\n');
-  var a = document.createElement('a');
-  a.href = URL.createObjectURL(new Blob([v], { type: 'text/vcard;charset=utf-8' }));
-  a.download = 'Malo-OneWeb.vcf';
-  document.body.appendChild(a); a.click(); a.remove();
-  setTimeout(function () { URL.revokeObjectURL(a.href); }, 4000);
-  var b = $('vcf'), t = $('vcfTxt'); b.classList.add('ok'); t.textContent = 'Fiche contact téléchargée ✓';
+  var b = $('vcf'), t = $('vcfTxt'), android = /Android/i.test(navigator.userAgent);
+  b.classList.add('ok'); t.textContent = 'Ouverture de la fiche contact ✓';
   setTimeout(function () { b.classList.remove('ok'); t.textContent = 'Enregistrer dans mes contacts'; }, 2600);
-  toast('Ouvrez la fiche pour l’ajouter à vos contacts');
+  toast(android ? 'Touchez « Ouvrir » puis « Importer »' : 'Touchez « Créer un nouveau contact »');
 });
 </script>
 </body>
