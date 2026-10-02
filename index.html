@@ -3,21 +3,21 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Malo OneWeb — Sites one page & accompagnement web en Occitanie</title>
+<title>Malo OneWeb — Accompagnement web & solutions digitales en Occitanie</title>
 <meta name="description" content="Malo OneWeb : création de site one page sur mesure à 300€, maintenance OneWeb Care, QR code avis Google OneWeb Review et formule VIP. Partout en Occitanie.">
 <meta property="og:title" content="Malo OneWeb — Votre site one page sur mesure">
 <meta property="og:description" content="Site one page sur mesure à 300€, maintenance, QR code avis Google. Partout en Occitanie.">
 <meta property="og:type" content="website">
-<meta name="theme-color" content="#533afd">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%23533afd'/%3E%3Ccircle cx='16' cy='16' r='8' fill='none' stroke='white' stroke-width='3'/%3E%3C/svg%3E">
+<meta name="theme-color" content="#1463e8">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 310 210' role='img' aria-label='Malo OneWeb'><title>Malo OneWeb</title><defs>  <linearGradient id='sll' x1='0' y1='1' x2='1' y2='0'><stop offset='0' stop-color='#1c6ae6'/><stop offset='1' stop-color='#0b2c74'/></linearGradient>  <linearGradient id='slm' x1='0' y1='0' x2='1' y2='1'><stop offset='.15' stop-color='#1f6ff0'/><stop offset='1' stop-color='#4aa6ff'/></linearGradient>  <linearGradient id='sld' x1='1' y1='0' x2='0' y2='1'><stop offset='0' stop-color='#06173a'/><stop offset='1' stop-color='#1d58c9'/></linearGradient>  <linearGradient id='slp' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='#1fb4ff'/><stop offset='1' stop-color='#0f8ff0'/></linearGradient>  <mask id='slk' maskUnits='userSpaceOnUse' x='-20' y='-20' width='360' height='260'><rect x='-20' y='-20' width='360' height='260' fill='#fff'/><path d='M66 76 C78 50 100 32 130 30 L148 30 C160 30 168 34 176 42 L264 132 A34 34 0 0 1 216 180 L128 92 C110 76 88 72 66 76 Z' fill='#000' stroke='#000' stroke-width='16' stroke-linejoin='round'/></mask></defs><g mask='url(#slk)'>  <path d='M42 164 L98 98' stroke='url(#sll)' stroke-width='62' stroke-linecap='round' fill='none'/>  <path d='M258 94 m-48 0 a48 48 0 1 1 96 0 a48 48 0 1 1 -96 0' fill='url(#sld)'/></g><path d='M66 76 C78 50 100 32 130 30 L148 30 C160 30 168 34 176 42 L264 132 A34 34 0 0 1 216 180 L128 92 C110 76 88 72 66 76 Z' fill='url(#slm)'/><circle cx='290' cy='22' r='18' fill='url(#slp)'/></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400&family=Outfit:wght@400;600&display=swap" rel="stylesheet">
 <style>
 :root{
-  --indigo:#533afd; --indigo-hover:#7389ff; --ink:#061b31; --slate:#64748d; --steel:#50617a;
-  --smoke:#839bc8; --white:#fff; --mist:#f8fafd; --frost:#e5edf5; --lavender:#b9b9f9;
-  --lilac:#d6d9fc; --wash:#e8e9ff; --deep:#182659; --amethyst:#7f71e6;
+  --indigo:#1463e8; --indigo-hover:#3c9bff; --ink:#061b31; --slate:#64748d; --steel:#50617a;
+  --smoke:#839bc8; --white:#fff; --mist:#f8fafd; --frost:#e5edf5; --lavender:#b6cff7;
+  --lilac:#d5e3fb; --wash:#e8f1ff; --deep:#0a1f4d; --amethyst:#2aa3ff;
   --font:'Inter Tight', ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --max:1320px; --r:4px;
 }
@@ -47,8 +47,16 @@ img,svg{display:block}
 /* Nav */
 header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.86);backdrop-filter:saturate(1.6) blur(14px);-webkit-backdrop-filter:saturate(1.6) blur(14px);border-bottom:1px solid var(--frost)}
 .nav{height:76px;display:flex;align-items:center;justify-content:space-between;gap:24px}
-.logo{display:flex;align-items:center;gap:10px;color:var(--ink);font-weight:400;font-size:18px;letter-spacing:-.02em}
-.logo b{font-weight:600}
+.logo{display:flex;align-items:center;gap:12px;color:var(--ink);font-weight:400;font-size:18px;letter-spacing:-.02em}
+.sym{display:block;width:48px;flex:none}.sym svg{width:100%;height:auto}
+.sym-d{display:none!important}header.top .sym-d{display:block!important}header.top .sym-l{display:none!important}
+.wm{display:flex;flex-direction:column;font-family:'Outfit',var(--font);line-height:1;letter-spacing:0}
+.wm small{font-size:11px;font-weight:400;letter-spacing:.28em;color:#0b2c74;margin:0 0 2px 1px;transition:color .3s}
+.wm>span{font-size:23px;font-weight:600;color:#0a1633;letter-spacing:-.01em;transition:color .3s}
+.wm em{font-style:normal;color:#1463e8;transition:color .3s}
+.wm i{font-style:normal;font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--steel);margin-top:6px}
+header.top .wm small{color:#7cc6ff}header.top .wm>span{color:#fff}header.top .wm em{color:#3aa9ff}
+.logo-foot .sym{width:64px}.logo-foot .wm>span{font-size:30px}.logo-foot .wm small{font-size:13px}
 .logo-mark{width:28px;height:28px;border-radius:var(--r);background:var(--indigo);display:grid;place-items:center}
 .nav-links{display:flex;gap:4px}
 .nav-links a{color:var(--ink);font-size:14px;font-weight:400;padding:8px 12px;border-radius:var(--r);transition:background .2s}
@@ -62,11 +70,13 @@ header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.86);backdro
   .nav-links.open a{padding:14px 8px;font-size:16px;border-bottom:1px solid var(--frost)}
 }
 @media (max-width:420px){.nav-cta .btn-primary{padding:12px 14px}}
+.show-sm{display:none}
+@media (max-width:600px){.hide-sm{display:none}.show-sm{display:inline}}
 
 /* Typo */
 .label{font-size:12px;font-weight:400;text-transform:uppercase;letter-spacing:.08em;color:var(--smoke);display:flex;align-items:center;gap:8px;margin-bottom:24px}
 .label::before{content:"";width:16px;height:1px;background:var(--smoke)}
-h1{font-weight:300;font-size:clamp(40px,6vw,76px);line-height:1.02;letter-spacing:-.03em}
+h1{font-weight:300;font-size:clamp(38px,5.2vw,68px);line-height:1.02;letter-spacing:-.03em}
 h2{font-weight:300;font-size:clamp(32px,4.4vw,48px);line-height:1.05;letter-spacing:-.02em;max-width:18ch}
 h3{font-weight:300;font-size:26px;line-height:1.12;letter-spacing:-.01em}
 .lead{font-size:clamp(18px,2vw,22px);line-height:1.45;color:var(--steel);max-width:44ch;margin-top:32px}
@@ -77,7 +87,7 @@ section{padding:96px 0;border-bottom:1px solid var(--frost)}
 
 /* Hero */
 .hero{padding:88px 0 96px;position:relative;overflow:hidden}
-.hero-grid{display:grid;grid-template-columns:1.25fr 1fr;gap:64px;align-items:center}
+.hero-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:64px;align-items:center}
 .pill{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:400;color:var(--indigo);background:var(--wash);border-radius:9999px;padding:6px 14px 6px 8px;margin-bottom:32px}
 .pill i{width:8px;height:8px;border-radius:50%;background:var(--indigo);position:relative}
 .pill i::after{content:"";position:absolute;inset:-4px;border-radius:50%;border:1px solid var(--indigo);animation:ping 2s infinite}
@@ -91,7 +101,7 @@ section{padding:96px 0;border-bottom:1px solid var(--frost)}
   background-image:linear-gradient(var(--frost) 1px,transparent 1px),linear-gradient(90deg,var(--frost) 1px,transparent 1px);
   background-size:56px 56px;mask-image:radial-gradient(ellipse 70% 60% at 75% 40%,#000 10%,transparent 70%);-webkit-mask-image:radial-gradient(ellipse 70% 60% at 75% 40%,#000 10%,transparent 70%);opacity:.7}
 .hero-blob{position:absolute;width:520px;height:520px;right:-120px;top:-80px;z-index:-1;border-radius:50%;
-  background:radial-gradient(circle at 30% 30%,rgba(115,137,255,.35),rgba(83,58,253,.12) 45%,transparent 70%);filter:blur(30px);animation:float 12s ease-in-out infinite}
+  background:radial-gradient(circle at 30% 30%,rgba(60,155,255,.35),rgba(20,99,232,.12) 45%,transparent 70%);filter:blur(30px);animation:float 12s ease-in-out infinite}
 @keyframes float{50%{transform:translate(-40px,30px) scale(1.05)}}
 
 /* Browser mock */
@@ -144,7 +154,7 @@ section{padding:96px 0;border-bottom:1px solid var(--frost)}
 .offer.feat .tag{background:rgba(255,255,255,.16);color:#fff}
 .offer.feat .ico-box{border-color:rgba(255,255,255,.35)}
 .offer.feat .ico-box svg{stroke:#fff}
-.offer.feat:hover{background:#4a31f0}
+.offer.feat:hover{background:#0f56d0}
 .offer.feat .link-chev{color:#fff}
 @media (max-width:1100px){.offers{grid-template-columns:repeat(2,1fr)}}
 @media (max-width:620px){.offers{grid-template-columns:1fr}}
@@ -220,7 +230,7 @@ section{padding:96px 0;border-bottom:1px solid var(--frost)}
 
 /* VIP */
 .vip-box{border-radius:var(--r);background:var(--deep);color:#fff;padding:clamp(32px,5vw,64px);position:relative;overflow:hidden}
-.vip-box::before{content:"";position:absolute;width:600px;height:600px;right:-200px;top:-250px;border-radius:50%;background:radial-gradient(circle,rgba(115,137,255,.45),transparent 65%);animation:float 14s ease-in-out infinite}
+.vip-box::before{content:"";position:absolute;width:600px;height:600px;right:-200px;top:-250px;border-radius:50%;background:radial-gradient(circle,rgba(60,155,255,.45),transparent 65%);animation:float 14s ease-in-out infinite}
 .vip-box > *{position:relative}
 .vip-box .label{color:var(--lavender)}.vip-box .label::before{background:var(--lavender)}
 .vip-box h2{color:#fff}
@@ -328,7 +338,7 @@ footer{background:var(--mist);padding:64px 0 32px}
 @media (max-width:800px){.foot{grid-template-columns:1fr 1fr}}
 
 /* Hero sombre */
-.hero{background:radial-gradient(ellipse 80% 70% at 80% 10%,#1d2a6b 0%,var(--ink) 60%);color:#fff;isolation:isolate;border-bottom:0}
+.hero{background:radial-gradient(ellipse 80% 70% at 80% 10%,#0e2d6e 0%,var(--ink) 60%);color:#fff;isolation:isolate;border-bottom:0}
 .hero{margin-top:-77px;padding-top:165px}
 .hero .mock-tag{color:var(--ink)}
 .hero .lead{color:rgba(255,255,255,.72)}
@@ -340,7 +350,7 @@ footer{background:var(--mist);padding:64px 0 32px}
 .hero .btn-ghost{color:#fff;border-color:rgba(255,255,255,.3)}
 .hero .btn-ghost:hover{background:rgba(255,255,255,.08)}
 .hero .hero-bg{background-image:linear-gradient(rgba(255,255,255,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.06) 1px,transparent 1px);opacity:1}
-.hero .hero-blob{background:radial-gradient(circle at 30% 30%,rgba(115,137,255,.55),rgba(83,58,253,.25) 45%,transparent 70%)}
+.hero .hero-blob{background:radial-gradient(circle at 30% 30%,rgba(60,155,255,.55),rgba(20,99,232,.25) 45%,transparent 70%)}
 .hero .mock{border-color:rgba(255,255,255,.2)}
 
 /* Header sur le hero */
@@ -356,7 +366,7 @@ header.top .burger{color:#fff;border-color:rgba(255,255,255,.2)}
 @media (max-width:980px){header.top .nav-links.open a{color:var(--ink)}}
 
 /* FAQ sombre */
-#faq{background:radial-gradient(ellipse 60% 80% at 10% 100%,#1d2a6b 0%,var(--ink) 65%);color:#fff;border-bottom:0}
+#faq{background:radial-gradient(ellipse 60% 80% at 10% 100%,#0e2d6e 0%,var(--ink) 65%);color:#fff;border-bottom:0}
 #faq .label{color:var(--lavender)}#faq .label::before{background:var(--lavender)}
 #faq details{border-color:rgba(255,255,255,.12)}
 #faq summary{transition:color .2s,padding .3s}
@@ -402,24 +412,24 @@ header.top .burger{color:#fff;border-color:rgba(255,255,255,.2)}
 <!-- Icônes (ligne 1.5px indigo) -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <defs>
-    <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="#533afd" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6.5"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="#1463e8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6.5"/></symbol>
     <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
-    <symbol id="i-site" viewBox="0 0 24 24" fill="none" stroke="#533afd" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="1.5"/><path d="M3 9h18M7 13h6M7 16h4"/></symbol>
-    <symbol id="i-care" viewBox="0 0 24 24" fill="none" stroke="#533afd" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 4.5-3.4 8.2-8 9-4.6-.8-8-4.5-8-9V6l8-3z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></symbol>
-    <symbol id="i-qr" viewBox="0 0 24 24" fill="none" stroke="#533afd" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 14h3v3h-3zM20 14v1M14 20h1M17 17h4v4h-4"/></symbol>
-    <symbol id="i-vip" viewBox="0 0 24 24" fill="none" stroke="#533afd" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8l4.5 4L12 5l4.5 7L21 8l-2 11H5L3 8z"/></symbol>
-    <symbol id="i-phone" viewBox="0 0 24 24" fill="none" stroke="#533afd" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z"/></symbol>
-    <symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="#533afd" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="1.5"/><path d="M3 7l9 6 9-6"/></symbol>
-    <symbol id="i-insta" viewBox="0 0 24 24" fill="none" stroke="#533afd" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".6" fill="#533afd"/></symbol>
-    <symbol id="i-fb" viewBox="0 0 24 24" fill="none" stroke="#533afd" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 8h3V4h-3a4 4 0 00-4 4v3H7v4h3v6h4v-6h3l1-4h-4V8z"/></symbol>
-    <symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="#533afd" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-12a7 7 0 0114 0c0 5.8-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></symbol>
-    <symbol id="i-user" viewBox="0 0 24 24" fill="none" stroke="#533afd" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0116 0"/><path d="M19 3v4M17 5h4"/></symbol>
-    <symbol id="i-globe" viewBox="0 0 24 24" fill="none" stroke="#533afd" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z"/></symbol>
+    <symbol id="i-site" viewBox="0 0 24 24" fill="none" stroke="#1463e8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="1.5"/><path d="M3 9h18M7 13h6M7 16h4"/></symbol>
+    <symbol id="i-care" viewBox="0 0 24 24" fill="none" stroke="#1463e8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 4.5-3.4 8.2-8 9-4.6-.8-8-4.5-8-9V6l8-3z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></symbol>
+    <symbol id="i-qr" viewBox="0 0 24 24" fill="none" stroke="#1463e8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 14h3v3h-3zM20 14v1M14 20h1M17 17h4v4h-4"/></symbol>
+    <symbol id="i-vip" viewBox="0 0 24 24" fill="none" stroke="#1463e8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8l4.5 4L12 5l4.5 7L21 8l-2 11H5L3 8z"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24" fill="none" stroke="#1463e8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="#1463e8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="1.5"/><path d="M3 7l9 6 9-6"/></symbol>
+    <symbol id="i-insta" viewBox="0 0 24 24" fill="none" stroke="#1463e8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".6" fill="#1463e8"/></symbol>
+    <symbol id="i-fb" viewBox="0 0 24 24" fill="none" stroke="#1463e8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 8h3V4h-3a4 4 0 00-4 4v3H7v4h3v6h4v-6h3l1-4h-4V8z"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="#1463e8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-12a7 7 0 0114 0c0 5.8-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></symbol>
+    <symbol id="i-user" viewBox="0 0 24 24" fill="none" stroke="#1463e8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0116 0"/><path d="M19 3v4M17 5h4"/></symbol>
+    <symbol id="i-globe" viewBox="0 0 24 24" fill="none" stroke="#1463e8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z"/></symbol>
     <symbol id="i-star" viewBox="0 0 24 24"><path d="M12 2.8l2.8 5.9 6.4.8-4.7 4.4 1.2 6.4L12 17.2l-5.7 3.1 1.2-6.4L2.8 9.5l6.4-.8L12 2.8z"/></symbol>
-    <symbol id="i-lock" viewBox="0 0 24 24" fill="none" stroke="#533afd" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="11" rx="1.5"/><path d="M8 10V7a4 4 0 018 0v3"/></symbol>
-    <symbol id="i-gift" viewBox="0 0 24 24" fill="none" stroke="#533afd" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M5 12v9h14v-9M12 8v13M12 8S10.5 3 8 4s0 4 4 4zM12 8s1.5-5 4-4 0 4-4 4z"/></symbol>
-    <symbol id="i-tag" viewBox="0 0 24 24" fill="none" stroke="#533afd" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12V4h8l10 10-8 8L3 12z"/><circle cx="7.5" cy="8.5" r="1.3"/></symbol>
-    <symbol id="i-bolt" viewBox="0 0 24 24" fill="none" stroke="#533afd" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 3L4 14h7l-1 7 9-11h-7l1-7z"/></symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24" fill="none" stroke="#1463e8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="11" rx="1.5"/><path d="M8 10V7a4 4 0 018 0v3"/></symbol>
+    <symbol id="i-gift" viewBox="0 0 24 24" fill="none" stroke="#1463e8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M5 12v9h14v-9M12 8v13M12 8S10.5 3 8 4s0 4 4 4zM12 8s1.5-5 4-4 0 4-4 4z"/></symbol>
+    <symbol id="i-tag" viewBox="0 0 24 24" fill="none" stroke="#1463e8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12V4h8l10 10-8 8L3 12z"/><circle cx="7.5" cy="8.5" r="1.3"/></symbol>
+    <symbol id="i-bolt" viewBox="0 0 24 24" fill="none" stroke="#1463e8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 3L4 14h7l-1 7 9-11h-7l1-7z"/></symbol>
     <symbol id="i-google" viewBox="0 0 24 24"><path fill="#4285F4" d="M21.6 12.2c0-.7-.1-1.4-.2-2H12v3.8h5.4a4.6 4.6 0 01-2 3v2.5h3.2c1.9-1.7 3-4.3 3-7.3z"/><path fill="#34A853" d="M12 22c2.7 0 5-.9 6.6-2.4l-3.2-2.5c-.9.6-2 1-3.4 1-2.6 0-4.8-1.8-5.6-4.1H3.1v2.6A10 10 0 0012 22z"/><path fill="#FBBC05" d="M6.4 14c-.2-.6-.3-1.3-.3-2s.1-1.4.3-2V7.4H3.1a10 10 0 000 9.2L6.4 14z"/><path fill="#EA4335" d="M12 6c1.5 0 2.8.5 3.8 1.5l2.9-2.9A10 10 0 003.1 7.4L6.4 10C7.2 7.7 9.4 6 12 6z"/></symbol>
   </defs>
 </svg>
@@ -427,8 +437,7 @@ header.top .burger{color:#fff;border-color:rgba(255,255,255,.2)}
 <header class="top">
   <div class="wrap nav">
     <a href="#top" class="logo" aria-label="Malo OneWeb, accueil">
-      <span class="logo-mark"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5"><circle cx="12" cy="12" r="7"/></svg></span>
-      <span>Malo <b>OneWeb</b></span>
+      <span class="sym"><svg class="sym-d" viewBox="0 0 310 210" aria-hidden="true"><defs>  <linearGradient id="hddl" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#1873ec"/><stop offset="1" stop-color="#3aa6ff"/></linearGradient>  <linearGradient id="hddm" x1="0" y1="0" x2="1" y2="1"><stop offset=".15" stop-color="#2a8bff"/><stop offset="1" stop-color="#eaf4ff"/></linearGradient>  <linearGradient id="hddd" x1="1" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#bcd9ff"/></linearGradient>  <linearGradient id="hddp" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2cb6ff"/><stop offset="1" stop-color="#1490ff"/></linearGradient>  <mask id="hddk" maskUnits="userSpaceOnUse" x="-20" y="-20" width="360" height="260"><rect x="-20" y="-20" width="360" height="260" fill="#fff"/><path d="M66 76 C78 50 100 32 130 30 L148 30 C160 30 168 34 176 42 L264 132 A34 34 0 0 1 216 180 L128 92 C110 76 88 72 66 76 Z" fill="#000" stroke="#000" stroke-width="16" stroke-linejoin="round"/></mask></defs><g mask="url(#hddk)">  <path d="M42 164 L98 98" stroke="url(#hddl)" stroke-width="62" stroke-linecap="round" fill="none"/>  <path d="M258 94 m-48 0 a48 48 0 1 1 96 0 a48 48 0 1 1 -96 0" fill="url(#hddd)"/></g><path d="M66 76 C78 50 100 32 130 30 L148 30 C160 30 168 34 176 42 L264 132 A34 34 0 0 1 216 180 L128 92 C110 76 88 72 66 76 Z" fill="url(#hddm)"/><circle cx="290" cy="22" r="18" fill="url(#hddp)"/></svg><svg class="sym-l" viewBox="0 0 310 210" aria-hidden="true"><defs>  <linearGradient id="hdll" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#1c6ae6"/><stop offset="1" stop-color="#0b2c74"/></linearGradient>  <linearGradient id="hdlm" x1="0" y1="0" x2="1" y2="1"><stop offset=".15" stop-color="#1f6ff0"/><stop offset="1" stop-color="#4aa6ff"/></linearGradient>  <linearGradient id="hdld" x1="1" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#06173a"/><stop offset="1" stop-color="#1d58c9"/></linearGradient>  <linearGradient id="hdlp" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1fb4ff"/><stop offset="1" stop-color="#0f8ff0"/></linearGradient>  <mask id="hdlk" maskUnits="userSpaceOnUse" x="-20" y="-20" width="360" height="260"><rect x="-20" y="-20" width="360" height="260" fill="#fff"/><path d="M66 76 C78 50 100 32 130 30 L148 30 C160 30 168 34 176 42 L264 132 A34 34 0 0 1 216 180 L128 92 C110 76 88 72 66 76 Z" fill="#000" stroke="#000" stroke-width="16" stroke-linejoin="round"/></mask></defs><g mask="url(#hdlk)">  <path d="M42 164 L98 98" stroke="url(#hdll)" stroke-width="62" stroke-linecap="round" fill="none"/>  <path d="M258 94 m-48 0 a48 48 0 1 1 96 0 a48 48 0 1 1 -96 0" fill="url(#hdld)"/></g><path d="M66 76 C78 50 100 32 130 30 L148 30 C160 30 168 34 176 42 L264 132 A34 34 0 0 1 216 180 L128 92 C110 76 88 72 66 76 Z" fill="url(#hdlm)"/><circle cx="290" cy="22" r="18" fill="url(#hdlp)"/></svg></span><span class="wm"><small>Malo</small><span>One<em>Web</em></span></span>
     </a>
     <nav class="nav-links" id="menu" aria-label="Navigation principale">
       <a href="#offres">Offres</a>
@@ -440,7 +449,7 @@ header.top .burger{color:#fff;border-color:rgba(255,255,255,.2)}
     </nav>
     <div class="nav-cta">
       <a class="btn btn-ghost" href="tel:+33777788562"><svg><use href="#i-phone"/></svg>07 77 78 85 62</a>
-      <a class="btn btn-primary" href="#contact">Mon devis</a>
+      <a class="btn btn-primary" href="#contact"><span class="hide-sm">Demander un devis</span><span class="show-sm">Devis</span></a>
       <button class="burger" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="menu">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
       </button>
@@ -455,12 +464,12 @@ header.top .burger{color:#fff;border-color:rgba(255,255,255,.2)}
   <div class="hero-bg"></div><div class="hero-blob"></div>
   <div class="wrap hero-grid">
     <div>
-      <span class="pill rv"><i></i>Disponible partout en Occitanie</span>
-      <h1 class="rv">Un site. Une page.<br><span class="grad">Zéro prise de tête.</span></h1>
-      <p class="lead rv">Je crée votre site one page sur mesure, je m'occupe de sa maintenance et je vous aide à récolter des avis Google. Vous, vous gérez votre activité.</p>
+      <span class="pill rv"><i></i>Accompagnement web partout en Occitanie</span>
+      <h1 class="rv">Votre site one page,<br><span class="grad">conçu sur mesure.</span></h1>
+      <p class="lead rv">Je conçois votre site internet sur mesure, j'en assure la maintenance et je vous aide à obtenir davantage d'avis Google. Vous pouvez ainsi vous consacrer pleinement à votre activité.</p>
       <div class="cta-pair rv">
-        <a class="btn btn-primary" href="#contact">Lancer mon site <svg><use href="#i-arrow"/></svg></a>
-        <a class="btn btn-ghost" href="#offres">Voir les offres</a>
+        <a class="btn btn-primary" href="#contact">Demander un devis <svg><use href="#i-arrow"/></svg></a>
+        <a class="btn btn-ghost" href="#offres">Découvrir les offres</a>
       </div>
       <div class="hero-meta rv">
         <div class="stat"><div class="n"><span data-count="300">300</span><small>€</small></div><div class="t">site one page sur mesure</div></div>
@@ -481,7 +490,7 @@ header.top .burger{color:#fff;border-color:rgba(255,255,255,.2)}
           <div class="sk-cards"><div class="sk-card"></div><div class="sk-card"></div><div class="sk-card"></div></div>
         </div>
       </div>
-      <div class="mock-tag" style="left:-16px;bottom:8px"><svg class="ico"><use href="#i-google"/></svg><b>★ 4,9</b> avis Google</div>
+      <div class="mock-tag" style="left:-16px;bottom:8px"><svg class="ico"><use href="#i-google"/></svg>Plus d'avis <b>Google</b></div>
       <div class="mock-tag" style="right:-8px;top:0;animation-delay:1.5s"><svg class="ico"><use href="#i-bolt"/></svg>En ligne <b>rapidement</b></div>
     </div>
   </div>
@@ -489,8 +498,8 @@ header.top .burger{color:#fff;border-color:rgba(255,255,255,.2)}
 
 <div class="marquee" aria-hidden="true">
   <div class="marquee-track">
-    <span>Sites one page sur mesure</span><span>Maintenance & mises à jour</span><span>QR code avis Google</span><span>Toulouse · Montpellier · Nîmes · Perpignan</span><span>Responsive mobile</span><span>Accompagnement humain</span><span>Prix clairs, sans surprise</span>
-    <span>Sites one page sur mesure</span><span>Maintenance & mises à jour</span><span>QR code avis Google</span><span>Toulouse · Montpellier · Nîmes · Perpignan</span><span>Responsive mobile</span><span>Accompagnement humain</span><span>Prix clairs, sans surprise</span>
+    <span>Sites one page sur mesure</span><span>Maintenance & mises à jour</span><span>QR code avis Google</span><span>Toulouse · Montpellier · Nîmes · Perpignan</span><span>Adapté aux mobiles</span><span>Accompagnement personnalisé</span><span>Tarifs clairs et transparents</span>
+    <span>Sites one page sur mesure</span><span>Maintenance & mises à jour</span><span>QR code avis Google</span><span>Toulouse · Montpellier · Nîmes · Perpignan</span><span>Adapté aux mobiles</span><span>Accompagnement personnalisé</span><span>Tarifs clairs et transparents</span>
   </div>
 </div>
 
@@ -498,15 +507,15 @@ header.top .burger{color:#fff;border-color:rgba(255,255,255,.2)}
 <section id="offres">
   <div class="wrap">
     <div class="sec-head">
-      <div><div class="label rv">Les offres OneWeb</div><h2 class="rv">Quatre briques simples pour exister en ligne.</h2></div>
-      <p class="lead rv">Prenez seulement ce dont vous avez besoin. Tout est pensé pour les artisans, commerçants et indépendants qui veulent un résultat pro, sans jargon.</p>
+      <div><div class="label rv">Les offres OneWeb</div><h2 class="rv">Quatre solutions pour développer votre présence en ligne.</h2></div>
+      <p class="lead rv">Choisissez uniquement les services dont vous avez besoin. Chaque offre a été pensée pour les artisans, commerçants et indépendants qui souhaitent un résultat professionnel, sans jargon technique.</p>
     </div>
     <div class="offers">
       <article class="offer rv">
         <div class="ico-box"><svg><use href="#i-site"/></svg></div>
         <span class="tag">Création</span>
         <h3>OneWeb Sites</h3>
-        <p>Votre site one page conçu sur mesure : clair, rapide, beau sur mobile, et pensé pour que vos visiteurs vous contactent.</p>
+        <p>Un site one page conçu sur mesure : clair, rapide, élégant sur mobile et pensé pour inciter vos visiteurs à vous contacter.</p>
         <div class="price">300€ <small>une fois</small></div>
         <a class="link-chev" href="#sites">En savoir plus <span>›</span></a>
       </article>
@@ -514,7 +523,7 @@ header.top .burger{color:#fff;border-color:rgba(255,255,255,.2)}
         <div class="ico-box"><svg><use href="#i-care"/></svg></div>
         <span class="tag">Maintenance</span>
         <h3>OneWeb Care</h3>
-        <p>Votre site reste à jour, sécurisé et fonctionnel. Trois niveaux selon le type de maintenance dont vous avez besoin.</p>
+        <p>Votre site reste à jour, sécurisé et pleinement fonctionnel. Trois formules, selon le niveau de maintenance souhaité.</p>
         <div class="price">dès 29€ <small>/ mois</small></div>
         <a class="link-chev" href="#care">Comparer <span>›</span></a>
       </article>
@@ -522,17 +531,17 @@ header.top .burger{color:#fff;border-color:rgba(255,255,255,.2)}
         <div class="ico-box"><svg><use href="#i-qr"/></svg></div>
         <span class="tag">Avis & réseaux</span>
         <h3>OneWeb Review</h3>
-        <p>Un QR code qui ouvre une mini‑appli à votre nom : réseaux, site, appel, contact… et surtout votre avis Google en un clic.</p>
+        <p>Un QR code qui ouvre une application à votre nom : réseaux sociaux, site, appel, contact et, surtout, avis Google en un clic.</p>
         <div class="price">19€ <small>/ mois</small></div>
-        <a class="link-chev" href="#review">Tester la démo <span>›</span></a>
+        <a class="link-chev" href="#review">Voir la démonstration <span>›</span></a>
       </article>
       <article class="offer feat rv">
         <div class="ico-box"><svg><use href="#i-vip"/></svg></div>
-        <span class="tag">Le meilleur rapport</span>
+        <span class="tag">Meilleur rapport qualité‑prix</span>
         <h3>OneWeb VIP</h3>
-        <p>Promos exclusives, 29€ de maintenance offerts chaque mois, Review à 15€/mois et prix garantis sans augmentation.</p>
+        <p>Promotions exclusives, 29€ de maintenance offerts chaque mois, OneWeb Review à 15€/mois et garantie de non‑augmentation des tarifs.</p>
         <div class="price">99€ <small>/ an</small></div>
-        <a class="link-chev" href="#vip">Calculer mes économies <span>›</span></a>
+        <a class="link-chev" href="#vip">Estimer mes économies <span>›</span></a>
       </article>
     </div>
   </div>
@@ -543,22 +552,22 @@ header.top .burger{color:#fff;border-color:rgba(255,255,255,.2)}
   <div class="wrap split">
     <div>
       <div class="label rv">OneWeb Sites</div>
-      <h2 class="rv">Une seule page, tout ce qu'il faut.</h2>
-      <p class="lead rv">Une page bien construite vaut mieux qu'un site de dix pages que personne ne lit. Vos clients trouvent l'essentiel en un défilement.</p>
+      <h2 class="rv">Une seule page, l'essentiel de votre activité.</h2>
+      <p class="lead rv">Une page claire et bien structurée est souvent plus efficace qu'un site complexe. Vos clients trouvent l'essentiel en quelques secondes.</p>
       <ul class="checks rv">
-        <li><svg><use href="#i-check"/></svg><div>Design 100% sur mesure<span>À vos couleurs, à votre image. Pas de modèle générique.</span></div></li>
-        <li><svg><use href="#i-check"/></svg><div>Parfait sur mobile<span>La majorité de vos visiteurs arrive depuis un téléphone.</span></div></li>
-        <li><svg><use href="#i-check"/></svg><div>Pensé pour le contact<span>Boutons d'appel, e‑mail, itinéraire, réseaux : tout est à un clic.</span></div></li>
-        <li><svg><use href="#i-check"/></svg><div>Optimisé pour Google<span>Structure propre et rapide pour être bien référencé localement.</span></div></li>
+        <li><svg><use href="#i-check"/></svg><div>Design 100% sur mesure<span>À vos couleurs et à votre image, sans modèle générique.</span></div></li>
+        <li><svg><use href="#i-check"/></svg><div>Parfaitement adapté aux mobiles<span>La majorité de vos visiteurs consulte votre site depuis un smartphone.</span></div></li>
+        <li><svg><use href="#i-check"/></svg><div>Conçu pour faciliter le contact<span>Appel, e‑mail, itinéraire, réseaux sociaux : tout est accessible en un clic.</span></div></li>
+        <li><svg><use href="#i-check"/></svg><div>Optimisé pour Google<span>Une structure soignée et rapide, favorable à votre référencement local.</span></div></li>
       </ul>
     </div>
     <div class="big-price rv from-r">
       <div class="label">Tarif unique</div>
       <div class="n"><span data-count="300">300</span><sup>€</sup></div>
-      <p>Pour un site one page sur mesure, de la maquette à la mise en ligne. Un prix clair, annoncé dès le départ.</p>
+      <p>Pour un site one page sur mesure, de la maquette à la mise en ligne. Un tarif clair, communiqué dès le départ.</p>
       <div class="cta-pair" style="margin-top:0">
-        <a class="btn btn-primary" href="#contact" data-offer="OneWeb Sites">Je veux mon site</a>
-        <a class="btn btn-ghost" href="#process">Comment ça marche</a>
+        <a class="btn btn-primary" href="#contact" data-offer="OneWeb Sites">Demander mon site</a>
+        <a class="btn btn-ghost" href="#process">Découvrir la méthode</a>
       </div>
       <div class="steps" id="steps">
         <div class="step on">Étape 1<b>Échange</b></div>
@@ -573,8 +582,8 @@ header.top .burger{color:#fff;border-color:rgba(255,255,255,.2)}
 <section id="care">
   <div class="wrap">
     <div class="sec-head">
-      <div><div class="label rv">OneWeb Care</div><h2 class="rv">Votre site, entretenu comme il faut.</h2></div>
-      <p class="lead rv">Un site, ça vit. Choisissez le niveau de maintenance qui vous correspond, sans engagement de complexité.</p>
+      <div><div class="label rv">OneWeb Care</div><h2 class="rv">Votre site, entretenu avec soin.</h2></div>
+      <p class="lead rv">Un site internet nécessite un suivi régulier. Choisissez le niveau de maintenance qui correspond à vos besoins.</p>
     </div>
     <div class="care-grid" id="careGrid">
       <article class="plan rv" tabindex="0" data-plan="0">
@@ -585,7 +594,7 @@ header.top .burger{color:#fff;border-color:rgba(255,255,255,.2)}
           <li><svg><use href="#i-check"/></svg>Surveillance du bon fonctionnement</li>
           <li><svg><use href="#i-check"/></svg>Sauvegardes régulières</li>
         </ul>
-        <div class="who">Idéal pour un site qui bouge peu.</div>
+        <div class="who">Idéal pour un site qui évolue peu.</div>
       </article>
       <article class="plan active rv" tabindex="0" data-plan="1">
         <span class="tag">Confort · le plus choisi</span>
@@ -595,7 +604,7 @@ header.top .burger{color:#fff;border-color:rgba(255,255,255,.2)}
           <li><svg><use href="#i-check"/></svg>Petites modifications de contenu (textes, photos, horaires)</li>
           <li><svg><use href="#i-check"/></svg>Suivi des performances</li>
         </ul>
-        <div class="who">Pour garder un site toujours à jour.</div>
+        <div class="who">Pour un site toujours à jour.</div>
       </article>
       <article class="plan rv" tabindex="0" data-plan="2">
         <span class="tag">Premium</span>
@@ -605,10 +614,10 @@ header.top .burger{color:#fff;border-color:rgba(255,255,255,.2)}
           <li><svg><use href="#i-check"/></svg>Évolutions et nouvelles sections</li>
           <li><svg><use href="#i-check"/></svg>Intervention prioritaire</li>
         </ul>
-        <div class="who">Pour ceux qui font évoluer leur site souvent.</div>
+        <div class="who">Pour les sites qui évoluent régulièrement.</div>
       </article>
     </div>
-    <p class="rv" style="margin-top:32px;color:var(--slate);font-size:14px">Le contenu exact de chaque formule est ajusté avec vous selon votre site. <a class="link-chev" href="#contact" data-offer="OneWeb Care">Parlons-en <span>›</span></a></p>
+    <p class="rv" style="margin-top:32px;color:var(--slate);font-size:14px">Le contenu de chaque formule est défini avec vous en fonction de votre site. <a class="link-chev" href="#contact" data-offer="OneWeb Care">Échangeons-en <span>›</span></a></p>
   </div>
 </section>
 
@@ -617,18 +626,18 @@ header.top .burger{color:#fff;border-color:rgba(255,255,255,.2)}
   <div class="wrap split">
     <div>
       <div class="label rv">OneWeb Review · 19€/mois</div>
-      <h2 class="rv">Un scan, et vos clients vous laissent un avis.</h2>
-      <p class="lead rv">Posez votre QR code au comptoir, sur vos cartes ou votre vitrine. Il ouvre une mini‑appli à votre nom qui réunit tout ce qui compte.</p>
+      <h2 class="rv">Un simple scan pour recueillir l'avis de vos clients.</h2>
+      <p class="lead rv">Placez votre QR code sur votre comptoir, vos cartes de visite ou votre vitrine. Il ouvre une application à votre nom qui rassemble tous vos liens essentiels.</p>
       <div class="review-feats rv">
-        <div><svg><use href="#i-star" fill="#533afd"/></svg>Avis Google en un clic</div>
-        <div><svg><use href="#i-insta"/></svg>Instagram, Facebook…</div>
+        <div><svg><use href="#i-star" fill="#1463e8"/></svg>Avis Google en un clic</div>
+        <div><svg><use href="#i-insta"/></svg>Instagram, Facebook et autres réseaux</div>
         <div><svg><use href="#i-globe"/></svg>Accès à votre site</div>
         <div><svg><use href="#i-user"/></svg>Enregistrer votre numéro</div>
-        <div><svg><use href="#i-phone"/></svg>Vous appeler directement</div>
+        <div><svg><use href="#i-phone"/></svg>Appel direct en un clic</div>
         <div><svg><use href="#i-qr"/></svg>QR code personnalisé</div>
       </div>
       <div class="cta-pair rv">
-        <a class="btn btn-primary" href="#contact" data-offer="OneWeb Review">Je veux mon QR code</a>
+        <a class="btn btn-primary" href="#contact" data-offer="OneWeb Review">Obtenir mon QR code</a>
         <a class="btn btn-ghost" href="#vip">15€/mois avec VIP</a>
       </div>
     </div>
@@ -647,7 +656,7 @@ header.top .burger{color:#fff;border-color:rgba(255,255,255,.2)}
             <small>Exemple · Toulouse</small>
           </div>
           <div class="stars-box">
-            <p>Votre avis compte !</p>
+            <p>Votre avis nous intéresse</p>
             <div class="stars" id="stars">
               <button aria-label="1 étoile"><svg><use href="#i-star"/></svg></button>
               <button aria-label="2 étoiles"><svg><use href="#i-star"/></svg></button>
@@ -679,22 +688,22 @@ header.top .burger{color:#fff;border-color:rgba(255,255,255,.2)}
       <div class="vip-grid">
         <div>
           <div class="label rv">OneWeb VIP · 99€/an</div>
-          <h2 class="rv">Le club qui se rembourse tout seul.</h2>
-          <p class="lead rv">Pour les clients qui veulent le meilleur suivi au meilleur prix, toute l'année.</p>
+          <h2 class="rv">L'abonnement qui se rentabilise rapidement.</h2>
+          <p class="lead rv">Pour les clients qui souhaitent bénéficier du meilleur suivi, au meilleur tarif, tout au long de l'année.</p>
           <ul class="perks rv">
             <li><svg><use href="#i-gift"/></svg><div>29€ de maintenance offerts chaque mois<span>Déduits de votre formule OneWeb Care.</span></div></li>
             <li><svg><use href="#i-qr"/></svg><div>OneWeb Review à 15€/mois<span>Au lieu de 19€/mois.</span></div></li>
-            <li><svg><use href="#i-lock"/></svg><div>Garantie de non‑augmentation<span>Vos tarifs restent bloqués.</span></div></li>
-            <li><svg><use href="#i-tag"/></svg><div>Promos exclusives<span>Offres réservées aux membres VIP, et d'autres avantages.</span></div></li>
+            <li><svg><use href="#i-lock"/></svg><div>Garantie de non‑augmentation<span>Vos tarifs restent inchangés.</span></div></li>
+            <li><svg><use href="#i-tag"/></svg><div>Promotions exclusives<span>Des offres réservées aux membres VIP, ainsi que d'autres avantages.</span></div></li>
           </ul>
           <div class="cta-pair rv">
-            <a class="btn btn-primary" href="#contact" data-offer="OneWeb VIP">Devenir VIP</a>
-            <a class="btn btn-ghost" href="tel:+33777788562">M'appeler</a>
+            <a class="btn btn-primary" href="#contact" data-offer="OneWeb VIP">Devenir membre VIP</a>
+            <a class="btn btn-ghost" href="tel:+33777788562">Appeler Malo</a>
           </div>
         </div>
         <div class="calc rv from-r" id="calc">
           <h3>Simulateur d'économies</h3>
-          <p>Choisissez vos services, on calcule sur 12 mois.</p>
+          <p>Sélectionnez vos services pour estimer vos économies sur 12 mois.</p>
           <div class="calc-label">Formule OneWeb Care</div>
           <div class="seg" id="careSeg">
             <button aria-pressed="false" data-v="0">Aucune</button>
@@ -702,13 +711,13 @@ header.top .burger{color:#fff;border-color:rgba(255,255,255,.2)}
             <button aria-pressed="false" data-v="49">49€</button>
             <button aria-pressed="false" data-v="99">99€</button>
           </div>
-          <label class="switch"><span>J'ajoute OneWeb Review</span><input type="checkbox" id="revToggle" checked></label>
+          <label class="switch"><span>Avec OneWeb Review</span><input type="checkbox" id="revToggle" checked></label>
           <div class="calc-res">
             <div><div class="k">Sans VIP / an</div><div class="v strike" id="noVip">0€</div></div>
             <div><div class="k">Avec VIP / an</div><div class="v" id="withVip">0€</div></div>
           </div>
           <div class="saving"><span class="k" id="saveLabel">Vous économisez</span><span class="v" id="save">0€</span></div>
-          <small>Calcul indicatif : VIP 99€/an + Care diminué de 29€/mois + Review à 15€/mois.</small>
+          <small>Estimation indicative : VIP 99€/an, Care réduit de 29€/mois et Review à 15€/mois.</small>
         </div>
       </div>
     </div>
@@ -719,14 +728,14 @@ header.top .burger{color:#fff;border-color:rgba(255,255,255,.2)}
 <section id="process">
   <div class="wrap">
     <div class="sec-head">
-      <div><div class="label rv">Comment ça marche</div><h2 class="rv">De l'idée au site en ligne, en 4 étapes.</h2></div>
-      <p class="lead rv">Un accompagnement simple et humain, du premier appel jusqu'après la mise en ligne.</p>
+      <div><div class="label rv">Notre méthode</div><h2 class="rv">De votre idée à la mise en ligne, en 4 étapes.</h2></div>
+      <p class="lead rv">Un accompagnement simple et personnalisé, du premier échange jusqu'après la mise en ligne.</p>
     </div>
     <div class="process">
-      <div class="proc rv"><h3>On échange</h3><p>Un appel ou un rendez-vous pour comprendre votre activité, vos clients et vos envies.</p></div>
-      <div class="proc rv"><h3>Je crée</h3><p>Je conçois votre page sur mesure et vous la présente. On ajuste ensemble jusqu'à ce qu'elle vous ressemble.</p></div>
-      <div class="proc rv"><h3>On met en ligne</h3><p>Votre site est publié, prêt à être partagé sur vos réseaux et votre fiche Google.</p></div>
-      <div class="proc rv"><h3>Je reste là</h3><p>Maintenance, QR code avis, évolutions : je vous accompagne dans la durée si vous le souhaitez.</p></div>
+      <div class="proc rv"><h3>Premier échange</h3><p>Un appel ou un rendez-vous pour comprendre votre activité, votre clientèle et vos attentes.</p></div>
+      <div class="proc rv"><h3>Conception</h3><p>Je conçois votre page sur mesure et vous la présente. Nous l'ajustons ensemble jusqu'à ce qu'elle vous corresponde pleinement.</p></div>
+      <div class="proc rv"><h3>Mise en ligne</h3><p>Votre site est publié et prêt à être partagé sur vos réseaux sociaux et votre fiche Google.</p></div>
+      <div class="proc rv"><h3>Suivi</h3><p>Maintenance, QR code d'avis, évolutions : je reste à vos côtés dans la durée, si vous le souhaitez.</p></div>
     </div>
   </div>
 </section>
@@ -737,14 +746,14 @@ header.top .burger{color:#fff;border-color:rgba(255,255,255,.2)}
     <div>
       <div class="label rv">Zone d'intervention</div>
       <h2 class="rv">Partout en Occitanie.</h2>
-      <p class="lead rv">Des Pyrénées à la Méditerranée, je travaille avec les professionnels de toute la région, à distance ou en rendez-vous.</p>
+      <p class="lead rv">Des Pyrénées à la Méditerranée, j'accompagne les professionnels de toute la région, à distance ou lors d'un rendez-vous.</p>
       <div class="cities rv">
         <span>Ariège</span><span>Aude</span><span>Aveyron</span><span>Gard</span><span>Haute‑Garonne</span><span>Gers</span><span>Hérault</span><span>Lot</span><span>Lozère</span><span>Hautes‑Pyrénées</span><span>Pyrénées‑Orientales</span><span>Tarn</span><span>Tarn‑et‑Garonne</span>
       </div>
     </div>
     <div class="map rv from-r" aria-hidden="true">
       <svg viewBox="0 0 400 320">
-        <path d="M128 36 L176 22 L214 40 L236 30 L262 54 L300 60 L322 92 L352 112 L370 150 L346 176 L318 196 L300 232 L270 248 L262 284 L226 298 L196 288 L168 300 L132 292 L100 276 L66 262 L44 240 L60 210 L46 184 L64 156 L56 124 L84 102 L96 70 Z" fill="#fff" stroke="#b9b9f9" stroke-width="1.5" stroke-linejoin="round"/>
+        <path d="M128 36 L176 22 L214 40 L236 30 L262 54 L300 60 L322 92 L352 112 L370 150 L346 176 L318 196 L300 232 L270 248 L262 284 L226 298 L196 288 L168 300 L132 292 L100 276 L66 262 L44 240 L60 210 L46 184 L64 156 L56 124 L84 102 L96 70 Z" fill="#fff" stroke="#b6cff7" stroke-width="1.5" stroke-linejoin="round"/>
         <g font-family="Inter Tight, sans-serif" font-size="11" fill="#50617a">
           <circle class="dot" cx="148" cy="190" r="4"/><circle class="dot-ring" cx="148" cy="190" r="4"/><text x="158" y="194">Toulouse</text>
           <circle class="dot" cx="300" cy="186" r="4"/><circle class="dot-ring" cx="300" cy="186" r="4" style="animation-delay:.6s"/><text x="258" y="206">Montpellier</text>
@@ -766,14 +775,14 @@ header.top .burger{color:#fff;border-color:rgba(255,255,255,.2)}
 <section id="faq">
   <div class="wrap">
     <div class="label rv">Questions fréquentes</div>
-    <h2 class="rv" style="margin-bottom:48px">Vous vous demandez sûrement…</h2>
+    <h2 class="rv" style="margin-bottom:48px">Les réponses à vos questions.</h2>
     <div class="faq rv">
-      <details><summary>Pourquoi un site « one page » ?<i></i></summary><p>Parce que c'est ce dont la plupart des artisans, commerçants et indépendants ont besoin : présenter ce que vous faites, rassurer, et donner envie de vous contacter. Tout est sur une seule page, rapide à parcourir, surtout sur mobile.</p></details>
-      <details><summary>Qu'est-ce qui est compris dans les 300€ ?<i></i></summary><p>La conception sur mesure de votre site one page, de l'échange initial à la mise en ligne. On fait le point ensemble au départ sur votre contenu (textes, photos, logo) et vos besoins, pour que tout soit clair avant de commencer.</p></details>
-      <details><summary>Suis-je obligé de prendre une maintenance ?<i></i></summary><p>Non. OneWeb Care est une option pour celles et ceux qui préfèrent déléguer les mises à jour et les modifications. Vous choisissez le niveau (29€, 49€ ou 99€/mois) selon le type de maintenance souhaité.</p></details>
-      <details><summary>Comment fonctionne OneWeb Review ?<i></i></summary><p>Vous recevez un QR code personnalisé. Vos clients le scannent et arrivent sur une mini‑appli à votre nom : ils peuvent vous laisser un avis Google, suivre vos réseaux, visiter votre site, enregistrer votre numéro ou vous appeler. Le tout pour 19€/mois (15€/mois avec VIP).</p></details>
-      <details><summary>Le VIP est-il vraiment rentable ?<i></i></summary><p>Dès que vous avez une formule OneWeb Care, oui : les 29€ de maintenance offerts chaque mois représentent 348€ sur l'année, pour un abonnement VIP à 99€/an. Testez le simulateur plus haut pour voir votre cas.</p></details>
-      <details><summary>Je ne suis pas en Occitanie, c'est possible ?<i></i></summary><p>Mon activité est centrée sur l'Occitanie, mais beaucoup de choses se font à distance. Contactez-moi, on en discute.</p></details>
+      <details><summary>Pourquoi un site « one page » ?<i></i></summary><p>C'est le format le plus adapté à la majorité des artisans, commerçants et indépendants : il permet de présenter votre activité, de rassurer vos visiteurs et de les inciter à vous contacter. Tout est réuni sur une seule page, agréable à parcourir, en particulier sur mobile.</p></details>
+      <details><summary>Qu'est-ce qui est compris dans les 300€ ?<i></i></summary><p>Ce tarif comprend la conception sur mesure de votre site one page, du premier échange jusqu'à la mise en ligne. Nous faisons le point ensemble dès le départ sur vos contenus (textes, photos, logo) et vos besoins, afin que tout soit clair avant de commencer.</p></details>
+      <details><summary>La maintenance est-elle obligatoire ?<i></i></summary><p>Non. OneWeb Care est une option destinée à celles et ceux qui préfèrent confier les mises à jour et les modifications de leur site. Vous choisissez la formule (29€, 49€ ou 99€/mois) selon le niveau de maintenance souhaité.</p></details>
+      <details><summary>Comment fonctionne OneWeb Review ?<i></i></summary><p>Vous recevez un QR code personnalisé. En le scannant, vos clients accèdent à une application à votre nom : ils peuvent vous laisser un avis Google, suivre vos réseaux sociaux, consulter votre site, enregistrer votre numéro ou vous appeler. Le tout pour 19€/mois (15€/mois avec l'offre VIP).</p></details>
+      <details><summary>L'offre VIP est-elle avantageuse ?<i></i></summary><p>Dès que vous souscrivez une formule OneWeb Care, oui : les 29€ de maintenance offerts chaque mois représentent 348€ par an, pour un abonnement VIP de 99€/an. Le simulateur ci-dessus vous permet d'estimer vos économies.</p></details>
+      <details><summary>Intervenez-vous en dehors de l'Occitanie ?<i></i></summary><p>Mon activité est principalement centrée sur l'Occitanie, mais une grande partie de l'accompagnement peut se faire à distance. N'hésitez pas à me contacter pour en discuter.</p></details>
     </div>
   </div>
 </section>
@@ -784,16 +793,16 @@ header.top .burger{color:#fff;border-color:rgba(255,255,255,.2)}
     <div>
       <div class="label rv">Contact</div>
       <h2 class="rv">Parlons de votre projet.</h2>
-      <p class="lead rv">Une question, un devis, une idée ? Je vous réponds rapidement, sans engagement.</p>
+      <p class="lead rv">Une question, une demande de devis ou un projet ? Je vous réponds dans les meilleurs délais, sans engagement.</p>
       <div class="c-list rv">
         <a class="c-item" href="tel:+33777788562"><span class="ico-box"><svg><use href="#i-phone"/></svg></span><span><small>Téléphone</small><b>07 77 78 85 62</b></span><svg class="ico arr"><use href="#i-arrow"/></svg></a>
         <a class="c-item" href="mailto:malo.oneweb@gmail.com"><span class="ico-box"><svg><use href="#i-mail"/></svg></span><span><small>E‑mail</small><b>malo.oneweb@gmail.com</b></span><svg class="ico arr"><use href="#i-arrow"/></svg></a>
         <a class="c-item" href="https://www.instagram.com/malo.oneweb" target="_blank" rel="noopener"><span class="ico-box"><svg><use href="#i-insta"/></svg></span><span><small>Instagram</small><b>@malo.oneweb</b></span><svg class="ico arr"><use href="#i-arrow"/></svg></a>
-        <a class="c-item" href="https://share.google/DD7uOuEbsURMxU5QQ" target="_blank" rel="noopener"><span class="ico-box"><svg><use href="#i-google"/></svg></span><span><small>Google</small><b>Voir ma fiche & mes avis</b></span><svg class="ico arr"><use href="#i-arrow"/></svg></a>
+        <a class="c-item" href="https://share.google/DD7uOuEbsURMxU5QQ" target="_blank" rel="noopener"><span class="ico-box"><svg><use href="#i-google"/></svg></span><span><small>Google</small><b>Ma fiche et mes avis</b></span><svg class="ico arr"><use href="#i-arrow"/></svg></a>
       </div>
     </div>
     <form id="form" class="rv from-r" action="https://api.web3forms.com/submit" method="POST">
-      <input type="hidden" name="access_key" value="aa6edb5f-ce27-4bf0-a331-5fa939c1b7fd">
+      <input type="hidden" name="access_key" value="6f9b37ee-a270-4894-a57f-ec853fe00ba7">
       <input type="hidden" name="subject" value="Nouvelle demande depuis le site Malo OneWeb">
       <input type="hidden" name="from_name" value="Site Malo OneWeb">
       <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
@@ -807,7 +816,7 @@ header.top .burger{color:#fff;border-color:rgba(255,255,255,.2)}
       </div>
       <label class="f">Ville<input class="in" name="ville" autocomplete="address-level2" placeholder="Toulouse, Montpellier…"></label>
       <div class="f">
-        <span style="font-size:14px;font-weight:400">Ce qui m'intéresse</span>
+        <span style="font-size:14px;font-weight:400">Offres qui vous intéressent</span>
         <div class="chips" id="chips">
           <label><input type="checkbox" name="offres" value="OneWeb Sites"><span>Sites · 300€</span></label>
           <label><input type="checkbox" name="offres" value="OneWeb Care"><span>Care · dès 29€</span></label>
@@ -815,12 +824,12 @@ header.top .burger{color:#fff;border-color:rgba(255,255,255,.2)}
           <label><input type="checkbox" name="offres" value="OneWeb VIP"><span>VIP · 99€/an</span></label>
         </div>
       </div>
-      <label class="f">Votre message *<textarea class="in" name="message" required placeholder="Parlez-moi de votre activité et de votre projet…"></textarea></label>
+      <label class="f">Votre message *<textarea class="in" name="message" required placeholder="Présentez-moi votre activité et votre projet…"></textarea></label>
       <div class="cta-pair" style="margin-top:8px">
         <button class="btn btn-primary" type="submit" id="sendBtn">Envoyer ma demande <svg><use href="#i-arrow"/></svg></button>
-        <a class="btn btn-ghost" href="tel:+33777788562">Ou appelez-moi</a>
+        <a class="btn btn-ghost" href="tel:+33777788562">Me joindre par téléphone</a>
       </div>
-      <p class="form-note" id="formNote" aria-live="polite">Je vous réponds rapidement. Les champs * sont obligatoires.</p>
+      <p class="form-note" id="formNote" aria-live="polite">Je vous réponds dans les meilleurs délais. Les champs marqués d'un * sont obligatoires.</p>
     </form>
   </div>
 </section>
@@ -831,14 +840,14 @@ header.top .burger{color:#fff;border-color:rgba(255,255,255,.2)}
   <div class="wrap">
     <div class="foot">
       <div>
-        <a href="#top" class="logo"><span class="logo-mark"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5"><circle cx="12" cy="12" r="7"/></svg></span><span>Malo <b>OneWeb</b></span></a>
-        <p>Création de sites one page sur mesure, maintenance et outils d'avis Google pour les pros d'Occitanie.</p>
+        <a href="#top" class="logo logo-foot" aria-label="Malo OneWeb"><span class="sym"><svg class="sym-l" viewBox="0 0 310 210" aria-hidden="true"><defs>  <linearGradient id="ftll" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#1c6ae6"/><stop offset="1" stop-color="#0b2c74"/></linearGradient>  <linearGradient id="ftlm" x1="0" y1="0" x2="1" y2="1"><stop offset=".15" stop-color="#1f6ff0"/><stop offset="1" stop-color="#4aa6ff"/></linearGradient>  <linearGradient id="ftld" x1="1" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#06173a"/><stop offset="1" stop-color="#1d58c9"/></linearGradient>  <linearGradient id="ftlp" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1fb4ff"/><stop offset="1" stop-color="#0f8ff0"/></linearGradient>  <mask id="ftlk" maskUnits="userSpaceOnUse" x="-20" y="-20" width="360" height="260"><rect x="-20" y="-20" width="360" height="260" fill="#fff"/><path d="M66 76 C78 50 100 32 130 30 L148 30 C160 30 168 34 176 42 L264 132 A34 34 0 0 1 216 180 L128 92 C110 76 88 72 66 76 Z" fill="#000" stroke="#000" stroke-width="16" stroke-linejoin="round"/></mask></defs><g mask="url(#ftlk)">  <path d="M42 164 L98 98" stroke="url(#ftll)" stroke-width="62" stroke-linecap="round" fill="none"/>  <path d="M258 94 m-48 0 a48 48 0 1 1 96 0 a48 48 0 1 1 -96 0" fill="url(#ftld)"/></g><path d="M66 76 C78 50 100 32 130 30 L148 30 C160 30 168 34 176 42 L264 132 A34 34 0 0 1 216 180 L128 92 C110 76 88 72 66 76 Z" fill="url(#ftlm)"/><circle cx="290" cy="22" r="18" fill="url(#ftlp)"/></svg></span><span class="wm"><small>Malo</small><span>One<em>Web</em></span><i>Accompagnement web &amp; solutions digitales</i></span></a>
+        <p>Création de sites one page sur mesure, maintenance et solutions d'avis Google pour les professionnels d'Occitanie.</p>
       </div>
       <div><h4>Offres</h4><ul><li><a href="#sites">OneWeb Sites</a></li><li><a href="#care">OneWeb Care</a></li><li><a href="#review">OneWeb Review</a></li><li><a href="#vip">OneWeb VIP</a></li></ul></div>
       <div><h4>Contact</h4><ul><li><a href="tel:+33777788562">07 77 78 85 62</a></li><li><a href="mailto:malo.oneweb@gmail.com">malo.oneweb@gmail.com</a></li><li><a href="#zone">Toute l'Occitanie</a></li></ul></div>
       <div><h4>Suivre</h4><ul><li><a href="https://www.instagram.com/malo.oneweb" target="_blank" rel="noopener">Instagram</a></li><li><a href="https://share.google/DD7uOuEbsURMxU5QQ" target="_blank" rel="noopener">Fiche Google</a></li></ul></div>
     </div>
-    <div class="foot-b"><span>© <span id="year">2026</span> Malo OneWeb. Tous droits réservés.</span><span>Fait avec soin en Occitanie.</span></div>
+    <div class="foot-b"><span>© <span id="year">2026</span> Malo OneWeb. Tous droits réservés.</span><span>Conçu avec soin en Occitanie.</span></div>
   </div>
 </footer>
 
@@ -878,7 +887,7 @@ plans.forEach(p => {
 (() => {
   const svg = document.getElementById('qr'), N = 25; let seed = 7, out = '';
   const rnd = () => (seed = (seed * 9301 + 49297) % 233280) / 233280;
-  const finder = (x, y) => `<rect x="${x}" y="${y}" width="7" height="7" fill="#061b31"/><rect x="${x+1}" y="${y+1}" width="5" height="5" fill="#fff"/><rect x="${x+2}" y="${y+2}" width="3" height="3" fill="#533afd"/>`;
+  const finder = (x, y) => `<rect x="${x}" y="${y}" width="7" height="7" fill="#061b31"/><rect x="${x+1}" y="${y+1}" width="5" height="5" fill="#fff"/><rect x="${x+2}" y="${y+2}" width="3" height="3" fill="#1463e8"/>`;
   const inF = (x, y) => (x < 8 && y < 8) || (x > 16 && y < 8) || (x < 8 && y > 16);
   for (let y = 0; y < N; y++) for (let x = 0; x < N; x++)
     if (!inF(x, y) && rnd() > .52) out += `<rect x="${x}" y="${y}" width="1" height="1" fill="#061b31"/>`;
@@ -890,7 +899,7 @@ const toast = document.getElementById('toast'); let tt;
 const showToast = msg => { toast.textContent = msg; toast.classList.add('show'); clearTimeout(tt); tt = setTimeout(() => toast.classList.remove('show'), 1800); };
 document.querySelectorAll('.app-btn').forEach(b => b.addEventListener('click', () => showToast(b.dataset.toast)));
 const stars = [...document.querySelectorAll('#stars button')], thanks = document.getElementById('thanks');
-const msgs = ['Merci, on va faire mieux !', 'Merci pour votre retour !', 'Merci ! 🙂', 'Super, merci beaucoup !', 'Génial ! Direction Google ⭐'];
+const msgs = ['Merci, nous allons nous améliorer.', 'Merci pour votre retour.', 'Merci pour votre avis !', 'Merci beaucoup !', 'Merci ! Redirection vers Google ⭐'];
 const light = n => stars.forEach((s, i) => s.classList.toggle('lit', i < n));
 let rating = 0;
 stars.forEach((s, i) => {
@@ -947,10 +956,10 @@ form.addEventListener('submit', async e => {
     const json = await res.json();
     if (!json.success) throw new Error(json.message);
     form.reset();
-    note.className = 'form-note ok'; note.textContent = 'Merci ! Votre demande est bien envoyée, je vous recontacte très vite.';
+    note.className = 'form-note ok'; note.textContent = 'Merci pour votre message ! Votre demande a bien été envoyée, je reviendrai vers vous très prochainement.';
   } catch (err) {
     note.className = 'form-note err';
-    note.innerHTML = 'Oups, l\'envoi n\'a pas fonctionné. Écrivez-moi à <a href="mailto:malo.oneweb@gmail.com">malo.oneweb@gmail.com</a> ou appelez le 07 77 78 85 62.';
+    note.innerHTML = 'Une erreur est survenue lors de l\'envoi. Vous pouvez m\'écrire directement à <a href="mailto:malo.oneweb@gmail.com">malo.oneweb@gmail.com</a> ou me joindre au 07 77 78 85 62.';
   } finally { sendBtn.disabled = false; sendBtn.innerHTML = label; }
 });
 
