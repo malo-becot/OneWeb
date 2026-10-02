@@ -332,6 +332,16 @@ textarea.in{min-height:120px;resize:vertical}
 .chips input:focus-visible + span{outline:2px solid var(--indigo-hover);outline-offset:2px}
 .form-note{font-size:13px;color:var(--slate)}
 
+/* Suggestions d'adresses Google (saisie semi-automatique) */
+.pac-container{font-family:var(--font);border:1px solid var(--frost);border-top:0;border-radius:0 0 var(--r) var(--r);box-shadow:0 12px 24px rgba(6,27,49,.08);margin-top:-1px}
+.pac-item{padding:8px 14px;font-size:14px;color:var(--steel);border-top:1px solid var(--frost);cursor:pointer}
+.pac-item:first-child{border-top:0}
+.pac-item:hover,.pac-item-selected{background:var(--wash)}
+.pac-item-query{font-size:15px;color:var(--ink)}
+.pac-matched{font-weight:400;color:var(--indigo)}
+.pac-icon{display:none}
+.pac-logo::after{margin:6px 10px}
+
 /* Footer */
 footer{background:var(--mist);padding:64px 0 32px}
 .foot{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px}
@@ -827,7 +837,7 @@ header.top .burger{color:#fff;border-color:rgba(255,255,255,.2)}
         <label class="f">Téléphone<input class="in" name="telephone" type="tel" autocomplete="tel" placeholder="06 00 00 00 00"></label>
         <label class="f">Entreprise<input class="in" name="entreprise" autocomplete="organization" placeholder="Votre activité"></label>
       </div>
-      <label class="f">Ville<input class="in" name="ville" autocomplete="address-level2" placeholder="Toulouse, Montpellier…"></label>
+      <label class="f">Ville ou adresse<input class="in" name="ville" id="location-input" autocomplete="off" placeholder="Commencez à taper : Toulouse, 12 rue…"></label>
       <div class="f">
         <span style="font-size:14px;font-weight:400">Offres qui vous intéressent</span>
         <div class="chips" id="chips">
@@ -969,6 +979,38 @@ const mailHref = () => isMobile
 document.querySelectorAll('.mail-link').forEach(a => {
   a.href = mailHref();
   if (!isMobile) { a.target = '_blank'; a.rel = 'noopener'; }
+});
+
+// Saisie semi-automatique des adresses (Google Places), chargée au premier clic dans le champ
+const MAPS_KEY = 'AIzaSyDmFU0QAEJNwoGJkMK3GwN-vqaQC3MIN34';
+const locInput = document.getElementById('location-input');
+let placesLoading = null;
+const loadPlaces = () => placesLoading || (placesLoading = (async () => {
+  const loader = document.createElement('gmpx-api-loader');
+  loader.setAttribute('key', MAPS_KEY);
+  loader.setAttribute('language', 'fr');
+  loader.setAttribute('region', 'FR');
+  loader.setAttribute('solution-channel', 'GMP_QB_addressselection_v4_cABC');
+  document.body.appendChild(loader);
+  const { APILoader } = await import('https://ajax.googleapis.com/ajax/libs/@googlemaps/extended-component-library/0.6.15/index.min.js');
+  const { Autocomplete } = await APILoader.importLibrary('places');
+  const ac = new Autocomplete(locInput, {
+    fields: ['formatted_address', 'name'],
+    types: ['geocode'],
+    componentRestrictions: { country: 'fr' },
+    // Priorité aux résultats en Occitanie (sans exclure le reste de la France)
+    bounds: { south: 42.3, west: -0.35, north: 45.05, east: 4.85 },
+    strictBounds: false
+  });
+  ac.addListener('place_changed', () => {
+    const place = ac.getPlace();
+    if (place && (place.formatted_address || place.name)) locInput.value = place.formatted_address || place.name;
+  });
+})().catch(err => { console.warn('Saisie semi-automatique indisponible :', err); }));
+locInput.addEventListener('focus', loadPlaces, { once: true });
+// Empêche « Entrée » de valider le formulaire pendant le choix d'une suggestion
+locInput.addEventListener('keydown', e => {
+  if (e.key === 'Enter' && document.querySelector('.pac-container:not([style*="display: none"]) .pac-item')) e.preventDefault();
 });
 
 // Formulaire -> Web3Forms
