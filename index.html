@@ -251,6 +251,10 @@ section{padding:96px 0;border-bottom:1px solid var(--frost)}
 .seg button{font:400 14px/1 var(--font);background:none;border:0;color:rgba(255,255,255,.75);padding:12px 4px;border-radius:3px;cursor:pointer;transition:background .2s,color .2s}
 .seg button[aria-pressed="true"]{background:#fff;color:var(--indigo)}
 .switch{display:flex;align-items:center;justify-content:space-between;gap:16px;font-size:15px;cursor:pointer;padding:12px 0}
+.stepper{display:flex;align-items:center;gap:4px;background:rgba(0,0,0,.2);border-radius:var(--r);padding:4px}
+.stepper button{width:32px;height:32px;border:0;border-radius:3px;background:rgba(255,255,255,.1);color:#fff;font:400 18px/1 var(--font);cursor:pointer;transition:background .2s}
+.stepper button:hover{background:rgba(255,255,255,.2)}
+.stepper output{min-width:28px;text-align:center;font-size:16px}
 .switch input{appearance:none;width:44px;height:24px;border-radius:9999px;background:rgba(255,255,255,.2);position:relative;cursor:pointer;transition:background .2s;flex:none}
 .switch input::after{content:"";position:absolute;top:3px;left:3px;width:18px;height:18px;border-radius:50%;background:#fff;transition:transform .2s}
 .switch input:checked{background:var(--indigo-hover)}
@@ -527,8 +531,8 @@ header.top .burger{color:#fff;border-color:rgba(255,255,255,.2)}
         <div class="ico-box"><svg><use href="#i-care"/></svg></div>
         <span class="tag">Maintenance</span>
         <h3>OneWeb Care</h3>
-        <p>Votre site reste à jour, sécurisé et pleinement fonctionnel. Trois formules, selon le niveau de maintenance souhaité.</p>
-        <div class="price">dès 29€ <small>/ mois</small></div>
+        <p>Votre site reste à jour, sécurisé et pleinement fonctionnel. Trois niveaux de maintenance, payés à l'intervention, sans abonnement.</p>
+        <div class="price">dès 29€ <small>/ maintenance</small></div>
         <a class="link-chev" href="#care">Comparer <span>›</span></a>
       </article>
       <article class="offer rv">
@@ -587,32 +591,32 @@ header.top .burger{color:#fff;border-color:rgba(255,255,255,.2)}
   <div class="wrap">
     <div class="sec-head">
       <div><div class="label rv">OneWeb Care</div><h2 class="rv">Votre site, entretenu avec soin.</h2></div>
-      <p class="lead rv">Un site internet nécessite un suivi régulier. Choisissez le niveau de maintenance qui correspond à vos besoins.</p>
+      <p class="lead rv">Un site internet nécessite un suivi régulier. Choisissez le niveau de maintenance adapté à chaque besoin : vous ne payez que les interventions réalisées, sans abonnement.</p>
     </div>
     <div class="care-grid" id="careGrid">
       <article class="plan rv" tabindex="0" data-plan="0">
         <span class="tag">Essentiel</span>
-        <div class="price">29€ <small>/ mois</small></div>
+        <div class="price">29€ <small>/ maintenance</small></div>
         <ul>
           <li><svg><use href="#i-check"/></svg>Mises à jour techniques & sécurité</li>
-          <li><svg><use href="#i-check"/></svg>Surveillance du bon fonctionnement</li>
-          <li><svg><use href="#i-check"/></svg>Sauvegardes régulières</li>
+          <li><svg><use href="#i-check"/></svg>Vérification du bon fonctionnement</li>
+          <li><svg><use href="#i-check"/></svg>Sauvegarde complète du site</li>
         </ul>
         <div class="who">Idéal pour un site qui évolue peu.</div>
       </article>
       <article class="plan active rv" tabindex="0" data-plan="1">
         <span class="tag">Confort · le plus choisi</span>
-        <div class="price">49€ <small>/ mois</small></div>
+        <div class="price">49€ <small>/ maintenance</small></div>
         <ul>
           <li><svg><use href="#i-check"/></svg>Tout l'Essentiel</li>
           <li><svg><use href="#i-check"/></svg>Petites modifications de contenu (textes, photos, horaires)</li>
-          <li><svg><use href="#i-check"/></svg>Suivi des performances</li>
+          <li><svg><use href="#i-check"/></svg>Contrôle des performances</li>
         </ul>
         <div class="who">Pour un site toujours à jour.</div>
       </article>
       <article class="plan rv" tabindex="0" data-plan="2">
         <span class="tag">Premium</span>
-        <div class="price">99€ <small>/ mois</small></div>
+        <div class="price">99€ <small>/ maintenance</small></div>
         <ul>
           <li><svg><use href="#i-check"/></svg>Tout le Confort</li>
           <li><svg><use href="#i-check"/></svg>Évolutions et nouvelles sections</li>
@@ -621,7 +625,7 @@ header.top .burger{color:#fff;border-color:rgba(255,255,255,.2)}
         <div class="who">Pour les sites qui évoluent régulièrement.</div>
       </article>
     </div>
-    <p class="rv" style="margin-top:32px;color:var(--slate);font-size:14px">Le contenu de chaque formule est défini avec vous en fonction de votre site. <a class="link-chev" href="#contact" data-offer="OneWeb Care">Échangeons-en <span>›</span></a></p>
+    <p class="rv" style="margin-top:32px;color:var(--slate);font-size:14px">Le contenu de chaque maintenance est défini avec vous en fonction de votre site. <a class="link-chev" href="#contact" data-offer="OneWeb Care">Échangeons-en <span>›</span></a></p>
   </div>
 </section>
 
@@ -695,7 +699,7 @@ header.top .burger{color:#fff;border-color:rgba(255,255,255,.2)}
           <h2 class="rv">L'abonnement qui se rentabilise rapidement.</h2>
           <p class="lead rv">Pour les clients qui souhaitent bénéficier du meilleur suivi, au meilleur tarif, tout au long de l'année.</p>
           <ul class="perks rv">
-            <li><svg><use href="#i-gift"/></svg><div>35€ de maintenance offerts chaque mois<span>Déduits de votre formule OneWeb Care : la formule Essentiel est entièrement couverte.</span></div></li>
+            <li><svg><use href="#i-gift"/></svg><div>35€ de maintenance offerts chaque mois<span>Déduits du prix de vos maintenances OneWeb Care : une maintenance Essentiel par mois est entièrement couverte.</span></div></li>
             <li><svg><use href="#i-globe"/></svg><div>Nom de domaine offert<span>Une économie de 15€ par an.</span></div></li>
             <li><svg><use href="#i-site"/></svg><div>Hébergement offert<span>Sous certaines conditions, à voir ensemble.</span></div></li>
             <li><svg><use href="#i-qr"/></svg><div>OneWeb Review à 15€/mois<span>Au lieu de 19€/mois.</span></div></li>
@@ -710,12 +714,14 @@ header.top .burger{color:#fff;border-color:rgba(255,255,255,.2)}
         <div class="calc rv from-r" id="calc">
           <h3>Simulateur d'économies</h3>
           <p>Sélectionnez vos services pour estimer vos économies sur 12 mois.</p>
-          <div class="calc-label">Formule OneWeb Care</div>
-          <div class="seg" id="careSeg">
-            <button aria-pressed="false" data-v="0">Aucune</button>
+          <div class="calc-label">Type de maintenance OneWeb Care</div>
+          <div class="seg" id="careSeg" style="grid-template-columns:repeat(3,1fr)">
             <button aria-pressed="true" data-v="29">29€</button>
             <button aria-pressed="false" data-v="49">49€</button>
             <button aria-pressed="false" data-v="99">99€</button>
+          </div>
+          <div class="switch"><span>Maintenances par an</span>
+            <div class="stepper"><button type="button" id="cntMinus" aria-label="Une maintenance de moins">−</button><output id="cnt" aria-live="polite">6</output><button type="button" id="cntPlus" aria-label="Une maintenance de plus">+</button></div>
           </div>
           <label class="switch"><span>Avec OneWeb Review</span><input type="checkbox" id="revToggle" checked></label>
           <div class="calc-res">
@@ -723,7 +729,7 @@ header.top .burger{color:#fff;border-color:rgba(255,255,255,.2)}
             <div><div class="k">Avec VIP / an</div><div class="v" id="withVip">0€</div></div>
           </div>
           <div class="saving"><span class="k" id="saveLabel">Vous économisez</span><span class="v" id="save">0€</span></div>
-          <small>Estimation indicative : VIP 99€/an, Care réduit de 35€/mois, Review à 15€/mois et nom de domaine (15€/an) offert. Hébergement non inclus dans le calcul.</small>
+          <small>Estimation indicative : VIP 99€/an, jusqu'à 35€ offerts par maintenance (une par mois au maximum), Review à 15€/mois et nom de domaine (15€/an) offert. Hébergement non inclus dans le calcul.</small>
         </div>
       </div>
     </div>
@@ -785,9 +791,9 @@ header.top .burger{color:#fff;border-color:rgba(255,255,255,.2)}
     <div class="faq rv">
       <details><summary>Pourquoi un site « one page » ?<i></i></summary><p>C'est le format le plus adapté à la majorité des artisans, commerçants et indépendants : il permet de présenter votre activité, de rassurer vos visiteurs et de les inciter à vous contacter. Tout est réuni sur une seule page, agréable à parcourir, en particulier sur mobile.</p></details>
       <details><summary>Qu'est-ce qui est compris dans les 300€ ?<i></i></summary><p>Ce tarif comprend la conception sur mesure de votre site one page, du premier échange jusqu'à la mise en ligne. Nous faisons le point ensemble dès le départ sur vos contenus (textes, photos, logo) et vos besoins, afin que tout soit clair avant de commencer.</p></details>
-      <details><summary>La maintenance est-elle obligatoire ?<i></i></summary><p>Non. OneWeb Care est une option destinée à celles et ceux qui préfèrent confier les mises à jour et les modifications de leur site. Vous choisissez la formule (29€, 49€ ou 99€/mois) selon le niveau de maintenance souhaité.</p></details>
+      <details><summary>La maintenance est-elle obligatoire ?<i></i></summary><p>Non. OneWeb Care est une option destinée à celles et ceux qui préfèrent confier les mises à jour et les modifications de leur site. Il n'y a aucun abonnement : vous faites appel à moi quand vous en avez besoin, et chaque maintenance est facturée 29€, 49€ ou 99€ selon le niveau d'intervention.</p></details>
       <details><summary>Comment fonctionne OneWeb Review ?<i></i></summary><p>Vous recevez un QR code personnalisé. En le scannant, vos clients accèdent à une application à votre nom : ils peuvent vous laisser un avis Google, suivre vos réseaux sociaux, consulter votre site, enregistrer votre numéro ou vous appeler. Le tout pour 19€/mois (15€/mois avec l'offre VIP).</p></details>
-      <details><summary>L'offre VIP est-elle avantageuse ?<i></i></summary><p>Dès que vous souscrivez une formule OneWeb Care, oui : les 35€ de maintenance offerts chaque mois représentent 420€ par an, auxquels s'ajoutent le nom de domaine offert (15€/an) et, sous certaines conditions, l'hébergement, pour un abonnement VIP de 99€/an. Le simulateur ci-dessus vous permet d'estimer vos économies.</p></details>
+      <details><summary>L'offre VIP est-elle avantageuse ?<i></i></summary><p>Dès que vous faites régulièrement appel à OneWeb Care, oui : jusqu'à 35€ de maintenance offerts chaque mois, soit jusqu'à 420€ par an, auxquels s'ajoutent le nom de domaine offert (15€/an) et, sous certaines conditions, l'hébergement, pour un abonnement VIP de 99€/an. Le simulateur ci-dessus vous permet d'estimer vos économies.</p></details>
       <details><summary>Intervenez-vous en dehors de l'Occitanie ?<i></i></summary><p>Mon activité est principalement centrée sur l'Occitanie, mais une grande partie de l'accompagnement peut se faire à distance. N'hésitez pas à me contacter pour en discuter.</p></details>
     </div>
   </div>
@@ -917,7 +923,11 @@ stars.forEach((s, i) => {
 
 // Simulateur VIP
 const seg = document.querySelectorAll('#careSeg button'), rev = document.getElementById('revToggle');
-let care = 29;
+let care = 29, cnt = 6;
+const cntOut = document.getElementById('cnt');
+const setCnt = n => { cnt = Math.max(0, Math.min(12, n)); cntOut.textContent = cnt; calc(); };
+document.getElementById('cntMinus').addEventListener('click', () => setCnt(cnt - 1));
+document.getElementById('cntPlus').addEventListener('click', () => setCnt(cnt + 1));
 const eur = n => n.toLocaleString('fr-FR') + '€';
 const animate = (el, to) => {
   const from = parseInt(el.dataset.v || 0, 10), t0 = performance.now();
@@ -928,8 +938,9 @@ const animate = (el, to) => {
 };
 const calc = () => {
   const r = rev.checked;
-  const noVip = care * 12 + (r ? 19 * 12 : 0) + 15; // 15€/an : nom de domaine
-  const withVip = 99 + Math.max(care - 35, 0) * 12 + (r ? 15 * 12 : 0);
+  // Care est facturé à la maintenance ; VIP offre jusqu'à 35€ par mois (1 maintenance par mois max)
+  const noVip = care * cnt + (r ? 19 * 12 : 0) + 15; // 15€/an : nom de domaine
+  const withVip = 99 + Math.max(care - 35, 0) * cnt + (r ? 15 * 12 : 0);
   const save = noVip - withVip;
   animate(document.getElementById('noVip'), noVip);
   animate(document.getElementById('withVip'), withVip);
