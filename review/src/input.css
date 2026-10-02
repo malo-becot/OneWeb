@@ -1,0 +1,12 @@
+@tailwind base;@tailwind components;@tailwind utilities;
+@layer components{
+  .btn2{@apply flex flex-col items-center justify-center gap-1.5 rounded-2xl border border-slate-800 bg-slate-950/50 py-4 text-sm font-medium text-white transition hover:border-slate-700 hover:bg-slate-800/60 active:scale-[.97]}
+  .btn2 svg{@apply h-6 w-6 text-sky-400;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+}
+.glow{position:fixed;inset:-20% -20% auto;height:70vh;background:radial-gradient(50% 50% at 50% 30%,rgba(37,99,235,.28),transparent 70%);pointer-events:none}
+.cta{position:relative;overflow:hidden}
+.cta::after{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 35%,rgba(255,255,255,.35) 50%,transparent 65%);transform:translateX(-100%);animation:sh 3.2s 1s infinite}
+@keyframes sh{40%,100%{transform:translateX(100%)}}
+.rise{animation:rise .5s cubic-bezier(.2,.7,.2,1) both}
+@keyframes rise{from{opacity:0;transform:translateY(16px)}}
+@media (prefers-reduced-motion:reduce){.cta::after,.rise{animation:none}}
