@@ -152,8 +152,8 @@ section{padding:96px 0;border-bottom:1px solid var(--frost)}
 .offer.feat{background:var(--indigo);color:#fff}
 .offer.feat p,.offer.feat .price small{color:rgba(255,255,255,.78)}
 .offer.feat .tag{background:rgba(255,255,255,.16);color:#fff}
-.offer.feat .ico-box{border-color:rgba(255,255,255,.35)}
-.offer.feat .ico-box svg{stroke:#fff}
+.offer.feat .ico-box{background:#fff;border-color:#fff}
+.offer.feat:hover .ico-box{background:#fff}
 .offer.feat:hover{background:#0f56d0}
 .offer.feat .link-chev{color:#fff}
 @media (max-width:1100px){.offers{grid-template-columns:repeat(2,1fr)}}
@@ -796,7 +796,7 @@ header.top .burger{color:#fff;border-color:rgba(255,255,255,.2)}
       <p class="lead rv">Une question, une demande de devis ou un projet ? Je vous réponds dans les meilleurs délais, sans engagement.</p>
       <div class="c-list rv">
         <a class="c-item" href="tel:+33777788562"><span class="ico-box"><svg><use href="#i-phone"/></svg></span><span><small>Téléphone</small><b>07 77 78 85 62</b></span><svg class="ico arr"><use href="#i-arrow"/></svg></a>
-        <a class="c-item" href="mailto:malo.oneweb@gmail.com"><span class="ico-box"><svg><use href="#i-mail"/></svg></span><span><small>E‑mail</small><b>malo.oneweb@gmail.com</b></span><svg class="ico arr"><use href="#i-arrow"/></svg></a>
+        <a class="c-item mail-link" href="mailto:malo.oneweb@gmail.com?subject=Demande%20par%20rapport%20%C3%A0%20vos%20Services%20d%27Accompagnement%20Web&amp;body=Bonjour%2C%0A%0AJ%27aimerais%20en%20savoir%20plus%20sur%20vos%20services.%0A%0A"><span class="ico-box"><svg><use href="#i-mail"/></svg></span><span><small>E‑mail</small><b>malo.oneweb@gmail.com</b></span><svg class="ico arr"><use href="#i-arrow"/></svg></a>
         <a class="c-item" href="https://www.instagram.com/malo.oneweb" target="_blank" rel="noopener"><span class="ico-box"><svg><use href="#i-insta"/></svg></span><span><small>Instagram</small><b>@malo.oneweb</b></span><svg class="ico arr"><use href="#i-arrow"/></svg></a>
         <a class="c-item" href="https://share.google/DD7uOuEbsURMxU5QQ" target="_blank" rel="noopener"><span class="ico-box"><svg><use href="#i-google"/></svg></span><span><small>Google</small><b>Ma fiche et mes avis</b></span><svg class="ico arr"><use href="#i-arrow"/></svg></a>
       </div>
@@ -844,7 +844,7 @@ header.top .burger{color:#fff;border-color:rgba(255,255,255,.2)}
         <p>Création de sites one page sur mesure, maintenance et solutions d'avis Google pour les professionnels d'Occitanie.</p>
       </div>
       <div><h4>Offres</h4><ul><li><a href="#sites">OneWeb Sites</a></li><li><a href="#care">OneWeb Care</a></li><li><a href="#review">OneWeb Review</a></li><li><a href="#vip">OneWeb VIP</a></li></ul></div>
-      <div><h4>Contact</h4><ul><li><a href="tel:+33777788562">07 77 78 85 62</a></li><li><a href="mailto:malo.oneweb@gmail.com">malo.oneweb@gmail.com</a></li><li><a href="#zone">Toute l'Occitanie</a></li></ul></div>
+      <div><h4>Contact</h4><ul><li><a href="tel:+33777788562">07 77 78 85 62</a></li><li><a class="mail-link" href="mailto:malo.oneweb@gmail.com?subject=Demande%20par%20rapport%20%C3%A0%20vos%20Services%20d%27Accompagnement%20Web&amp;body=Bonjour%2C%0A%0AJ%27aimerais%20en%20savoir%20plus%20sur%20vos%20services.%0A%0A">malo.oneweb@gmail.com</a></li><li><a href="#zone">Toute l'Occitanie</a></li></ul></div>
       <div><h4>Suivre</h4><ul><li><a href="https://www.instagram.com/malo.oneweb" target="_blank" rel="noopener">Instagram</a></li><li><a href="https://share.google/DD7uOuEbsURMxU5QQ" target="_blank" rel="noopener">Fiche Google</a></li></ul></div>
     </div>
     <div class="foot-b"><span>© <span id="year">2026</span> Malo OneWeb. Tous droits réservés.</span><span>Conçu avec soin en Occitanie.</span></div>
@@ -942,6 +942,17 @@ document.querySelectorAll('[data-offer]').forEach(a => a.addEventListener('click
   if (box) box.checked = true;
 }));
 
+// Liens e-mail : nouveau message Gmail pré-rempli (sur mobile, l'appli mail par défaut)
+const MAIL = { to: 'malo.oneweb@gmail.com', su: "Demande par rapport à vos Services d'Accompagnement Web", body: "Bonjour,\n\nJ'aimerais en savoir plus sur vos services.\n\n" };
+const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+const mailHref = () => isMobile
+  ? `mailto:${MAIL.to}?subject=${encodeURIComponent(MAIL.su)}&body=${encodeURIComponent(MAIL.body)}`
+  : `https://mail.google.com/mail/?view=cm&fs=1&to=${MAIL.to}&su=${encodeURIComponent(MAIL.su)}&body=${encodeURIComponent(MAIL.body)}`;
+document.querySelectorAll('.mail-link').forEach(a => {
+  a.href = mailHref();
+  if (!isMobile) { a.target = '_blank'; a.rel = 'noopener'; }
+});
+
 // Formulaire -> Web3Forms
 const form = document.getElementById('form'), note = document.getElementById('formNote'), sendBtn = document.getElementById('sendBtn');
 form.addEventListener('submit', async e => {
@@ -959,7 +970,7 @@ form.addEventListener('submit', async e => {
     note.className = 'form-note ok'; note.textContent = 'Merci pour votre message ! Votre demande a bien été envoyée, je reviendrai vers vous très prochainement.';
   } catch (err) {
     note.className = 'form-note err';
-    note.innerHTML = 'Une erreur est survenue lors de l\'envoi. Vous pouvez m\'écrire directement à <a href="mailto:malo.oneweb@gmail.com">malo.oneweb@gmail.com</a> ou me joindre au 07 77 78 85 62.';
+    note.innerHTML = 'Une erreur est survenue lors de l\'envoi. Vous pouvez m\'écrire directement à <a class="mail-link" href="' + mailHref() + '" target="_blank" rel="noopener">malo.oneweb@gmail.com</a> ou me joindre au 07 77 78 85 62.';
   } finally { sendBtn.disabled = false; sendBtn.innerHTML = label; }
 });
 
