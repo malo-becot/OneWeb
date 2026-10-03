@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Le Jardin de l'Eden — Bistrot à Noé (31) · Petit-déjeuner &amp; déjeuner</title>
-<meta name="description" content="Le Jardin de l'Eden, bistrot à Noé (Haute-Garonne) : petit-déjeuner et déjeuner du lundi au samedi, ardoise de saison, terrasse, sur place, à emporter et en livraison. 05 61 90 74 82.">
-<meta property="og:title" content="Le Jardin de l'Eden — Bistrot à Noé">
-<meta property="og:description" content="Petit-déjeuner et déjeuner du lundi au samedi, ardoise de saison et terrasse, chemin de la Maladrerie à Noé.">
+<title>Le Jardin de l'Eden — Restaurant à Noé (31) · Cuisine raffinée de saison</title>
+<meta name="description" content="Le Jardin de l'Eden, restaurant à Noé (Haute-Garonne) : cuisine raffinée, produits de saison, carte renouvelée régulièrement et étage privatisable. Du lundi au samedi. 05 61 90 74 82.">
+<meta property="og:title" content="Le Jardin de l'Eden — Restaurant à Noé">
+<meta property="og:description" content="Cuisine raffinée, produits de saison et carte renouvelée régulièrement, chemin de la Maladrerie à Noé.">
 <meta property="og:type" content="restaurant">
-<meta property="og:image" content="https://images.unsplash.com/photo-1643856557143-09189e523fd6?w=1200&h=630&fit=crop&q=75&auto=format">
+<meta property="og:image" content="https://le-jardin-de-l-eden.surge.sh/images/plat-poisson-sauce-verte.webp">
 <meta name="theme-color" content="#f6f0e1">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23290a08'/%3E%3Ctext x='16' y='23' font-family='Georgia,serif' font-size='20' fill='%23f6f0e1' text-anchor='middle'%3EE%3C/text%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23f6f0e1'/%3E%3Cellipse cx='16' cy='16' rx='13' ry='8.5' fill='%23a85a2c' transform='rotate(-30 16 16)'/%3E%3Cpath d='M11.5 13.2l9 5.6M12.6 15.6l1.4-2.3M14.6 16.8l1.4-2.3M16.6 18l1.4-2.3' stroke='%23f6f0e1' stroke-width='1.2' stroke-linecap='round' fill='none'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Lora:wght@400;500&display=swap" rel="stylesheet">
@@ -148,7 +148,10 @@ p{max-width:34em}
 .cover-in ul{list-style:none;margin-top:28px;display:grid;gap:14px;font-size:var(--text-body-sm);line-height:1.4}
 .cover-in li{padding-top:14px;border-top:1px solid rgba(255,250,236,.25)}
 .cover-in li:first-child{border-top:0;padding-top:0}
+.menus-4{grid-template-columns:repeat(4,1fr)}
+.menus-4 .cover-in .name{margin-bottom:0;font-size:var(--text-subheading);letter-spacing:.1em}
 .menus-note{margin-top:40px;font-size:var(--text-body-sm)}
+@media (max-width:1100px){.menus-4{grid-template-columns:repeat(2,1fr)}}
 @media (max-width:960px){.menus{grid-template-columns:1fr;max-width:520px;margin-left:auto;margin-right:auto}}
 
 /* ===== Bon à savoir : liste sur carte lin, filets fins ===== */
@@ -201,9 +204,9 @@ details.legal div > * {margin-top:12px}
   <nav class="nav" aria-label="Navigation principale">
     <a class="brand" href="#top">Le Jardin de l'Eden</a>
     <ul>
-      <li><a href="#lieu">Le lieu</a></li>
+      <li><a href="#cuisine">La cuisine</a></li>
       <li><a href="#ardoise">L'ardoise</a></li>
-      <li><a href="#journee">Matin &amp; midi</a></li>
+      <li><a href="#maison">La maison</a></li>
       <li><a href="#infos">Infos pratiques</a></li>
     </ul>
     <a class="btn nav-tel" href="tel:+33561907482">05 61 90 74 82 <span aria-hidden="true">→</span></a>
@@ -214,125 +217,127 @@ details.legal div > * {margin-top:12px}
 
   <!-- HERO -->
   <section class="hero wrap">
-    <p class="kicker rv">Bistrot · Noé, Haute-Garonne</p>
+    <p class="kicker rv">Restaurant · Noé, Haute-Garonne</p>
     <h1 class="display rv">Le Jardin de l'Eden</h1>
-    <p class="lead rv">Petit-déjeuner et déjeuner du lundi au samedi, une ardoise de saison qui change souvent, et une terrasse pour en profiter.</p>
+    <p class="lead rv">Une cuisine raffinée, des produits de saison et une carte renouvelée régulièrement, du lundi au samedi.</p>
     <div class="actions rv">
       <a class="btn" href="tel:+33561907482">Réserver par téléphone <span aria-hidden="true">→</span></a>
       <a class="hl" href="#ardoise">Voir l'ardoise du moment</a>
     </div>
   </section>
 
-  <!-- LE LIEU -->
-  <section id="lieu" class="wrap">
+  <!-- LA CUISINE -->
+  <section id="cuisine" class="wrap">
     <div class="ed">
       <div class="plate rv">
-        <!-- PHOTO LIBRE : à remplacer par une photo du jardin / de la terrasse du restaurant -->
-        <img src="https://images.unsplash.com/photo-1643856557143-09189e523fd6?w=900&h=1125&fit=crop&q=75&auto=format" width="900" height="1125" alt="Tables de bistrot dressées dans un jardin ombragé par la vigne" loading="lazy">
+        <img src="images/plat-poisson-sauce-verte.webp" width="765" height="1020" alt="Filet de poisson rôti sur un velouté vert, jeunes pousses et tartare de fruits" loading="lazy">
       </div>
       <div class="txt rv">
-        <p class="label">Le lieu</p>
-        <h2 class="h">Un bistrot au calme, chemin de la Maladrerie</h2>
-        <p>On s'installe en terrasse ou en salle, pour un café le matin ou un vrai repas le midi. Le stationnement est facile et gratuit, et tout est accessible en fauteuil roulant.</p>
-        <p class="small">Une salle à manger privée peut accueillir vos repas de groupe : <a class="hl" href="tel:+33561907482">appelez-nous</a> pour en parler.</p>
+        <p class="label">La cuisine</p>
+        <h2 class="h">Une cuisine raffinée, sans chichis</h2>
+        <p>Des assiettes soignées, pensées pour mettre le produit en valeur : cuissons précises, sauces travaillées et dressages délicats, dans une ambiance de bistrot où l'on se sent bien.</p>
+        <a class="btn" href="tel:+33561907482">Réserver une table <span aria-hidden="true">→</span></a>
+      </div>
+    </div>
+    <div class="ed">
+      <div class="plate rv">
+        <img src="images/plat-poisson-betterave.webp" width="765" height="1020" alt="Poisson nappé d'une sauce crémeuse, betteraves rôties et champignons" loading="lazy">
+      </div>
+      <div class="txt rv">
+        <p class="label">Au fil des saisons</p>
+        <h2 class="h">Des produits de saison</h2>
+        <p>La carte suit le calendrier : légumes du moment, poissons et viandes de saison. Chaque saison apporte ses saveurs, et l'assiette change avec elles.</p>
       </div>
     </div>
   </section>
 
   <!-- L'ARDOISE -->
   <section id="ardoise" class="wrap center">
-    <h2 class="h-lg rv">L'ardoise du moment</h2>
-    <p class="rv" style="margin-top:32px">La carte change souvent, au fil des saisons et du marché. Voici quelques ardoises récentes, pour vous mettre en appétit.</p>
-    <div class="menus">
+    <h2 class="h-lg rv">L'ardoise du jour</h2>
+    <p class="rv" style="margin-top:32px">La carte change régulièrement. Voici l'ardoise du moment, à composer selon vos envies.</p>
+    <p class="h rv" style="margin-top:40px">Menu à 28&nbsp;€</p>
+    <div class="menus menus-4">
       <article class="cover rv">
         <div class="cover-in">
-          <p class="name">Ardoise d'hiver</p>
-          <p class="price">19,90&nbsp;€</p>
+          <p class="name">Entrées</p>
           <ul>
-            <li>Velouté de légumes d'hiver de saison, châtaignes rôties</li>
-            <li>Bruschetta gorgonzola, poire et noix</li>
-            <li>Pomme de terre, burrata crémeuse, pesto</li>
-            <li>Filet de dorade, beurre blanc vanillé</li>
+            <li>Crème de lentilles, œuf parfait, effiloché de canard</li>
+            <li>Tartine toastée, féta, olives, tomates, burrata</li>
+            <li>Rosace de coleslaw d'endive, roquefort</li>
           </ul>
         </div>
       </article>
       <article class="cover rv">
         <div class="cover-in">
-          <p class="name">Ardoise de printemps</p>
-          <p class="price">19,90&nbsp;€</p>
+          <p class="name">Plats</p>
           <ul>
-            <li>Crème d'asperges, pois chiches, noix et herbes</li>
-            <li>Tartare de saumon</li>
-            <li>Tataki de bœuf, pommes hasselback</li>
-            <li>Poulpe cuit en deux temps, purée de fèves, sauce chimichurri</li>
-            <li>Ananas rôti, pesto menthe</li>
+            <li>Escalope milanaise, risotto aux champignons</li>
+            <li>Joue de cochon confite, purée de pois cassés</li>
+            <li>Filet de merlu au chorizo doux, piquillos farcis, jus de piperade</li>
           </ul>
         </div>
       </article>
       <article class="cover rv">
         <div class="cover-in">
-          <p class="name">Autre ardoise</p>
-          <p class="price">20,50&nbsp;€</p>
+          <p class="name">Viandes</p>
           <ul>
-            <li>Purée de petits pois, poulpe rôti</li>
-            <li>Crème de chorizo, œuf parfait</li>
-            <li>Filet de merlu, carottes rôties, gingembre et soja, sauce champagne</li>
-            <li>Onglet de bœuf</li>
             <li>Tartare de bœuf charolais minute</li>
+            <li>Faux-filet</li>
+            <li>Bavette échalotes, sauce au vin</li>
+          </ul>
+        </div>
+      </article>
+      <article class="cover rv">
+        <div class="cover-in">
+          <p class="name">Desserts</p>
+          <ul>
+            <li>Clafoutis aux pommes caramélisées</li>
+            <li>Financier pistache, framboises</li>
+            <li>Fondant au chocolat</li>
+            <li>Assiette de fromages</li>
           </ul>
         </div>
       </article>
     </div>
-    <p class="menus-note rv">Exemples d'ardoises passées. Pour connaître le menu du jour, <a class="hl" href="https://www.facebook.com/LeBistrotdeleden/" target="_blank" rel="noopener">suivez-nous sur Facebook</a> ou <a class="hl" href="tel:+33561907482">appelez-nous</a>.</p>
   </section>
 
-  <!-- MATIN & MIDI -->
-  <section id="journee" class="wrap">
+  <section class="wrap" style="padding-top:0">
     <div class="ed">
       <div class="plate rv">
-        <!-- PHOTO LIBRE : à remplacer par une photo du petit-déjeuner servi au restaurant -->
-        <img src="https://images.unsplash.com/photo-1613187869034-fa8e42b2ab1c?w=900&h=1125&fit=crop&q=75&auto=format" width="900" height="1125" alt="Cappuccino et viennoiserie sur une table en bois" loading="lazy">
+        <img src="images/ardoise-du-jour.webp" width="825" height="1100" alt="L'ardoise du jour écrite à la craie : menu à 28 euros" loading="lazy">
       </div>
       <div class="txt rv">
-        <p class="label">Dès 8&nbsp;h</p>
-        <h2 class="h">Le petit-déjeuner</h2>
-        <p>Café, boissons chaudes et petit-déjeuner servis dès l'ouverture, du lundi au samedi. Le bar est ouvert, le Wi-Fi est gratuit : de quoi bien commencer la journée.</p>
+        <p class="label">Une carte vivante</p>
+        <h2 class="h">Une carte renouvelée régulièrement</h2>
+        <p>L'ardoise évolue au gré des saisons. Pour découvrir le menu du jour, <a class="hl" href="https://www.facebook.com/LeBistrotdeleden/" target="_blank" rel="noopener">suivez-nous sur Facebook</a> ou <a class="hl" href="tel:+33561907482">appelez-nous</a>.</p>
       </div>
     </div>
+  </section>
+
+  <!-- MAISON -->
+  <section id="maison" class="wrap">
     <div class="ed">
       <div class="plate rv">
-        <!-- PHOTO LIBRE : à remplacer par une photo d'un plat du restaurant -->
-        <img src="https://images.unsplash.com/photo-1731601816614-2423297fe97b?w=900&h=1125&fit=crop&q=75&auto=format" width="900" height="1125" alt="Poulpe rôti dressé sur une purée et des herbes fraîches" loading="lazy">
+        <img src="images/bavette-frites.webp" width="765" height="1020" alt="Bavette nappée d'une sauce au vin et d'échalotes, frites et salade" loading="lazy">
       </div>
       <div class="txt rv">
-        <p class="label">Le midi</p>
-        <h2 class="h">Le déjeuner</h2>
-        <p>Un menu du jour autour de 20&nbsp;€, une cuisine de saison et des desserts pour finir en douceur. Les plats végétariens et végétaliens ont leur place sur la carte.</p>
-        <p class="small">Vins, bières et spiritueux pour accompagner le repas.</p>
+        <p class="label">Les incontournables</p>
+        <h2 class="h">Les belles viandes de la maison</h2>
+        <p>À côté des plats du jour, les amateurs retrouvent le tartare de bœuf charolais minute, le faux-filet ou la bavette aux échalotes, sauce au vin.</p>
+        <p class="small">Vins, bières et spiritueux pour accompagner le repas. Options végétariennes et végétaliennes.</p>
         <a class="btn" href="tel:+33561907482">Réserver une table <span aria-hidden="true">→</span></a>
       </div>
     </div>
     <div class="ed">
       <div class="plate rv">
-        <!-- PHOTO LIBRE : à remplacer par une photo d'un plat du restaurant -->
-        <img src="https://images.unsplash.com/photo-1770210627300-d4fa9b75dbb7?w=900&h=1125&fit=crop&q=75&auto=format" width="900" height="1125" alt="Tartare de bœuf servi avec du pain grillé et des olives" loading="lazy">
+        <!-- PHOTO LIBRE : à remplacer par une photo de l'étage du restaurant -->
+        <img src="https://images.unsplash.com/photo-1633944241961-e511ab23455f?w=900&h=1125&fit=crop&q=75&auto=format" width="900" height="1125" alt="Salle de restaurant lumineuse avec tables dressées et plantes" loading="lazy">
       </div>
       <div class="txt rv">
-        <p class="label">Où vous voulez</p>
-        <h2 class="h">Sur place, à emporter ou livré</h2>
-        <p>Installez-vous en salle ou en terrasse, ou emportez votre repas. Le restaurant propose aussi la livraison.</p>
-        <a class="btn" href="tel:+33561907482">Commander par téléphone <span aria-hidden="true">→</span></a>
-      </div>
-    </div>
-    <div class="ed">
-      <div class="plate rv">
-        <!-- PHOTO LIBRE : à remplacer par une photo de la terrasse du restaurant -->
-        <img src="https://images.unsplash.com/photo-1782215923072-e9988432bf5e?w=900&h=1125&fit=crop&q=75&auto=format" width="900" height="1125" alt="Terrasse de bistrot entourée de plantes, tables et chaises en extérieur" loading="lazy">
-      </div>
-      <div class="txt rv">
-        <p class="label">Pour tous</p>
-        <h2 class="h">En famille, en terrasse</h2>
-        <p>Les enfants sont les bienvenus : menu enfant et chaises hautes sont prévus. Les titres-restaurant et la carte Pluxee sont acceptés.</p>
+        <p class="label">Vos événements</p>
+        <h2 class="h">Un étage privatisable</h2>
+        <p>Repas d'entreprise, anniversaire, réunion de famille&nbsp;: l'étage peut être privatisé pour vos groupes. Parlons ensemble du nombre de convives et du menu.</p>
+        <a class="btn" href="tel:+33561907482">Organiser un repas de groupe <span aria-hidden="true">→</span></a>
       </div>
     </div>
   </section>
@@ -341,22 +346,30 @@ details.legal div > * {margin-top:12px}
   <section class="wrap center">
     <h2 class="h rv">Bon à savoir</h2>
     <div class="facts rv" style="text-align:left">
-      <div><b>Services</b><span>Sur place, à emporter, livraison</span></div>
-      <div><b>Terrasse</b><span>Oui</span></div>
+      <div><b>Services</b><span>Sur place, à emporter</span></div>
+      <div><b>Étage</b><span>Privatisable pour vos groupes</span></div>
       <div><b>Régimes</b><span>Végétarien et végétalien</span></div>
       <div><b>Enfants</b><span>Menu enfant, chaises hautes</span></div>
       <div><b>Accessibilité</b><span>Entrée, places, toilettes et parking accessibles</span></div>
       <div><b>Stationnement</b><span>Facile et gratuit</span></div>
       <div><b>Paiement</b><span>Titres-restaurant, Pluxee</span></div>
-      <div><b>Sur place</b><span>Bar, Wi-Fi gratuit, salle privée</span></div>
+      <div><b>Sur place</b><span>Bar, Wi-Fi gratuit</span></div>
     </div>
   </section>
 
   <!-- AVIS -->
-  <section id="avis" class="wrap center">
-    <h2 class="h-lg rv">Vous êtes venus&nbsp;?</h2>
-    <p class="rv" style="margin-top:32px">Votre avis nous aide beaucoup. Il ne prend qu'une minute sur notre fiche Google.</p>
-    <div class="rv" style="margin-top:40px"><a class="btn" href="https://share.google/sB8z4L0VOg0xTCF39" target="_blank" rel="noopener">Laisser un avis Google <span aria-hidden="true">→</span></a></div>
+  <section id="avis" class="wrap">
+    <div class="ed">
+      <div class="plate rv">
+        <img src="images/ballon-eden.webp" width="1100" height="825" alt="Ballon de rugby en cuir gravé « L'Eden », emblème du restaurant" loading="lazy">
+      </div>
+      <div class="txt rv">
+        <p class="label">L'esprit de la maison</p>
+        <h2 class="h-lg">Vous êtes venus&nbsp;?</h2>
+        <p>Votre avis nous aide beaucoup. Il ne prend qu'une minute sur notre fiche Google.</p>
+        <a class="btn" href="https://share.google/Ieo4m4y3xoHL3FLzd" target="_blank" rel="noopener">Laisser un avis Google <span aria-hidden="true">→</span></a>
+      </div>
+    </div>
   </section>
 
   <!-- INFOS PRATIQUES -->
@@ -402,7 +415,7 @@ details.legal div > * {margin-top:12px}
       <p><b>Éditeur :</b> [À COMPLÉTER : raison sociale], Chemin de la Maladrerie, 31410 Noé. Téléphone : 05 61 90 74 82. SIRET : [À COMPLÉTER : SIRET]. Directeur de la publication : [À COMPLÉTER : nom du responsable].</p>
       <p><b>Hébergeur :</b> Surge (surge.sh), Chloi Inc., Vancouver, Canada.</p>
       <p><b>Propriété intellectuelle :</b> les textes et la mise en page de ce site sont protégés. Toute reproduction sans autorisation est interdite.</p>
-      <p><b>Crédits photos :</b> photos d'illustration issues d'Unsplash (licence Unsplash).</p>
+      <p><b>Crédits photos :</b> photos du restaurant © Le Jardin de l'Eden ; photo d'illustration de la salle issue d'Unsplash (licence Unsplash).</p>
       <p><b>Données personnelles :</b> ce site ne collecte aucune donnée via formulaire. La carte est fournie par Google Maps.</p>
     </div>
   </details>
