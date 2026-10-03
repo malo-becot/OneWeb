@@ -1,0 +1,24 @@
+@tailwind base;@tailwind components;@tailwind utilities;
+@layer components{
+  .btn2{@apply relative overflow-hidden flex flex-col items-center justify-center gap-1.5 rounded-2xl border border-slate-800 bg-slate-950/50 py-4 text-sm font-medium text-white transition hover:border-slate-700 hover:bg-slate-800/60 active:scale-[.97]}
+  .btn2 svg{@apply h-6 w-6 text-amber-300;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+}
+.glow{position:fixed;inset:-20% -20% auto;height:70vh;background:radial-gradient(50% 50% at 50% 30%,rgba(194,65,12,.22),transparent 70%);pointer-events:none}
+.cta{position:relative;overflow:hidden}
+.cta::after{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 35%,rgba(255,255,255,.35) 50%,transparent 65%);transform:translateX(-100%);animation:sh 3.2s 1s infinite}
+@keyframes sh{40%,100%{transform:translateX(100%)}}
+.rise{animation:rise .5s cubic-bezier(.2,.7,.2,1) both}
+@keyframes rise{from{opacity:0;transform:translateY(16px)}}
+.in{animation:up .55s cubic-bezier(.2,.7,.2,1) both;animation-delay:var(--d,0s)}
+@keyframes up{from{opacity:0;transform:translateY(14px)}}
+.pop{animation:pop .7s .05s cubic-bezier(.3,1.6,.5,1) both}
+@keyframes pop{from{opacity:0;transform:scale(.4) rotate(-20deg)}}
+.stars i{font-style:normal;display:inline-block;animation:star .45s cubic-bezier(.3,1.8,.5,1) both}
+.stars i:nth-child(1){animation-delay:.45s}.stars i:nth-child(2){animation-delay:.52s}.stars i:nth-child(3){animation-delay:.59s}.stars i:nth-child(4){animation-delay:.66s}.stars i:nth-child(5){animation-delay:.73s}
+@keyframes star{from{opacity:0;transform:scale(0) rotate(-90deg)}}
+.wave{position:absolute;border-radius:50%;background:rgba(255,255,255,.28);transform:scale(0);animation:wave .65s ease-out forwards;pointer-events:none}
+@keyframes wave{to{transform:scale(2.4);opacity:0}}
+#vcf.ok{border-color:rgba(52,211,153,.5);background:rgba(16,185,129,.15)}
+#vcf.ok svg{animation:bump .5s cubic-bezier(.3,1.8,.5,1)}
+@keyframes bump{50%{transform:scale(1.35)}}
+@media (prefers-reduced-motion:reduce){.cta::after,.rise,.in,.pop,.stars i,.wave,#vcf.ok svg{animation:none}}

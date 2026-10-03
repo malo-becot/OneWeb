@@ -1,0 +1,12 @@
+BEGIN:VCARD
+VERSION:3.0
+N:;Le Jardin de l’Eden;;;
+FN:Le Jardin de l’Eden
+ORG:Le Jardin de l’Eden
+TITLE:Bistrot · Petit-déjeuner et déjeuner
+TEL;TYPE=WORK,VOICE:+33561907482
+URL:https://le-jardin-de-l-eden.surge.sh/
+X-SOCIALPROFILE;TYPE=facebook:https://www.facebook.com/LeBistrotdeleden/
+ADR;TYPE=WORK:;;Chemin de la Maladrerie;Noé;;31410;France
+GEO:43.3451677;1.2638447
+END:VCARD
