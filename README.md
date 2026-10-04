@@ -4,11 +4,16 @@ Site vitrine statique (un seul fichier `index.html`, aucune dépendance à insta
 
 ## Publier avec surge.sh
 
+Adresse officielle : **https://malo-oneweb.fr/** (sans www). C'est elle qui figure dans la balise canonical, les données structurées et partout ailleurs.
+
 ```bash
-npm install --global surge   # une seule fois
-cd OneWeb
-surge . malo-oneweb.surge.sh  # ou ton propre domaine
+npm install --global surge                   # une seule fois
+surge . malo-oneweb.fr                       # le site (index.html + fonts/ + logos/)
+surge redirection www.malo-oneweb.fr         # la version www renvoie vers malo-oneweb.fr
+surge redirection malo-oneweb.surge.sh       # l'ancienne adresse renvoie vers malo-oneweb.fr
 ```
+
+Le dossier `redirection/` contient une page qui renvoie immédiatement vers `malo-oneweb.fr` en conservant le chemin (`index.html` + `200.html` pour toutes les autres adresses).
 
 ## Modifier
 
