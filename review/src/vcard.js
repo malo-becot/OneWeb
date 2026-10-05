@@ -8,7 +8,7 @@ const lines = [
   'BEGIN:VCARD', 'VERSION:3.0',
   `N:;${e(C.name)};;;`, `FN:${e(C.name)}`, `ORG:${e(C.name)}`, `TITLE:${e(C.activity)}`,
   `TEL;TYPE=CELL,VOICE:${C.tel}`, `EMAIL;TYPE=INTERNET:${C.email}`,
-  `URL:${C.web}`, `X-SOCIALPROFILE;TYPE=instagram:${C.insta}`,
+  `URL:${C.web}`, `X-SOCIALPROFILE;TYPE=instagram:${C.insta}`, `X-SOCIALPROFILE;TYPE=facebook:${C.facebook}`,
   `ADR;TYPE=WORK:;;;;${e(C.region)};;France`,
   `PHOTO;ENCODING=b;TYPE=JPEG:${photo}`,
   'END:VCARD'
