@@ -382,6 +382,13 @@ footer{background:var(--mist);padding:64px 0 32px}
 .hero .hero-bg{background-image:linear-gradient(rgba(255,255,255,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.06) 1px,transparent 1px);opacity:1}
 .hero .hero-blob{background:radial-gradient(circle at 30% 30%,rgba(60,155,255,.55),rgba(20,99,232,.25) 45%,transparent 70%)}
 .hero .mock{border-color:rgba(255,255,255,.2)}
+/* Hero : espacements adaptés à la hauteur d'écran pour voir les chiffres clés dès l'arrivée */
+.hero{padding-top:calc(77px + clamp(28px,7vh,88px))}
+.hero .pill{margin-bottom:clamp(16px,3.2vh,32px)}
+.hero h1{font-size:clamp(34px,min(5.2vw,7.6vh),68px)}
+.hero .lead{margin-top:clamp(16px,3.2vh,32px);font-size:clamp(17px,min(2vw,2.7vh),22px)}
+.hero .cta-pair{margin-top:clamp(20px,4vh,40px)}
+.hero-meta{margin-top:clamp(24px,5vh,64px)}
 
 /* Header sur le hero */
 header{transition:background .3s,border-color .3s}
