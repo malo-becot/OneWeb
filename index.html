@@ -746,7 +746,7 @@ header.top .burger{color:#fff;border-color:rgba(255,255,255,.2)}
             <button aria-pressed="false" data-v="99">99€</button>
           </div>
           <div class="switch"><span>Maintenances par an</span>
-            <div class="stepper"><button type="button" id="cntMinus" aria-label="Une maintenance de moins">−</button><output id="cnt" aria-live="polite">6</output><button type="button" id="cntPlus" aria-label="Une maintenance de plus">+</button></div>
+            <div class="stepper"><button type="button" id="cntMinus" aria-label="Une maintenance de moins">−</button><output id="cnt" aria-live="polite">12</output><button type="button" id="cntPlus" aria-label="Une maintenance de plus">+</button></div>
           </div>
           <label class="switch"><span>Avec OneWeb Review</span><input type="checkbox" id="revToggle" checked></label>
           <div class="calc-res">
@@ -954,9 +954,9 @@ stars.forEach((s, i) => {
 
 // Simulateur VIP
 const seg = document.querySelectorAll('#careSeg button'), rev = document.getElementById('revToggle');
-let care = 29, cnt = 6;
+let care = 29, cnt = 12;
 const cntOut = document.getElementById('cnt');
-const setCnt = n => { cnt = Math.max(0, Math.min(12, n)); cntOut.textContent = cnt; calc(); };
+const setCnt = n => { cnt = Math.max(0, Math.min(99, n)); cntOut.textContent = cnt; calc(); };
 document.getElementById('cntMinus').addEventListener('click', () => setCnt(cnt - 1));
 document.getElementById('cntPlus').addEventListener('click', () => setCnt(cnt + 1));
 const eur = n => n.toLocaleString('fr-FR') + '€';
@@ -971,7 +971,9 @@ const calc = () => {
   const r = rev.checked;
   // Care est facturé à la maintenance ; VIP offre jusqu'à 35€ par mois (1 maintenance par mois max)
   const noVip = care * cnt + (r ? 19 * 12 : 0) + 15; // 15€/an : nom de domaine
-  const withVip = 99 + Math.max(care - 35, 0) * cnt + (r ? 15 * 12 : 0);
+  // 35€ offerts sur 1 maintenance par mois (12 par an) ; au-delà, prix normal
+  const covered = Math.min(cnt, 12);
+  const withVip = 99 + Math.max(care - 35, 0) * covered + care * (cnt - covered) + (r ? 15 * 12 : 0);
   const save = noVip - withVip;
   animate(document.getElementById('noVip'), noVip);
   animate(document.getElementById('withVip'), withVip);
