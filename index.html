@@ -102,10 +102,10 @@ section{padding:96px 0;border-bottom:1px solid var(--frost)}
 /* Hero */
 .hero{padding:88px 0 96px;position:relative;overflow:hidden}
 .hero-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:64px;align-items:center}
-.pill{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:400;color:var(--indigo);background:var(--wash);border-radius:9999px;padding:6px 14px 6px 8px;margin-bottom:32px}
-.pill i{width:8px;height:8px;border-radius:50%;background:var(--indigo);position:relative}
+.pill{display:inline-flex;align-items:center;gap:10px;font-size:13px;font-weight:400;color:var(--indigo);background:var(--wash);border-radius:9999px;padding:6px 14px 6px 11px;margin-bottom:32px}
+.pill i{width:8px;height:8px;flex:none;border-radius:50%;background:var(--indigo);position:relative}
 .pill i::after{content:"";position:absolute;inset:-4px;border-radius:50%;border:1px solid var(--indigo);animation:ping 2s infinite}
-@keyframes ping{0%{transform:scale(.6);opacity:1}100%{transform:scale(1.8);opacity:0}}
+@keyframes ping{0%{transform:scale(.6);opacity:1}100%{transform:scale(1.4);opacity:0}}
 .cta-pair{display:flex;gap:8px;flex-wrap:wrap;margin-top:40px}
 .hero-meta{display:flex;gap:40px;margin-top:64px;flex-wrap:wrap}
 .stat .n{font-size:clamp(40px,4.5vw,56px);letter-spacing:-.025em;line-height:1}
