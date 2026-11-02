@@ -6,6 +6,8 @@
 set -euo pipefail
 cd "$(dirname "$0")"
 export SURGE_TOKEN="${SURGE_TOKEN:-injecte-par-le-proxy}"
+# Passer par le proxy de l'environnement (nécessaire pour que le secret soit injecté)
+export NODE_USE_ENV_PROXY=1 NODE_EXTRA_CA_CERTS="${NODE_EXTRA_CA_CERTS:-/root/.ccr/ca-bundle.crt}"
 SURGE="${SURGE:-npx --yes surge@0.55.0}"
 DIST="$(mktemp -d)"; trap 'rm -rf "$DIST"' EXIT
 cp index.html "$DIST/"
