@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+# Publie le site principal sur https://malo-oneweb.fr avec surge.
+# Prérequis : variables d'environnement SURGE_LOGIN (e-mail du compte surge) et SURGE_TOKEN (obtenu avec `surge token`).
+# N'envoie que les fichiers du site (pas clients/, sauvegardes/, review/src…).
+set -euo pipefail
+cd "$(dirname "$0")"
+: "${SURGE_LOGIN:?SURGE_LOGIN manquant}" "${SURGE_TOKEN:?SURGE_TOKEN manquant}"
+SURGE="${SURGE:-npx --yes surge@0.55.0}"
+DIST="$(mktemp -d)"; trap 'rm -rf "$DIST"' EXIT
+cp index.html "$DIST/"
+cp -r fonts logos "$DIST/"
+echo "malo-oneweb.fr" > "$DIST/CNAME"
+$SURGE "$DIST" malo-oneweb.fr
+# Vérification : la page en ligne doit être identique au fichier local
+sleep 3
+if [ "$(curl -s https://malo-oneweb.fr/ | sha256sum)" = "$(sha256sum < index.html)" ]; then echo "En ligne : version à jour."; else echo "Attention : la page en ligne diffère encore (cache ?)."; fi
