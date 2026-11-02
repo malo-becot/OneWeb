@@ -1,10 +1,11 @@
 #!/usr/bin/env bash
 # Publie le site principal sur https://malo-oneweb.fr avec surge.
-# Prérequis : variables d'environnement SURGE_LOGIN (e-mail du compte surge) et SURGE_TOKEN (obtenu avec `surge token`).
+# Authentification : soit SURGE_TOKEN dans l'environnement, soit un secret réseau (en-tête Authorization: Basic
+# base64("token:<jeton>")) injecté par le proxy pour surge.surge.sh ; dans ce cas un jeton factice suffit ici.
 # N'envoie que les fichiers du site (pas clients/, sauvegardes/, review/src…).
 set -euo pipefail
 cd "$(dirname "$0")"
-: "${SURGE_LOGIN:?SURGE_LOGIN manquant}" "${SURGE_TOKEN:?SURGE_TOKEN manquant}"
+export SURGE_TOKEN="${SURGE_TOKEN:-injecte-par-le-proxy}"
 SURGE="${SURGE:-npx --yes surge@0.55.0}"
 DIST="$(mktemp -d)"; trap 'rm -rf "$DIST"' EXIT
 cp index.html "$DIST/"
