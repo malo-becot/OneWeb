@@ -126,7 +126,6 @@ section{padding:96px 0;border-bottom:1px solid var(--frost)}
 .bk{background:#f7f1e8;color:#3b2a1e;font-family:var(--font)}
 .bk-nav{display:flex;align-items:center;gap:16px;padding:12px 20px;font-size:11px;color:#7a6553;border-bottom:1px solid #eadfcf}
 .bk-nav b{font:600 16px/1 Georgia,'Times New Roman',serif;color:#3b2a1e;margin-right:auto;letter-spacing:-.01em}.bk-nav em{color:#c8763a;font-style:normal}
-.bk-cta{background:#3b2a1e;color:#f7f1e8;border-radius:9999px;padding:6px 12px}
 .bk-hero{display:grid;grid-template-columns:1.15fr .85fr;gap:12px;align-items:center;padding:22px 20px 18px}
 .bk-eye{display:inline-flex;align-items:center;gap:6px;font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:#7a6553;background:#fff;border:1px solid #eadfcf;border-radius:9999px;padding:4px 9px}
 .bk-eye i{width:6px;height:6px;border-radius:50%;background:#3fa36b;box-shadow:0 0 0 3px rgba(63,163,107,.18)}
@@ -140,12 +139,11 @@ section{padding:96px 0;border-bottom:1px solid var(--frost)}
 @keyframes bk-rise{50%{transform:translateY(-4px) rotate(-1.5deg)}}
 .bk-strip{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid #eadfcf}
 .bk-strip b{font:400 14px Georgia,serif;color:#3b2a1e}
-@media (max-width:520px){.bk-nav{gap:10px;padding:10px 14px}.bk-nav .bk-cta{display:none}.bk-hero{grid-template-columns:1fr 34%}.bk-txt p{display:none}}
+@media (max-width:520px){.bk-nav{gap:10px;padding:10px 14px}.bk-hero{grid-template-columns:1fr 34%}.bk-txt p{display:none}}
 .bk{position:relative}
 :where(.bk button){font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer;text-align:inherit}
 .bk-nav button{transition:color .2s}.bk-nav button:hover,.bk-nav button.on{color:#3b2a1e}
 .bk-nav .bk-logo{font:600 16px/1 Georgia,'Times New Roman',serif;color:#3b2a1e;margin-right:auto;letter-spacing:-.01em}.bk-logo em{color:#c8763a;font-style:normal}
-.bk-cta{transition:background .2s,transform .2s}.bk-cta:hover{background:#c8763a}.bk-cta[data-n]::after{content:attr(data-n);display:inline-grid;place-items:center;min-width:16px;height:16px;margin-left:6px;border-radius:9px;background:#c8763a;color:#fff;font-size:9px}
 .bk-b{transition:transform .2s,background .2s}.bk-b:hover{transform:translateY(-1px);background:#5a4130}.bk-b.o:hover{background:#fff}
 .bk-rate{transition:opacity .2s}.bk-rate:hover{opacity:.7}
 .bk-views{display:grid}
@@ -154,8 +152,8 @@ section{padding:96px 0;border-bottom:1px solid var(--frost)}
 .bk-view:not([data-v=home]){padding:20px}
 .bk-sec{font:400 22px/1.1 Georgia,serif;letter-spacing:-.02em;display:flex;justify-content:space-between;align-items:baseline;margin-bottom:12px}.bk-sec small{font:400 10px var(--font);color:#7a6553;letter-spacing:.04em}
 .bk-list{display:grid;grid-template-columns:1fr 1fr;gap:6px}
-.bk-item{display:flex;justify-content:space-between;align-items:center;font-size:11px;padding:9px 10px;border:1px solid #eadfcf;border-radius:10px;background:#fff;transition:border-color .2s,transform .2s}
-.bk-item:hover{border-color:#c8763a;transform:translateY(-1px)}.bk-item b{font:400 13px Georgia,serif}
+.bk-item{display:flex;justify-content:space-between;align-items:center;font-size:11px;padding:9px 10px;border:1px solid #eadfcf;border-radius:10px;background:#fff}
+.bk-item b{font:400 13px Georgia,serif}
 .bk-hours{display:grid;grid-template-columns:1fr auto;font-size:12px;border-top:1px solid #eadfcf}.bk-hours>*{padding:8px 0;border-bottom:1px solid #eadfcf}.bk-hours b{font-weight:400}.bk-hours .today{color:#c8763a;font-weight:500}
 .bk-open{color:#3fa36b!important}
 .bk-map{position:relative;height:96px;border-radius:12px;margin-bottom:12px;overflow:hidden;background:linear-gradient(90deg,transparent 48%,#fff 48% 52%,transparent 52%),linear-gradient(0deg,transparent 46%,#fff 46% 50%,transparent 50%),linear-gradient(30deg,transparent 60%,#efe4d3 60% 63%,transparent 63%),#e6dccb;display:grid;place-items:center}
@@ -585,7 +583,7 @@ header.top .burger{color:#fff;border-color:rgba(255,255,255,.2)}
       <div class="mock">
         <div class="mock-bar"><i></i><i></i><i></i><span class="mock-url">boulangerie-du-capitole.fr</span></div>
         <div class="bk">
-          <div class="bk-nav"><button type="button" class="bk-logo" data-bk="home">Capitole<em>.</em></button><button type="button" data-bk="prod">Produits</button><button type="button" data-bk="hours">Horaires</button><button type="button" data-bk="contact">Contact</button><button type="button" class="bk-cta" data-bk="prod">Commander</button></div>
+          <div class="bk-nav"><button type="button" class="bk-logo" data-bk="home">Capitole<em>.</em></button><button type="button" data-bk="prod">Produits</button><button type="button" data-bk="hours">Horaires</button><button type="button" data-bk="contact">Contact</button></div>
           <div class="bk-views">
           <div class="bk-view on" data-v="home">
           <div class="bk-hero">
@@ -609,14 +607,14 @@ header.top .burger{color:#fff;border-color:rgba(255,255,255,.2)}
           </div>
           </div>
           <div class="bk-view" data-v="prod">
-            <div class="bk-sec">Nos produits <small>Touchez pour ajouter</small></div>
+            <div class="bk-sec">Nos produits <small>Faits maison chaque jour</small></div>
             <div class="bk-list">
-              <button type="button" class="bk-item" data-add="Baguette tradition">Baguette tradition<b>1,30€</b></button>
-              <button type="button" class="bk-item" data-add="Croissant pur beurre">Croissant pur beurre<b>1,20€</b></button>
-              <button type="button" class="bk-item" data-add="Pain au levain">Pain au levain<b>4,50€</b></button>
-              <button type="button" class="bk-item" data-add="Pain au chocolat">Pain au chocolat<b>1,40€</b></button>
-              <button type="button" class="bk-item" data-add="Tarte aux pommes">Tarte aux pommes<b>3,20€</b></button>
-              <button type="button" class="bk-item" data-add="Flan pâtissier">Flan pâtissier<b>2,80€</b></button>
+              <div class="bk-item">Baguette tradition<b>1,30€</b></div>
+              <div class="bk-item">Croissant pur beurre<b>1,20€</b></div>
+              <div class="bk-item">Pain au levain<b>4,50€</b></div>
+              <div class="bk-item">Pain au chocolat<b>1,40€</b></div>
+              <div class="bk-item">Tarte aux pommes<b>3,20€</b></div>
+              <div class="bk-item">Flan pâtissier<b>2,80€</b></div>
             </div>
           </div>
           <div class="bk-view" data-v="hours">
@@ -629,7 +627,7 @@ header.top .burger{color:#fff;border-color:rgba(255,255,255,.2)}
             <div class="bk-btns"><button type="button" class="bk-b" data-toast="📞 Appel vers la boulangerie (exemple)">Nous appeler</button><button type="button" class="bk-b o" data-toast="🗺️ Ouverture de l'itinéraire (exemple)">Itinéraire</button></div>
           </div>
           </div>
-          <div class="bk-strip"><button type="button" data-add="Baguette tradition">Baguette tradition <b>1,30€</b></button><button type="button" data-add="Croissant pur beurre">Croissant pur beurre <b>1,20€</b></button><button type="button" data-add="Pain au levain">Pain au levain <b>4,50€</b></button></div>
+          <div class="bk-strip"><button type="button" data-bk="prod">Baguette tradition <b>1,30€</b></button><button type="button" data-bk="prod">Croissant pur beurre <b>1,20€</b></button><button type="button" data-bk="prod">Pain au levain <b>4,50€</b></button></div>
           <div class="bk-toast" id="bkToast" role="status" aria-live="polite"></div>
         </div>
       </div>
@@ -1183,20 +1181,19 @@ const onScroll = () => {
 addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });
 onScroll();
 
-// Mini site d'exemple (boulangerie) : onglets, panier, messages
+// Mini site d'exemple (boulangerie) : onglets et messages
 (() => {
   const bk = document.querySelector('.bk'); if (!bk) return;
-  const toast = document.getElementById('bkToast'), cta = bk.querySelector('.bk-cta'); let tt, n = 0;
+  const toast = document.getElementById('bkToast'); let tt;
   const say = m => { toast.textContent = m; toast.classList.add('show'); clearTimeout(tt); tt = setTimeout(() => toast.classList.remove('show'), 1800); };
   const show = v => {
     bk.querySelectorAll('.bk-view').forEach(x => x.classList.toggle('on', x.dataset.v === v));
-    bk.querySelectorAll('.bk-nav [data-bk]:not(.bk-cta):not(.bk-logo)').forEach(b => b.classList.toggle('on', b.dataset.bk === v));
+    bk.querySelectorAll('.bk-nav [data-bk]:not(.bk-logo)').forEach(b => b.classList.toggle('on', b.dataset.bk === v));
   };
   bk.addEventListener('click', e => {
     const b = e.target.closest('button'); if (!b) return;
     if (b.dataset.bk) show(b.dataset.bk);
     if (b.dataset.toast) say(b.dataset.toast);
-    if (b.dataset.add) { n++; cta.dataset.n = n; say(`🛒 ${b.dataset.add} ajouté au panier`); }
   });
   // horaires : jour en cours et ouvert / fermé
   const d = new Date(), day = d.getDay(), h = d.getHours() + d.getMinutes() / 60;
