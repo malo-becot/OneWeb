@@ -108,8 +108,8 @@ section{padding:96px 0;border-bottom:1px solid var(--frost)}
 .hero-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:64px;align-items:center}
 .pill{display:inline-flex;align-items:center;gap:10px;font-size:13px;font-weight:400;color:var(--indigo);background:var(--wash);border-radius:9999px;padding:6px 14px 6px 11px;margin-bottom:32px}
 .pill i{width:8px;height:8px;flex:none;border-radius:50%;background:var(--indigo);position:relative}
-.pill i::after{content:"";position:absolute;inset:-4px;border-radius:50%;border:1px solid var(--indigo);animation:ping 2s infinite}
-@keyframes ping{0%{transform:scale(.6);opacity:1}100%{transform:scale(1.4);opacity:0}}
+.pill i::after{content:"";position:absolute;inset:0;border-radius:50%;box-shadow:0 0 0 1px var(--indigo);animation:ping 2s infinite}
+@keyframes ping{0%{transform:scale(1);opacity:1}100%{transform:scale(2.6);opacity:0}}
 .cta-pair{display:flex;gap:8px;flex-wrap:wrap;margin-top:40px}
 .hero-meta{display:flex;gap:40px;margin-top:64px;flex-wrap:wrap}
 .stat .n{font-size:clamp(40px,4.5vw,56px);letter-spacing:-.025em;line-height:1}
@@ -139,9 +139,33 @@ section{padding:96px 0;border-bottom:1px solid var(--frost)}
 .bk-img svg{width:92%;height:auto;animation:bk-rise 6s ease-in-out infinite}
 @keyframes bk-rise{50%{transform:translateY(-4px) rotate(-1.5deg)}}
 .bk-strip{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid #eadfcf}
-.bk-strip span{font-size:10px;color:#7a6553;padding:10px 12px;border-right:1px solid #eadfcf;display:flex;flex-direction:column;gap:2px}.bk-strip span:last-child{border-right:0}
 .bk-strip b{font:400 14px Georgia,serif;color:#3b2a1e}
-@media (max-width:520px){.bk-nav span:not(.bk-cta){display:none}.bk-hero{grid-template-columns:1fr 34%}.bk-txt p{display:none}}
+@media (max-width:520px){.bk-nav{gap:10px;padding:10px 14px}.bk-nav .bk-cta{display:none}.bk-hero{grid-template-columns:1fr 34%}.bk-txt p{display:none}}
+.bk{position:relative}
+:where(.bk button){font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer;text-align:inherit}
+.bk-nav button{transition:color .2s}.bk-nav button:hover,.bk-nav button.on{color:#3b2a1e}
+.bk-nav .bk-logo{font:600 16px/1 Georgia,'Times New Roman',serif;color:#3b2a1e;margin-right:auto;letter-spacing:-.01em}.bk-logo em{color:#c8763a;font-style:normal}
+.bk-cta{transition:background .2s,transform .2s}.bk-cta:hover{background:#c8763a}.bk-cta[data-n]::after{content:attr(data-n);display:inline-grid;place-items:center;min-width:16px;height:16px;margin-left:6px;border-radius:9px;background:#c8763a;color:#fff;font-size:9px}
+.bk-b{transition:transform .2s,background .2s}.bk-b:hover{transform:translateY(-1px);background:#5a4130}.bk-b.o:hover{background:#fff}
+.bk-rate{transition:opacity .2s}.bk-rate:hover{opacity:.7}
+.bk-views{display:grid}
+.bk-view{grid-area:1/1;visibility:hidden;opacity:0;transform:translateY(8px);transition:opacity .35s,transform .35s,visibility 0s .35s}
+.bk-view.on{visibility:visible;opacity:1;transform:none;transition:opacity .35s,transform .35s}
+.bk-view:not([data-v=home]){padding:20px}
+.bk-sec{font:400 22px/1.1 Georgia,serif;letter-spacing:-.02em;display:flex;justify-content:space-between;align-items:baseline;margin-bottom:12px}.bk-sec small{font:400 10px var(--font);color:#7a6553;letter-spacing:.04em}
+.bk-list{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.bk-item{display:flex;justify-content:space-between;align-items:center;font-size:11px;padding:9px 10px;border:1px solid #eadfcf;border-radius:10px;background:#fff;transition:border-color .2s,transform .2s}
+.bk-item:hover{border-color:#c8763a;transform:translateY(-1px)}.bk-item b{font:400 13px Georgia,serif}
+.bk-hours{display:grid;grid-template-columns:1fr auto;font-size:12px;border-top:1px solid #eadfcf}.bk-hours>*{padding:8px 0;border-bottom:1px solid #eadfcf}.bk-hours b{font-weight:400}.bk-hours .today{color:#c8763a;font-weight:500}
+.bk-open{color:#3fa36b!important}
+.bk-map{position:relative;height:96px;border-radius:12px;margin-bottom:12px;overflow:hidden;background:linear-gradient(90deg,transparent 48%,#fff 48% 52%,transparent 52%),linear-gradient(0deg,transparent 46%,#fff 46% 50%,transparent 50%),linear-gradient(30deg,transparent 60%,#efe4d3 60% 63%,transparent 63%),#e6dccb;display:grid;place-items:center}
+.bk-map i{width:16px;height:16px;border-radius:50% 50% 50% 0;transform:rotate(-45deg) translate(4px,-4px);background:#c8763a;box-shadow:0 0 0 5px rgba(200,118,58,.2)}
+.bk-map span{position:absolute;left:10px;bottom:8px;font-size:10px;background:#fff;border-radius:999px;padding:3px 8px}
+.bk-strip button{font-size:10px;color:#7a6553;padding:10px 12px;border-right:1px solid #eadfcf;display:flex;flex-direction:column;gap:2px;transition:background .2s}.bk-strip button:last-child{border-right:0}.bk-strip button:hover{background:#fff}
+.bk-toast{position:absolute;left:50%;top:54px;transform:translate(-50%,-8px);background:#3b2a1e;color:#f7f1e8;font-size:11px;padding:8px 14px;border-radius:999px;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .25s,transform .25s}
+.bk-toast.show{opacity:1;transform:translate(-50%,0)}
+.mock-cap::after{content:" · interactif"}
+@media (max-width:520px){.bk-list{grid-template-columns:1fr}.bk-list .bk-item:nth-child(n+5){display:none}.bk-sec{font-size:19px}}
 /* Browser mock */
 .mock{border:1px solid var(--frost);border-radius:var(--r);background:#fff;overflow:hidden;transform:rotate(-1deg);transition:transform .4s}
 .mock:hover{transform:rotate(0)}
@@ -404,7 +428,7 @@ footer{background:var(--mist);padding:64px 0 32px}
 .hero .stat .n small{color:var(--lavender)}
 .hero .stat .n{color:#8fc3ff}
 .hero .pill{background:rgba(255,255,255,.08);color:var(--lavender)}
-.hero .pill i{background:var(--lavender)}.hero .pill i::after{border-color:var(--lavender)}
+.hero .pill i{background:var(--lavender)}.hero .pill i::after{box-shadow:0 0 0 1px var(--lavender)}
 .hero .grad{background-image:linear-gradient(90deg,var(--indigo-hover),var(--lavender) 55%,#fff)}
 .hero .btn-ghost{color:#fff;border-color:rgba(255,255,255,.3)}
 .hero .btn-ghost:hover{background:rgba(255,255,255,.08)}
@@ -557,18 +581,20 @@ header.top .burger{color:#fff;border-color:rgba(255,255,255,.2)}
         <div class="stat"><div class="n" data-count="31">31</div><div class="t">rendez-vous en Haute-Garonne</div></div>
       </div>
     </div>
-    <div class="mock-wrap hin from-r" aria-hidden="true">
+    <div class="mock-wrap hin from-r" role="region" aria-label="Exemple de site interactif : Boulangerie du Capitole">
       <div class="mock">
         <div class="mock-bar"><i></i><i></i><i></i><span class="mock-url">boulangerie-du-capitole.fr</span></div>
         <div class="bk">
-          <div class="bk-nav"><b>Capitole<em>.</em></b><span>Produits</span><span>Horaires</span><span>Contact</span><span class="bk-cta">Commander</span></div>
+          <div class="bk-nav"><button type="button" class="bk-logo" data-bk="home">Capitole<em>.</em></button><button type="button" data-bk="prod">Produits</button><button type="button" data-bk="hours">Horaires</button><button type="button" data-bk="contact">Contact</button><button type="button" class="bk-cta" data-bk="prod">Commander</button></div>
+          <div class="bk-views">
+          <div class="bk-view on" data-v="home">
           <div class="bk-hero">
             <div class="bk-txt">
               <div class="bk-eye"><i></i>Ouvert · 7h – 19h30</div>
               <div class="bk-h">Le bon pain, <em>chaque matin.</em></div>
               <p>Boulangerie artisanale au cœur de Toulouse, levain naturel et farines locales.</p>
-              <div class="bk-btns"><span class="bk-b">Nous appeler</span><span class="bk-b o">Itinéraire</span></div>
-              <div class="bk-rate"><span>★★★★★</span>4,9 · 128 avis Google</div>
+              <div class="bk-btns"><button type="button" class="bk-b" data-toast="📞 Appel vers la boulangerie (exemple)">Nous appeler</button><button type="button" class="bk-b o" data-bk="contact">Itinéraire</button></div>
+              <button type="button" class="bk-rate" data-toast="⭐ Merci ! Redirection vers les avis Google (exemple)"><span>★★★★★</span>4,9 · 128 avis Google</button>
             </div>
             <div class="bk-img">
               <svg viewBox="0 0 200 200"><defs><radialGradient id="bkL" cx=".4" cy=".35" r=".75"><stop offset="0" stop-color="#e9b47a"/><stop offset=".6" stop-color="#c47a3c"/><stop offset="1" stop-color="#8f4f22"/></radialGradient><radialGradient id="bkC" cx=".45" cy=".3" r=".8"><stop offset="0" stop-color="#f3c98c"/><stop offset="1" stop-color="#b8692c"/></radialGradient></defs>
@@ -581,7 +607,30 @@ header.top .burger{color:#fff;border-color:rgba(255,255,255,.2)}
               </svg>
             </div>
           </div>
-          <div class="bk-strip"><span>Baguette tradition <b>1,30€</b></span><span>Croissant pur beurre <b>1,20€</b></span><span>Pain au levain <b>4,50€</b></span></div>
+          </div>
+          <div class="bk-view" data-v="prod">
+            <div class="bk-sec">Nos produits <small>Touchez pour ajouter</small></div>
+            <div class="bk-list">
+              <button type="button" class="bk-item" data-add="Baguette tradition">Baguette tradition<b>1,30€</b></button>
+              <button type="button" class="bk-item" data-add="Croissant pur beurre">Croissant pur beurre<b>1,20€</b></button>
+              <button type="button" class="bk-item" data-add="Pain au levain">Pain au levain<b>4,50€</b></button>
+              <button type="button" class="bk-item" data-add="Pain au chocolat">Pain au chocolat<b>1,40€</b></button>
+              <button type="button" class="bk-item" data-add="Tarte aux pommes">Tarte aux pommes<b>3,20€</b></button>
+              <button type="button" class="bk-item" data-add="Flan pâtissier">Flan pâtissier<b>2,80€</b></button>
+            </div>
+          </div>
+          <div class="bk-view" data-v="hours">
+            <div class="bk-sec">Horaires <small class="bk-open" id="bkOpen"></small></div>
+            <div class="bk-hours" id="bkHours"><span>Lundi</span><b>Fermé</b><span>Mardi – Vendredi</span><b>7h – 19h30</b><span>Samedi</span><b>7h – 19h30</b><span>Dimanche</span><b>7h – 13h</b></div>
+          </div>
+          <div class="bk-view" data-v="contact">
+            <div class="bk-sec">Nous trouver</div>
+            <div class="bk-map"><i></i><span>12 rue du Taur, Toulouse</span></div>
+            <div class="bk-btns"><button type="button" class="bk-b" data-toast="📞 Appel vers la boulangerie (exemple)">Nous appeler</button><button type="button" class="bk-b o" data-toast="🗺️ Ouverture de l'itinéraire (exemple)">Itinéraire</button></div>
+          </div>
+          </div>
+          <div class="bk-strip"><button type="button" data-add="Baguette tradition">Baguette tradition <b>1,30€</b></button><button type="button" data-add="Croissant pur beurre">Croissant pur beurre <b>1,20€</b></button><button type="button" data-add="Pain au levain">Pain au levain <b>4,50€</b></button></div>
+          <div class="bk-toast" id="bkToast" role="status" aria-live="polite"></div>
         </div>
       </div>
       <div class="mock-cap">Exemple de site one page</div>
@@ -1133,6 +1182,29 @@ const onScroll = () => {
 };
 addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });
 onScroll();
+
+// Mini site d'exemple (boulangerie) : onglets, panier, messages
+(() => {
+  const bk = document.querySelector('.bk'); if (!bk) return;
+  const toast = document.getElementById('bkToast'), cta = bk.querySelector('.bk-cta'); let tt, n = 0;
+  const say = m => { toast.textContent = m; toast.classList.add('show'); clearTimeout(tt); tt = setTimeout(() => toast.classList.remove('show'), 1800); };
+  const show = v => {
+    bk.querySelectorAll('.bk-view').forEach(x => x.classList.toggle('on', x.dataset.v === v));
+    bk.querySelectorAll('.bk-nav [data-bk]:not(.bk-cta):not(.bk-logo)').forEach(b => b.classList.toggle('on', b.dataset.bk === v));
+  };
+  bk.addEventListener('click', e => {
+    const b = e.target.closest('button'); if (!b) return;
+    if (b.dataset.bk) show(b.dataset.bk);
+    if (b.dataset.toast) say(b.dataset.toast);
+    if (b.dataset.add) { n++; cta.dataset.n = n; say(`🛒 ${b.dataset.add} ajouté au panier`); }
+  });
+  // horaires : jour en cours et ouvert / fermé
+  const d = new Date(), day = d.getDay(), h = d.getHours() + d.getMinutes() / 60;
+  const row = day === 1 ? 0 : day === 0 ? 3 : day === 6 ? 2 : 1;
+  const cells = bk.querySelectorAll('#bkHours > *'); cells[row * 2].classList.add('today'); cells[row * 2 + 1].classList.add('today');
+  const open = day !== 1 && h >= 7 && h < (day === 0 ? 13 : 19.5);
+  const o = document.getElementById('bkOpen'); o.textContent = open ? '● Ouvert maintenant' : '● Fermé pour le moment'; if (!open) o.style.setProperty('color', '#b5523b', 'important');
+})();
 </script>
 <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "cdb9eaec326c4f9896bf9120b4c93511"}'></script><!-- End Cloudflare Web Analytics -->
 </body>
