@@ -1,0 +1,567 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Malo OneWeb – L'excellence numérique</title>
+<meta name="description" content="Malo OneWeb : création de site internet sur mesure pour professionnels et particuliers, partout en France. Version démonstration.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@200;300;400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#05070b; --bg2:#0a0e16; --line:rgba(255,255,255,.1); --line2:rgba(255,255,255,.18);
+  --txt:#f2f5fa; --mute:rgba(242,245,250,.56); --blue:#1463e8; --blue2:#3c9bff; --ice:#b6cff7;
+  --sans:'Inter Tight',system-ui,-apple-system,'Segoe UI',sans-serif; --serif:'Instrument Serif',Georgia,serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{background:var(--bg)}
+body{background:var(--bg);color:var(--txt);font-family:var(--sans);font-weight:300;-webkit-font-smoothing:antialiased;overflow-x:hidden;letter-spacing:-.01em}
+a{color:inherit;text-decoration:none}
+img,svg{display:block}
+::selection{background:var(--blue);color:#fff}
+.ser{font-family:var(--serif);font-weight:400;font-style:italic;letter-spacing:-.01em}
+.micro{font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:var(--mute);font-weight:400}
+.wrap{width:min(1280px,100% - 48px);margin:0 auto}
+
+/* ---------- Chargement ---------- */
+.loader{position:fixed;inset:0;z-index:100;display:grid;place-items:center;background:var(--bg);transition:clip-path 1.2s cubic-bezier(.77,0,.18,1);clip-path:inset(0 0 0 0)}
+.loader.out{clip-path:inset(0 0 100% 0)}
+.loader-in{display:grid;justify-items:center;gap:28px}
+.loader .logo-s{width:84px;opacity:0;transform:translateY(12px) scale(.9);animation:lIn 1s .2s cubic-bezier(.2,.8,.2,1) forwards}
+@keyframes lIn{to{opacity:1;transform:none}}
+.loader-bar{width:220px;height:1px;background:var(--line);position:relative;overflow:hidden}
+.loader-bar i{position:absolute;inset:0;background:linear-gradient(90deg,var(--blue),var(--blue2));transform-origin:0 50%;transform:scaleX(0)}
+.loader-n{font-size:11px;letter-spacing:.32em;color:var(--mute);font-variant-numeric:tabular-nums}
+
+/* ---------- En-tête ---------- */
+header{position:fixed;top:0;left:0;right:0;z-index:50;padding:22px 0;mix-blend-mode:difference;pointer-events:none}
+header .wrap{display:flex;align-items:center;justify-content:space-between}
+header a,header nav{pointer-events:auto}
+.brand{display:flex;align-items:center;gap:12px;font-size:15px;letter-spacing:.24em;text-transform:uppercase;font-weight:400}
+.brand .logo-s{width:40px}
+header nav{display:flex;gap:32px;font-size:11px;letter-spacing:.28em;text-transform:uppercase}
+header nav a{position:relative;opacity:.8;transition:opacity .3s}
+header nav a::after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:1px;background:currentColor;transform:scaleX(0);transform-origin:right;transition:transform .5s cubic-bezier(.7,0,.2,1)}
+header nav a:hover{opacity:1}header nav a:hover::after{transform:scaleX(1);transform-origin:left}
+.progress{position:fixed;left:0;top:0;height:2px;width:100%;z-index:60;background:linear-gradient(90deg,var(--blue),var(--blue2));transform-origin:0 50%;transform:scaleX(0)}
+
+/* ---------- Curseur ---------- */
+.cursor{position:fixed;left:0;top:0;width:36px;height:36px;margin:-18px 0 0 -18px;border:1px solid rgba(255,255,255,.6);border-radius:50%;z-index:90;pointer-events:none;mix-blend-mode:difference;transition:width .35s,height .35s,margin .35s,background .35s}
+.cursor.big{width:84px;height:84px;margin:-42px 0 0 -42px;background:#fff}
+.cursor-dot{position:fixed;left:0;top:0;width:4px;height:4px;margin:-2px 0 0 -2px;border-radius:50%;background:#fff;z-index:91;pointer-events:none;mix-blend-mode:difference}
+@media (hover:none){.cursor,.cursor-dot{display:none}}
+
+/* ---------- Scènes épinglées ---------- */
+.pin{position:relative}
+.stage{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden}
+
+/* ---------- 1. Ouverture ---------- */
+#hero{height:300vh}
+#hero .stage{display:grid;place-items:center;perspective:1400px}
+.glow{position:absolute;width:90vmax;height:90vmax;border-radius:50%;background:radial-gradient(circle,rgba(20,99,232,.42),rgba(20,99,232,.08) 40%,transparent 66%);filter:blur(10px);pointer-events:none}
+.grid-floor{position:absolute;left:-50%;right:-50%;bottom:-30%;height:80%;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:80px 80px;transform:rotateX(72deg);transform-origin:50% 100%;mask-image:linear-gradient(transparent,#000 70%);-webkit-mask-image:linear-gradient(transparent,#000 70%);opacity:.7}
+.hero-copy{position:absolute;inset:0;display:grid;place-items:center;text-align:center;z-index:2;pointer-events:none}
+.hero-copy .micro{margin-bottom:28px}
+.title{font-size:clamp(48px,11vw,190px);line-height:.88;font-weight:200;letter-spacing:-.05em}
+.title .ser{font-weight:400;letter-spacing:-.03em}
+.split .ch{display:inline-block;transform:translateY(110%) rotateX(-80deg);opacity:0;transform-origin:50% 100%;transition:transform 1.2s cubic-bezier(.2,.9,.2,1),opacity 1.2s}
+.split .ln{display:block;overflow:hidden;padding-bottom:.06em;perspective:600px}
+.ready .split .ch{transform:none;opacity:1}
+.hero-sub{margin-top:30px;font-size:clamp(15px,1.4vw,19px);color:var(--mute);max-width:46ch;margin-inline:auto;line-height:1.5}
+.scroll-hint{position:absolute;bottom:34px;left:50%;transform:translateX(-50%);display:grid;justify-items:center;gap:12px;z-index:3}
+.scroll-hint i{width:1px;height:56px;background:linear-gradient(var(--txt),transparent);animation:hint 2.2s ease-in-out infinite;transform-origin:top}
+@keyframes hint{0%{transform:scaleY(0)}50%{transform:scaleY(1)}100%{transform:scaleY(1);opacity:0}}
+.device{position:absolute;width:min(980px,86vw);aspect-ratio:16/10;transform-style:preserve-3d;will-change:transform;z-index:1}
+.device-in{position:absolute;inset:0;border-radius:14px;overflow:hidden;background:#0d121b;border:1px solid var(--line2);box-shadow:0 60px 160px rgba(20,99,232,.25),0 0 0 1px rgba(255,255,255,.04)}
+.device-bar{height:7%;display:flex;align-items:center;gap:7px;padding:0 2.2%;border-bottom:1px solid var(--line)}
+.device-bar i{width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,.18)}
+.device-bar span{margin-left:12px;font-size:12px;color:var(--mute);padding:4px 12px;border:1px solid var(--line);border-radius:999px}
+.device-body{position:absolute;inset:7% 0 0;display:grid;grid-template-columns:1.1fr .9fr;gap:4%;padding:6% 6% 5%;background:radial-gradient(ellipse at 80% 0%,rgba(20,99,232,.35),transparent 60%)}
+.db-k{font-size:clamp(8px,.9vw,12px);letter-spacing:.28em;text-transform:uppercase;color:var(--ice)}
+.db-t{font-size:clamp(20px,3.4vw,52px);line-height:.95;letter-spacing:-.04em;margin:5% 0 4%;font-weight:200}
+.db-p{font-size:clamp(8px,1vw,14px);color:var(--mute);line-height:1.5;max-width:34ch}
+.db-b{display:flex;gap:10px;margin-top:7%}
+.db-b span{font-size:clamp(8px,.9vw,13px);padding:.9em 1.4em;border-radius:999px;background:var(--blue)}
+.db-b span+span{background:transparent;border:1px solid var(--line2)}
+.db-f{display:flex;flex-wrap:wrap;gap:8px;margin-top:12%}.db-f span{font-size:clamp(7px,.8vw,11px);color:var(--mute);border:1px solid var(--line);border-radius:999px;padding:.6em 1em}.db-f em{font-style:normal;color:#f5b301}
+.db-v{border-radius:10px;background:linear-gradient(140deg,#1d4fbf,#0a1f4d 55%,#05070b);position:relative;overflow:hidden;border:1px solid var(--line)}
+.db-v::before{content:"";position:absolute;width:70%;aspect-ratio:1;border-radius:50%;right:-15%;top:-20%;background:radial-gradient(circle,rgba(60,155,255,.8),transparent 65%);filter:blur(8px)}
+.db-v b{position:absolute;left:8%;bottom:8%;font-size:clamp(22px,4vw,64px);font-weight:200;letter-spacing:-.04em}
+.db-v b small{font-size:.35em;color:var(--ice);letter-spacing:.2em;display:block;text-transform:uppercase}
+
+/* ---------- 2. Manifeste ---------- */
+.manifest{padding:22vh 0;position:relative}
+.manifest p{font-size:clamp(28px,4.6vw,72px);line-height:1.08;letter-spacing:-.035em;font-weight:200;max-width:20ch}
+.manifest .w{opacity:.14;transition:opacity .4s}
+.manifest .w.on{opacity:1}
+.manifest .side{position:absolute;right:max(24px,calc((100% - 1280px)/2));top:22vh;text-align:right}
+
+/* ---------- 3. Décomposition ---------- */
+#explode{height:520vh}
+#explode .stage{perspective:2000px;display:grid;place-items:center}
+.ex-head{position:absolute;top:12vh;left:max(24px,calc((100% - 1280px)/2));z-index:3}
+.ex-head h2{font-size:clamp(34px,5vw,80px);font-weight:200;letter-spacing:-.04em;line-height:.95;margin-top:16px}
+.ex-scene{position:relative;width:min(640px,74vw);aspect-ratio:16/11;transform-style:preserve-3d;will-change:transform}
+.layer{position:absolute;inset:0;border-radius:12px;transform-style:preserve-3d;will-change:transform,opacity}
+.anc{position:absolute;right:0;top:50%;width:1px;height:1px}
+.ex-labels{position:absolute;inset:0;pointer-events:none;z-index:4}
+.lab{position:absolute;left:0;top:0;display:flex;align-items:center;gap:12px;white-space:nowrap;opacity:0;transition:opacity .5s;will-change:transform}
+.lab::before{content:"";width:56px;height:1px;background:linear-gradient(90deg,transparent,var(--ice))}
+.lab b{font-weight:400;font-size:12px;letter-spacing:.24em;text-transform:uppercase}
+.lab span{font-size:12px;color:var(--mute)}
+.lab.show{opacity:1}
+.L0{background:#0b1220;border:1px solid var(--line2);box-shadow:0 40px 120px rgba(0,0,0,.6);overflow:hidden}
+.L0 pre{position:absolute;inset:8%;font:400 clamp(7px,.85vw,11px)/1.7 ui-monospace,Consolas,monospace;color:rgba(182,207,247,.5);white-space:pre-wrap}
+.L1{border:1px dashed rgba(182,207,247,.55)}
+.L1 i{position:absolute;border:1px dashed rgba(182,207,247,.45);border-radius:6px}
+.L2{background:radial-gradient(ellipse at 85% 10%,rgba(60,155,255,.75),transparent 55%),radial-gradient(ellipse at 10% 100%,rgba(20,99,232,.45),transparent 60%);border-radius:12px;opacity:.9}
+.L2 .logo-s{position:absolute;left:7%;top:8%;width:12%}
+.L3 .t1{position:absolute;left:7%;top:28%;font-size:clamp(18px,3vw,40px);font-weight:200;letter-spacing:-.04em;line-height:.95}
+.L3 .t2{position:absolute;left:7%;top:58%;width:44%;font-size:clamp(7px,.9vw,12px);color:var(--mute);line-height:1.5}
+.L3 .im{position:absolute;right:7%;top:24%;width:36%;height:56%;border-radius:8px;background:linear-gradient(150deg,#2a6df0,#0a1f4d);box-shadow:0 20px 60px rgba(20,99,232,.35)}
+.L4 .bt{position:absolute;left:7%;bottom:12%;display:flex;gap:8px}
+.L4 .bt span{font-size:clamp(7px,.85vw,12px);padding:.9em 1.5em;border-radius:999px;background:var(--blue);box-shadow:0 10px 30px rgba(20,99,232,.6)}
+.L4 .bt span+span{background:#fff;color:#05070b}
+.L4 .st{position:absolute;right:7%;bottom:12%;font-size:clamp(8px,.9vw,12px);padding:.7em 1em;border-radius:999px;background:#fff;color:#05070b}
+.L4 .st em{font-style:normal;color:#f5b301;letter-spacing:2px}
+.ex-steps{position:absolute;left:max(24px,calc((100% - 1280px)/2));bottom:10vh;display:flex;gap:28px;z-index:3}
+.ex-steps span{font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--mute);transition:color .4s}
+.ex-steps span.on{color:var(--txt)}
+.ex-steps span i{display:block;height:1px;background:var(--line);margin-top:10px;position:relative;overflow:hidden}
+.ex-steps span i::after{content:"";position:absolute;inset:0;background:var(--blue2);transform:scaleX(var(--p,0));transform-origin:0 50%}
+
+/* ---------- 4. Fiche technique ---------- */
+.specs{padding:24vh 0 18vh;border-top:1px solid var(--line)}
+.specs-head{display:flex;justify-content:space-between;align-items:end;gap:40px;margin-bottom:12vh;flex-wrap:wrap}
+.specs-head h2{font-size:clamp(34px,5vw,80px);font-weight:200;letter-spacing:-.04em;line-height:.95}
+.spec-grid{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line)}
+.spec{padding:40px 28px 0 0;border-right:1px solid var(--line);margin-right:28px}
+.spec:last-child{border-right:0}
+.spec .n{font-size:clamp(56px,7.5vw,128px);font-weight:200;letter-spacing:-.06em;line-height:.9;font-variant-numeric:tabular-nums}
+.spec .n sup{font-size:.3em;vertical-align:top;margin-left:4px;color:var(--ice);letter-spacing:0}
+.spec .l{margin-top:22px;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--mute);line-height:1.8}
+
+/* ---------- 5. Offres (défilement horizontal) ---------- */
+#offers{height:420vh}
+#offers .stage{display:flex;flex-direction:column;justify-content:flex-end;padding-bottom:7vh;perspective:1600px}
+.of-head{position:absolute;top:11vh;left:max(24px,calc((100% - 1280px)/2));right:max(24px,calc((100% - 1280px)/2));display:flex;justify-content:space-between;align-items:end}
+.of-head h2{font-size:clamp(30px,4vw,64px);font-weight:200;letter-spacing:-.04em;line-height:.95}
+.of-count{font-size:clamp(28px,3vw,48px);font-weight:200;font-variant-numeric:tabular-nums}
+.of-count small{color:var(--mute);font-size:.5em}
+.track{display:flex;gap:4vw;padding:0 max(24px,calc((100vw - 1280px)/2));will-change:transform;transform-style:preserve-3d}
+.card{flex:none;width:min(440px,78vw);height:min(520px,56vh);border-radius:18px;padding:36px;position:relative;overflow:hidden;border:1px solid var(--line2);background:linear-gradient(160deg,#0f1624,#070a10);display:flex;flex-direction:column;transform-style:preserve-3d;will-change:transform}
+.card::before{content:"";position:absolute;inset:-40% -40% auto auto;width:90%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,rgba(20,99,232,.5),transparent 65%);transition:transform .8s}
+.card:hover::before{transform:translate(-10%,10%) scale(1.15)}
+.card .idx{font-size:11px;letter-spacing:.3em;color:var(--mute)}
+.card h3{font-size:clamp(34px,3.4vw,52px);font-weight:200;letter-spacing:-.04em;margin-top:auto;line-height:.95}
+.card h3 .ser{display:block;font-size:.62em;color:var(--ice);margin-top:6px}
+.card p{margin-top:14px;color:var(--mute);line-height:1.55;font-size:15px;max-width:34ch}
+.card .pr{margin-top:26px;padding-top:22px;border-top:1px solid var(--line);display:flex;align-items:baseline;gap:10px}
+.card .pr b{font-size:44px;font-weight:200;letter-spacing:-.04em}
+.card .pr span{color:var(--mute);font-size:13px}
+.card.vip{background:linear-gradient(160deg,#1a5be0,#0a1f4d 70%)}
+.card.vip::before{background:radial-gradient(circle,rgba(255,255,255,.35),transparent 65%)}
+.card .ic{flex:none;width:52px;height:52px;border-radius:50%;border:1px solid var(--line2);display:grid;place-items:center;margin-top:20px}
+.card .ic svg{width:22px;height:22px;stroke:#fff;fill:none;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
+
+/* ---------- 6. Review ---------- */
+#review{height:340vh}
+#review .stage{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:4vw;padding:0 max(24px,calc((100vw - 1280px)/2));perspective:1500px}
+.rv-copy h2{font-size:clamp(34px,4.6vw,76px);font-weight:200;letter-spacing:-.04em;line-height:.95;margin:18px 0 26px}
+.rv-copy p{color:var(--mute);line-height:1.6;max-width:40ch;font-size:16px}
+.rv-list{margin-top:34px;display:grid;gap:0;border-top:1px solid var(--line);max-width:420px}
+.rv-list div{display:flex;justify-content:space-between;padding:16px 0;border-bottom:1px solid var(--line);font-size:14px;opacity:.25;transition:opacity .5s,padding .5s}
+.rv-list div.on{opacity:1;padding-left:10px}
+.rv-list div span{color:var(--mute);font-size:12px;letter-spacing:.2em}
+.rv-3d{position:relative;height:72vh;display:grid;place-items:center;transform-style:preserve-3d}
+.phone{width:min(290px,60vw);aspect-ratio:9/19;border-radius:44px;background:#0d121b;border:1px solid var(--line2);padding:12px;transform-style:preserve-3d;will-change:transform;box-shadow:0 80px 140px rgba(0,0,0,.6),0 0 120px rgba(20,99,232,.25)}
+.phone-in{position:absolute;inset:12px;border-radius:34px;overflow:hidden;background:linear-gradient(180deg,#e8f1ff,#fff 40%);color:#061b31;padding:44px 18px 18px;display:flex;flex-direction:column;gap:9px;backface-visibility:hidden}
+.phone-in .nt{position:absolute;top:10px;left:50%;transform:translateX(-50%);width:84px;height:22px;border-radius:999px;background:#061b31}
+.phone-in .av{flex:none;width:58px;height:58px;border-radius:50%;background:#1463e8;color:#fff;display:grid;place-items:center;margin:4px auto 2px;font-size:22px}
+.phone-in h4{text-align:center;font-weight:400;font-size:15px}
+.phone-in .sb{text-align:center;font-size:11px;color:#64748d;margin-bottom:6px}
+.phone-in .rate{border:1px solid #1463e8;border-radius:10px;padding:12px;text-align:center;font-size:11px;color:#64748d}
+.phone-in .rate div{font-size:22px;letter-spacing:6px;color:#d5e3fb;margin-top:4px}
+.phone-in .rate div em{font-style:normal;color:#f5b301}
+.phone-in .bt{border:1px solid #e5edf5;border-radius:10px;padding:11px 12px;font-size:12px}
+.phone-back{position:absolute;inset:12px;border-radius:34px;background:linear-gradient(160deg,#1463e8,#0a1f4d);transform:rotateY(180deg);backface-visibility:hidden;display:grid;place-items:center;gap:10px;align-content:center}
+.phone-back img{width:62%;border-radius:12px;background:#fff;padding:8px}
+.phone-back span{font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:#fff}
+
+/* ---------- 7. Méthode ---------- */
+#method{height:300vh}
+#method .stage{display:flex;flex-direction:column;justify-content:center;padding:0 max(24px,calc((100vw - 1280px)/2))}
+#method h2{font-size:clamp(34px,5vw,80px);font-weight:200;letter-spacing:-.04em;line-height:.95;margin:18px 0 9vh}
+.steps{position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:28px}
+.steps svg.wire{position:absolute;left:0;top:18px;width:100%;height:4px;overflow:visible}
+.steps svg.wire path{stroke:var(--blue2);stroke-width:1.5;fill:none}
+.steps svg.wire .bg{stroke:var(--line2)}
+.step{padding-top:56px;position:relative;opacity:.25;transform:translateY(24px);transition:opacity .6s,transform .8s cubic-bezier(.2,.9,.2,1)}
+.step.on{opacity:1;transform:none}
+.step::before{content:"";position:absolute;left:0;top:12px;width:13px;height:13px;border-radius:50%;background:var(--bg);border:1px solid var(--line2);transition:background .5s,border-color .5s,box-shadow .5s}
+.step.on::before{background:var(--blue2);border-color:var(--blue2);box-shadow:0 0 0 8px rgba(60,155,255,.15)}
+.step b{display:block;font-size:11px;letter-spacing:.3em;color:var(--mute);font-weight:400}
+.step h3{font-size:clamp(24px,2.4vw,36px);font-weight:200;letter-spacing:-.03em;margin:14px 0 12px}
+.step p{color:var(--mute);font-size:15px;line-height:1.55}
+
+/* ---------- 8. Finale ---------- */
+.finale{min-height:100vh;display:grid;grid-template-columns:minmax(0,1fr);align-content:center;position:relative;overflow:hidden;padding:20vh 0 10vh;border-top:1px solid var(--line)}
+.finale .glow{left:50%;top:60%;transform:translate(-50%,-50%)}
+.big-mq{white-space:nowrap;font-size:clamp(80px,16vw,260px);font-weight:200;letter-spacing:-.06em;line-height:1;will-change:transform}
+.big-mq .ser{color:var(--ice)}
+.fin-row{display:flex;justify-content:space-between;align-items:end;gap:40px;margin-top:10vh;flex-wrap:wrap;position:relative;z-index:2}
+.fin-row p{max-width:40ch;color:var(--mute);line-height:1.6}
+.magnet{position:relative;display:inline-grid;place-items:center;width:200px;height:200px;border-radius:50%;background:var(--blue);font-size:12px;letter-spacing:.24em;text-transform:uppercase;text-align:center;line-height:1.6;transition:background .3s;will-change:transform}
+.magnet:hover{background:var(--blue2)}
+.magnet span{pointer-events:none;will-change:transform}
+.contacts{display:flex;gap:40px;flex-wrap:wrap;margin-top:10vh;padding-top:28px;border-top:1px solid var(--line);position:relative;z-index:2}
+.contacts a{display:grid;gap:6px}.contacts a b{font-weight:300;font-size:clamp(18px,1.8vw,26px);letter-spacing:-.02em;transition:color .3s}
+.contacts a:hover b{color:var(--blue2)}
+footer{padding:30px 0 40px;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--mute)}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+
+/* Apparitions simples */
+.rise{opacity:0;transform:translateY(40px);transition:opacity 1.2s cubic-bezier(.2,.9,.2,1),transform 1.2s cubic-bezier(.2,.9,.2,1)}
+.rise.in{opacity:1;transform:none}
+
+@media (max-height:740px){.card .ic{display:none}.card{padding:28px}.card .pr{margin-top:18px;padding-top:16px}}
+@media (max-width:860px){
+  header nav{display:none}
+  .device{aspect-ratio:4/5}.device-body{grid-template-columns:1fr;align-content:center}.db-v{display:none}.db-t{font-size:34px}.db-p{font-size:13px}.db-b span,.db-f span{font-size:11px}
+  .spec-grid{grid-template-columns:1fr 1fr}.spec{margin-right:0;padding:32px 16px 32px 0;border-right:0;border-bottom:1px solid var(--line)}
+  #review .stage{grid-template-columns:1fr;align-content:center;gap:2vh}
+  .rv-copy p,.rv-list{display:none}.rv-copy h2{margin:10px 0 0}
+  .rv-3d{height:56vh}.phone{width:min(230px,56vw)}
+  .steps{grid-template-columns:1fr 1fr;row-gap:36px}.steps svg.wire{display:none}
+  .lab span{display:none}.lab::before{width:18px}.lab b{font-size:10px;letter-spacing:.16em}
+  .ex-scene{width:64vw}
+  .ex-steps{display:none}
+  .manifest .side{position:static;text-align:left;margin-bottom:6vh}
+}
+@media (prefers-reduced-motion:reduce){
+  .split .ch,.rise,.step{transition:none!important;opacity:1!important;transform:none!important}
+  .scroll-hint i{animation:none}
+}
+</style>
+</head>
+<body>
+
+<div class="loader" id="loader" aria-hidden="true">
+  <div class="loader-in"><div class="logo-s">__LOGO__</div><div class="loader-bar"><i id="lbar"></i></div><div class="loader-n" id="lnum">000</div></div>
+</div>
+<div class="progress" id="progress"></div>
+<div class="cursor" id="cursor"></div><div class="cursor-dot" id="cdot"></div>
+
+<header>
+  <div class="wrap">
+    <a href="#hero" class="brand"><span class="logo-s">__LOGO__</span>Malo OneWeb</a>
+    <nav><a href="#explode">Création</a><a href="#offers">Offres</a><a href="#review">Avis</a><a href="#method">Méthode</a><a href="#contact">Contact</a></nav>
+  </div>
+</header>
+
+<main>
+<!-- 1. OUVERTURE -->
+<section id="hero" class="pin">
+  <div class="stage">
+    <div class="glow" id="heroGlow"></div>
+    <div class="grid-floor" id="floor"></div>
+    <div class="device" id="device">
+      <div class="device-in">
+        <div class="device-bar"><i></i><i></i><i></i><span>votre-nom.fr</span></div>
+        <div class="device-body">
+          <div><div class="db-k">Sur mesure · Partout en France</div><div class="db-t">Votre activité, <span class="ser">sublimée.</span></div><div class="db-p">Un site rapide, élégant et pensé pour transformer chaque visiteur en client.</div><div class="db-b"><span>Nous appeler</span><span>Itinéraire</span></div><div class="db-f"><span><em>★★★★★</em> 4,9 · avis Google</span><span>Mobile d'abord</span><span>Appel en un clic</span></div></div>
+          <div class="db-v"><b>99<small>/100 sur mobile</small></b></div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-copy" id="heroCopy">
+      <div>
+        <div class="micro">Malo OneWeb · Création de site internet</div>
+        <h1 class="title split"><span class="ln">L'excellence</span><span class="ln"><span class="ser">numérique.</span></span></h1>
+        <p class="hero-sub">Des sites sur mesure pour professionnels et particuliers, conçus avec l'exigence d'un objet d'exception.</p>
+      </div>
+    </div>
+    <div class="scroll-hint micro" id="hint">Défiler<i></i></div>
+  </div>
+</section>
+
+<!-- 2. MANIFESTE -->
+<section class="manifest">
+  <div class="wrap">
+    <div class="side micro">Manifeste — 01</div>
+    <p id="manifest">Chaque détail compte. La typographie, la vitesse, la clarté, le geste qui mène au contact. Un site n'est pas une vitrine de plus : c'est votre meilleur commercial, présent jour et nuit.</p>
+  </div>
+</section>
+
+<!-- 3. DÉCOMPOSITION -->
+<section id="explode" class="pin">
+  <div class="stage">
+    <div class="ex-head"><div class="micro">Anatomie d'un site — 02</div><h2>Cinq couches,<br><span class="ser">une seule page.</span></h2></div>
+    <div class="ex-scene" id="exScene">
+      <div class="layer L0"><pre>&lt;main&gt;
+  &lt;section id="accueil"&gt;
+    &lt;h1&gt;Votre activité&lt;/h1&gt;
+    &lt;a href="tel:…"&gt;Appeler&lt;/a&gt;
+  &lt;/section&gt;
+&lt;/main&gt;
+/* 99/100 · mobile d'abord */
+.hero{display:grid}
+@media (max-width:640px){…}</pre><i class="anc"></i></div>
+      <div class="layer L1"><i style="left:7%;top:8%;width:12%;height:12%"></i><i style="left:7%;top:28%;width:46%;height:22%"></i><i style="left:7%;top:58%;width:44%;height:14%"></i><i style="right:7%;top:24%;width:36%;height:56%"></i><i style="left:7%;bottom:12%;width:40%;height:10%"></i><i class="anc"></i></div>
+      <div class="layer L2"><div class="logo-s">__LOGO__</div><i class="anc"></i></div>
+      <div class="layer L3"><div class="t1">Votre activité,<br>sublimée.</div><div class="t2">Textes clairs, photos soignées, informations essentielles en quelques secondes.</div><div class="im"></div><i class="anc"></i></div>
+      <div class="layer L4"><div class="bt"><span>Nous appeler</span><span>Devis</span></div><div class="st"><em>★★★★★</em> 4,9 · avis Google</div><i class="anc"></i></div>
+    </div>
+    <div class="ex-labels" id="exLabels"><div class="lab"><b>01 Structure</b><span>Code propre et rapide</span></div><div class="lab"><b>02 Mise en page</b><span>Pensée mobile d'abord</span></div><div class="lab"><b>03 Identité</b><span>Vos couleurs, votre image</span></div><div class="lab"><b>04 Contenus</b><span>Textes et photos</span></div><div class="lab"><b>05 Contact</b><span>Appel, devis, avis en un clic</span></div></div>
+    <div class="ex-steps" id="exSteps"><span>Structure<i></i></span><span>Mise en page<i></i></span><span>Identité<i></i></span><span>Contenus<i></i></span><span>Contact<i></i></span></div>
+  </div>
+</section>
+
+<!-- 4. FICHE TECHNIQUE -->
+<section class="specs">
+  <div class="wrap">
+    <div class="specs-head rise"><div><div class="micro">Fiche technique — 03</div><h2 style="margin-top:16px">Les chiffres<br><span class="ser">parlent d'eux‑mêmes.</span></h2></div><p style="color:var(--mute);max-width:36ch;line-height:1.6">Un tarif clair, un seul interlocuteur, et des performances mesurées sur mobile.</p></div>
+    <div class="spec-grid">
+      <div class="spec rise"><div class="n" data-to="300">0<sup>€</sup></div><div class="l">Site one page<br>sur mesure</div></div>
+      <div class="spec rise"><div class="n" data-to="99">0<sup>/100</sup></div><div class="l">Performance<br>mobile du site OneWeb</div></div>
+      <div class="spec rise"><div class="n" data-to="1">0</div><div class="l">Interlocuteur<br>unique</div></div>
+      <div class="spec rise"><div class="n" data-to="31">0</div><div class="l">Rendez-vous en Haute-Garonne<br>à distance partout ailleurs</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 5. OFFRES -->
+<section id="offers" class="pin">
+  <div class="stage">
+    <div class="of-head"><div><div class="micro">La gamme — 04</div><h2 style="margin-top:14px">Quatre modèles,<br><span class="ser">une même exigence.</span></h2></div><div class="of-count"><span id="ofN">01</span><small> / 04</small></div></div>
+    <div class="track" id="track">
+      <article class="card"><div class="idx">01 — CRÉATION</div><div class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M7 13h6M7 16h4"/></svg></div><h3>OneWeb Sites<span class="ser">Création de votre site</span></h3><p>Un site one page sur mesure : clair, rapide, élégant sur mobile et pensé pour déclencher le contact.</p><div class="pr"><b>300€</b><span>une fois</span></div></article>
+      <article class="card"><div class="idx">02 — MAINTENANCE</div><div class="ic"><svg viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 4.5-3.4 8.2-8 9-4.6-.8-8-4.5-8-9V6l8-3z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg></div><h3>OneWeb Care<span class="ser">Maintenance de votre site</span></h3><p>De la petite retouche à la refonte complète. Payé à l'intervention, sans abonnement.</p><div class="pr"><b>29€</b><span>dès, par maintenance</span></div></article>
+      <article class="card"><div class="idx">03 — AVIS GOOGLE</div><div class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 14h3v3h-3zM20 14v.01M14 20h.01M17 20h4v-3"/></svg></div><h3>OneWeb Review<span class="ser">Avis Google et réseaux</span></h3><p>Un QR code qui ouvre une application web à votre nom : avis Google, réseaux, appel, contact.</p><div class="pr"><b>19€</b><span>par mois</span></div></article>
+      <article class="card vip"><div class="idx">04 — ABONNEMENT</div><div class="ic"><svg viewBox="0 0 24 24"><path d="M3 8l4 4 5-7 5 7 4-4-2 11H5L3 8z"/></svg></div><h3>OneWeb VIP<span class="ser">Abonnement avantages</span></h3><p>35€ de maintenance offerts chaque mois, nom de domaine offert, Review à 15€/mois et tarifs garantis.</p><div class="pr"><b>99€</b><span>par an</span></div></article>
+    </div>
+  </div>
+</section>
+
+<!-- 6. REVIEW -->
+<section id="review" class="pin">
+  <div class="stage">
+    <div class="rv-copy">
+      <div class="micro">OneWeb Review — 05</div>
+      <h2>Un scan.<br><span class="ser">Un avis de plus.</span></h2>
+      <p>Placé sur votre comptoir ou vos cartes de visite, votre QR code ouvre une application web à votre nom, sans rien à installer.</p>
+      <div class="rv-list" id="rvList"><div>Avis Google en un clic<span>01</span></div><div>Instagram et Facebook<span>02</span></div><div>Appel et itinéraire<span>03</span></div><div>Fiche contact à enregistrer<span>04</span></div></div>
+    </div>
+    <div class="rv-3d"><div class="phone" id="phone">
+      <div class="phone-in"><div class="nt"></div><div class="av">B</div><h4>Boulangerie du Capitole</h4><div class="sb">Exemple · Toulouse</div><div class="rate">Votre avis nous intéresse<div><em>★★★★</em>★</div></div><div class="bt">Instagram · Facebook</div><div class="bt">Voir notre site</div><div class="bt">Nous appeler</div><div class="bt">Itinéraire</div></div>
+      <div class="phone-back"><img src="__QR__" alt="QR code OneWeb Review"><span>Scannez-moi</span></div>
+    </div></div>
+  </div>
+</section>
+
+<!-- 7. MÉTHODE -->
+<section id="method" class="pin">
+  <div class="stage">
+    <div class="micro">Méthode — 06</div>
+    <h2>De l'idée à la mise en ligne,<br><span class="ser">en quatre temps.</span></h2>
+    <div class="steps" id="steps">
+      <svg class="wire" viewBox="0 0 1000 4" preserveAspectRatio="none"><path class="bg" d="M0 2H1000"/><path id="wire" d="M0 2H1000" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/></svg>
+      <div class="step"><b>01</b><h3>Échange</h3><p>Sur place en Haute-Garonne ou à distance : vos besoins, vos contenus, vos objectifs.</p></div>
+      <div class="step"><b>02</b><h3>Création</h3><p>Une maquette sur mesure à votre image, ajustée avec vous jusqu'au résultat voulu.</p></div>
+      <div class="step"><b>03</b><h3>Mise en ligne</h3><p>Nom de domaine, hébergement, référencement local : tout est pris en charge.</p></div>
+      <div class="step"><b>04</b><h3>Suivi</h3><p>Maintenance, QR code d'avis, évolutions : un accompagnement dans la durée.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 8. FINALE -->
+<section class="finale" id="contact">
+  <div class="glow"></div>
+  <div class="big-mq" id="mq">Parlons de votre projet · <span class="ser">Parlons de votre projet ·</span> Parlons de votre projet ·</div>
+  <div class="wrap">
+    <div class="fin-row">
+      <p>Un premier échange, sans engagement. Je vous réponds rapidement et vous accompagne de l'idée à la mise en ligne, où que vous soyez en France.</p>
+      <a class="magnet" id="magnet" href="https://tally.so/r/rjxBel" target="_blank" rel="noopener"><span>Demander<br>un devis</span></a>
+    </div>
+    <div class="contacts">
+      <a href="tel:+33777788562"><span class="micro">Téléphone</span><b>07 77 78 85 62</b></a>
+      <a href="mailto:contact@malo-oneweb.fr"><span class="micro">E-mail</span><b>contact@malo-oneweb.fr</b></a>
+      <a href="https://malo-oneweb.fr" target="_blank" rel="noopener"><span class="micro">Site</span><b>malo-oneweb.fr</b></a>
+    </div>
+  </div>
+</section>
+</main>
+<footer><div class="wrap"><span>© 2026 Malo OneWeb</span><span>Longages (31) · Partout en France</span><span>Version démonstration</span></div></footer>
+
+<script>
+(() => {
+  const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
+  const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
+  const lerp = (a, b, t) => a + (b - a) * t;
+  const ease = t => t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+  const seg = (p, a, b) => clamp((p - a) / (b - a));
+
+  // Titres découpés lettre par lettre
+  $$('.split .ln').forEach(ln => {
+    const walk = node => [...node.childNodes].forEach(n => {
+      if (n.nodeType === 3) {
+        const f = document.createDocumentFragment();
+        [...n.textContent].forEach(c => { const s = document.createElement('span'); s.className = 'ch'; s.textContent = c === ' ' ? ' ' : c; f.appendChild(s); });
+        n.replaceWith(f);
+      } else walk(n);
+    });
+    walk(ln);
+  });
+  $$('.split .ch').forEach((c, i) => c.style.transitionDelay = (i * 35) + 'ms');
+
+  // Chargement
+  const lbar = $('#lbar'), lnum = $('#lnum'); let lp = 0;
+  const load = () => {
+    lp = Math.min(100, lp + (100 - lp) * .08 + .6);
+    lbar.style.transform = `scaleX(${lp / 100})`; lnum.textContent = String(Math.round(lp)).padStart(3, '0');
+    if (lp < 100) requestAnimationFrame(load);
+    else setTimeout(() => { $('#loader').classList.add('out'); document.body.classList.add('ready'); }, 250);
+  };
+  if (still) { $('#loader').remove(); document.body.classList.add('ready'); } else requestAnimationFrame(load);
+
+  // Manifeste : mots qui s'allument
+  const man = $('#manifest');
+  man.innerHTML = man.textContent.split(' ').map(w => `<span class="w">${w}</span>`).join(' ');
+  const words = $$('#manifest .w');
+
+  // Apparitions et compteurs
+  const io = new IntersectionObserver(es => es.forEach(e => {
+    if (!e.isIntersecting) return;
+    e.target.classList.add('in'); io.unobserve(e.target);
+    const n = e.target.querySelector('.n[data-to]');
+    if (n) {
+      const to = +n.dataset.to, sup = n.querySelector('sup'), t0 = performance.now();
+      const tick = t => { const k = clamp((t - t0) / 1600); n.firstChild.textContent = Math.round(to * ease(k)); if (k < 1) requestAnimationFrame(tick); };
+      n.firstChild.textContent = '0'; requestAnimationFrame(tick);
+    }
+  }), { threshold: .3 });
+  $$('.rise').forEach(el => io.observe(el));
+
+  // Progression d'une scène épinglée (0 → 1)
+  const prog = el => { const r = el.getBoundingClientRect(); return clamp(-r.top / (r.height - innerHeight)); };
+
+  // Éléments animés
+  const device = $('#device'), heroCopy = $('#heroCopy'), floor = $('#floor'), glow = $('#heroGlow'), hint = $('#hint');
+  const exScene = $('#exScene'), layers = $$('.layer'), exSteps = $$('#exSteps span'), labs = $$('#exLabels .lab');
+  const track = $('#track'), cards = $$('.card'), ofN = $('#ofN');
+  const phone = $('#phone'), rvItems = $$('#rvList div');
+  const wire = $('#wire'), steps = $$('.step'), mq = $('#mq');
+  const bar = $('#progress');
+  let mx = 0, my = 0, smx = 0, smy = 0;
+
+  addEventListener('mousemove', e => { mx = e.clientX / innerWidth - .5; my = e.clientY / innerHeight - .5; });
+
+  const frame = () => {
+    smx = lerp(smx, mx, .06); smy = lerp(smy, my, .06);
+    bar.style.transform = `scaleX(${scrollY / (document.documentElement.scrollHeight - innerHeight)})`;
+
+    // 1. Ouverture : le titre s'efface en zoom, l'écran se redresse et avance
+    {
+      const p = prog($('#hero'));
+      const a = ease(seg(p, 0, .55)), b = ease(seg(p, .45, 1));
+      heroCopy.style.transform = `translateY(${-a * 18}vh) scale(${1 + a * .35})`;
+      heroCopy.style.opacity = 1 - seg(p, .05, .4);
+      heroCopy.style.filter = `blur(${a * 10}px)`;
+      hint.style.opacity = 1 - seg(p, 0, .08);
+      const rx = lerp(68, 0, a) + smy * -6, ry = smx * 10, z = lerp(-600, 0, a) + b * 120;
+      device.style.transform = `translate3d(0,${lerp(32, 0, a) - b * 4}vh,${z}px) rotateX(${rx}deg) rotateY(${ry}deg) scale(${lerp(.8, 1, a) - b * .08})`;
+      device.style.opacity = .25 + .75 * seg(p, 0, .3);
+      floor.style.transform = `rotateX(72deg) translateY(${p * 240}px)`;
+      glow.style.transform = `translate(${smx * 60}px,${smy * 60}px) scale(${1 + a * .3})`;
+    }
+
+    // 2. Manifeste
+    {
+      const r = man.getBoundingClientRect();
+      const k = clamp((innerHeight * .85 - r.top) / (r.height + innerHeight * .35));
+      const on = Math.round(k * words.length);
+      words.forEach((w, i) => w.classList.toggle('on', i < on));
+    }
+
+    // 3. Décomposition : à plat → isométrique → couches éclatées → réassemblage
+    {
+      const p = prog($('#explode'));
+      const tilt = ease(seg(p, 0, .18)), open = ease(seg(p, .18, .62)), close = ease(seg(p, .82, 1));
+      const t = tilt * (1 - close);
+      exScene.style.transform = `rotateX(${t * 58 + smy * -4}deg) rotateZ(${t * -32}deg) rotateY(${smx * 6}deg) scale(${1 - t * .12})`;
+      const spread = open * (1 - close);
+      const narrow = innerWidth < 860 ? .55 : 1;
+      layers.forEach((l, i) => {
+        const z = (i - 2) * 110 * spread * narrow;
+        l.style.transform = `translateZ(${z}px)`;
+        const a = l.querySelector('.anc').getBoundingClientRect(), lb = labs[i];
+        lb.style.transform = `translate(${Math.min(a.left + 8, innerWidth - lb.offsetWidth - 10)}px,${a.top - lb.offsetHeight / 2}px)`;
+        lb.classList.toggle('show', spread > .6);
+      });
+      const cur = clamp(Math.floor(seg(p, .18, .82) * 5), 0, 4);
+      exSteps.forEach((s, i) => { s.classList.toggle('on', i <= cur && p > .18); s.querySelector('i').style.setProperty('--p', clamp(seg(p, .18, .82) * 5 - i)); });
+    }
+
+    // 5. Offres : défilement horizontal avec rotation des cartes
+    {
+      const p = prog($('#offers'));
+      const max = track.scrollWidth - innerWidth;
+      track.style.transform = `translate3d(${-ease(p) * max}px,0,0)`;
+      let best = 0, bd = 1e9;
+      cards.forEach((c, i) => {
+        const r = c.getBoundingClientRect(), d = (r.left + r.width / 2 - innerWidth / 2) / innerWidth;
+        c.style.transform = `rotateY(${clamp(d, -1, 1) * -28}deg) translateZ(${-Math.abs(d) * 160}px)`;
+        c.style.opacity = 1 - clamp(Math.abs(d) - .4, 0, .6);
+        if (Math.abs(d) < bd) { bd = Math.abs(d); best = i; }
+      });
+      ofN.textContent = String(best + 1).padStart(2, '0');
+    }
+
+    // 6. Review : le téléphone tourne et révèle le QR code
+    {
+      const p = prog($('#review'));
+      const spin = ease(seg(p, .55, .85));
+      const enter = ease(seg(p, 0, .3));
+      phone.style.transform = `translateY(${lerp(30, 0, enter)}vh) rotateX(${lerp(40, 6, enter) + smy * -6}deg) rotateY(${lerp(-35, 8, enter) + spin * 172 + smx * 10}deg) rotateZ(${lerp(-8, 0, enter)}deg)`;
+      const on = Math.floor(seg(p, .15, .55) * 4.999);
+      rvItems.forEach((d, i) => d.classList.toggle('on', p > .15 && i <= on));
+    }
+
+    // 7. Méthode : le fil se trace, les étapes s'allument
+    {
+      const p = prog($('#method'));
+      const k = seg(p, .1, .85);
+      wire.style.strokeDashoffset = 1 - k;
+      steps.forEach((s, i) => s.classList.toggle('on', k >= i / 4 + .02 || (i === 0 && p > .05)));
+    }
+
+    // 8. Finale : grand texte qui défile
+    {
+      const r = mq.getBoundingClientRect();
+      const k = (innerHeight - r.top) / (innerHeight + r.height);
+      mq.style.transform = `translateX(${-k * 45}%)`;
+    }
+    if (!still) requestAnimationFrame(frame);
+  };
+  if (still) { addEventListener('scroll', frame, { passive: true }); frame(); } else requestAnimationFrame(frame);
+
+  // Curseur
+  const cur = $('#cursor'), dot = $('#cdot'); let cx = innerWidth / 2, cy = innerHeight / 2, tx = cx, ty = cy;
+  addEventListener('mousemove', e => { tx = e.clientX; ty = e.clientY; dot.style.transform = `translate(${tx}px,${ty}px)`; });
+  const cl = () => { cx = lerp(cx, tx, .18); cy = lerp(cy, ty, .18); cur.style.transform = `translate(${cx}px,${cy}px)`; requestAnimationFrame(cl); };
+  cl();
+  $$('a,.card').forEach(a => { a.addEventListener('mouseenter', () => cur.classList.add('big')); a.addEventListener('mouseleave', () => cur.classList.remove('big')); });
+
+  // Bouton magnétique
+  const mg = $('#magnet'), ms = mg.querySelector('span');
+  mg.addEventListener('mousemove', e => { const r = mg.getBoundingClientRect(), x = e.clientX - r.left - r.width / 2, y = e.clientY - r.top - r.height / 2; mg.style.transform = `translate(${x * .3}px,${y * .3}px)`; ms.style.transform = `translate(${x * .15}px,${y * .15}px)`; });
+  mg.addEventListener('mouseleave', () => { mg.style.transform = ''; ms.style.transform = ''; });
+
+  // Liens d'ancre : défilement doux
+  $$('a[href^="#"]').forEach(a => a.addEventListener('click', e => { const t = $(a.getAttribute('href')); if (t) { e.preventDefault(); scrollTo({ top: t.offsetTop, behavior: still ? 'auto' : 'smooth' }); } }));
+})();
+</script>
+</body>
+</html>
