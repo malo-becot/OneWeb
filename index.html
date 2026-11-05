@@ -35,7 +35,7 @@
   --max:1320px; --r:4px;
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;scroll-padding-top:84px}
+html{scroll-behavior:smooth;scroll-padding-top:84px;overflow-x:clip}
 body{font-family:var(--font);font-weight:300;color:var(--ink);background:var(--white);
   font-feature-settings:"ss01" on,"tnum" on;-webkit-font-smoothing:antialiased;line-height:1.4;letter-spacing:-.01em;overflow-x:hidden}
 a{color:var(--indigo);text-decoration:none}
@@ -489,6 +489,7 @@ header.top .burger{color:#fff;border-color:rgba(255,255,255,.2)}
 .rv{opacity:0;transform:translateY(24px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)}
 .rv.from-l{transform:translateX(-48px)}
 .rv.from-r{transform:translateX(48px)}
+@media (max-width:760px){.rv.from-l,.rv.from-r{transform:translateY(24px)}}
 .rv.zoom{transform:scale(.92)}
 .rv.in{opacity:1;transform:none}
 .hin{animation:hin .7s cubic-bezier(.2,.7,.2,1) both}
@@ -974,7 +975,7 @@ header.top .burger{color:#fff;border-color:rgba(255,255,255,.2)}
     <div class="foot">
       <div>
         <a href="#top" class="logo logo-foot"><span class="sym"><svg class="sym-l" viewBox="0 0 310 210" aria-hidden="true"><defs>  <linearGradient id="ftll" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#1c6ae6"/><stop offset="1" stop-color="#0b2c74"/></linearGradient>  <linearGradient id="ftlm" x1="0" y1="0" x2="1" y2="1"><stop offset=".15" stop-color="#1f6ff0"/><stop offset="1" stop-color="#4aa6ff"/></linearGradient>  <linearGradient id="ftld" x1="1" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#06173a"/><stop offset="1" stop-color="#1d58c9"/></linearGradient>  <linearGradient id="ftlp" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1fb4ff"/><stop offset="1" stop-color="#0f8ff0"/></linearGradient>  <mask id="ftlk" maskUnits="userSpaceOnUse" x="-20" y="-20" width="360" height="260"><rect x="-20" y="-20" width="360" height="260" fill="#fff"/><path d="M66 76 C78 50 100 32 130 30 L148 30 C160 30 168 34 176 42 L264 132 A34 34 0 0 1 216 180 L128 92 C110 76 88 72 66 76 Z" fill="#000" stroke="#000" stroke-width="16" stroke-linejoin="round"/></mask></defs><g mask="url(#ftlk)">  <path d="M42 164 L98 98" stroke="url(#ftll)" stroke-width="62" stroke-linecap="round" fill="none"/>  <path d="M258 94 m-48 0 a48 48 0 1 1 96 0 a48 48 0 1 1 -96 0" fill="url(#ftld)"/></g><path d="M66 76 C78 50 100 32 130 30 L148 30 C160 30 168 34 176 42 L264 132 A34 34 0 0 1 216 180 L128 92 C110 76 88 72 66 76 Z" fill="url(#ftlm)"/><circle cx="290" cy="22" r="18" fill="url(#ftlp)"/></svg></span><span class="wm"><small>Malo</small> <span>One<em>Web</em></span><i>Accompagnement web &amp; solutions digitales</i></span></a>
-        <p>Création de site internet sur mesure pour les artisans et professionnels de Toulouse et de Haute-Garonne, et partout en France à distance. Basé à Longages (31410).</p>
+        <p>Création de site internet sur mesure pour les professionnels et les particuliers, en Haute-Garonne et partout en France. Basé à Longages (31410).</p>
       </div>
       <div><h3 class="foot-t">Offres</h3><ul><li><a href="#sites">OneWeb Sites · création</a></li><li><a href="#care">OneWeb Care · maintenance</a></li><li><a href="#review">OneWeb Review · avis Google</a></li><li><a href="#vip">OneWeb VIP · abonnement</a></li></ul></div>
       <div><h3 class="foot-t">Contact</h3><ul><li><a href="tel:+33777788562">07 77 78 85 62</a></li><li><a class="mail-link" href="mailto:contact@malo-oneweb.fr?subject=Demande%20par%20rapport%20%C3%A0%20vos%20Services%20d%27Accompagnement%20Web&amp;body=Bonjour%2C%0A%0AJ%27aimerais%20en%20savoir%20plus%20sur%20vos%20services.%0A%0A">contact@malo-oneweb.fr</a></li><li><a href="https://tally.so/r/rjxBel" target="_blank" rel="noopener">Demande de devis</a></li><li><a href="#zone">Longages (31) · à distance partout en France</a></li></ul></div>
