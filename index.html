@@ -429,34 +429,6 @@ section.blue .offer{background:#fff;color:var(--ink);border:0;border-radius:var(
 section.blue .offer:hover{background:#f3f7ff}
 section.blue .offer.feat{background:var(--indigo);color:#fff;box-shadow:0 0 0 1px rgba(255,255,255,.25)}
 section.blue .offer.feat:hover{background:#0f56d0}
-/* Intro 3D : « Malo OneWeb » puis arrivée sur l'accueil */
-.intro{height:100vh;height:100svh;margin-top:-77px;padding:0;position:relative;border-bottom:0;background:linear-gradient(transparent 70%,var(--ink)),radial-gradient(ellipse 80% 70% at 50% 45%,#0e2d6e 0%,#071833 45%,var(--ink) 75%);color:#fff}
-.intro~.hero::after{content:"";position:absolute;left:0;right:0;top:0;height:220px;background:linear-gradient(var(--ink),transparent);pointer-events:none;z-index:-1}
-.intro-st{position:relative;height:100%;overflow:hidden;display:grid;place-items:center;perspective:1400px}
-.intro-glow{position:absolute;width:80vmax;height:80vmax;border-radius:50%;background:radial-gradient(circle,rgba(20,99,232,.45),rgba(20,99,232,.08) 40%,transparent 66%);pointer-events:none}
-.intro-floor{position:absolute;left:-50%;right:-50%;bottom:-30%;height:80%;background-image:linear-gradient(rgba(255,255,255,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.08) 1px,transparent 1px);background-size:72px 72px;transform:rotateX(72deg);transform-origin:50% 100%;-webkit-mask-image:linear-gradient(transparent,#000 70%);mask-image:linear-gradient(transparent,#000 70%)}
-.intro-copy{position:absolute;inset:77px 0 70px;display:grid;place-items:center;text-align:center;z-index:2;pointer-events:none}
-.intro-k{font-size:12px;letter-spacing:.32em;text-transform:uppercase;color:var(--lavender);margin-bottom:22px}
-.intro-t{font-size:clamp(56px,13vw,200px);line-height:.9;font-weight:300;letter-spacing:-.05em}
-.intro-t .ln{display:block;overflow:hidden;padding-bottom:.08em;perspective:600px}
-.intro-t .ch{display:inline-block;transform:translateY(110%) rotateX(-80deg);opacity:0;transform-origin:50% 100%;transition:transform .75s cubic-bezier(.2,.9,.2,1),opacity .6s}
-.intro.on .intro-t .ch{transform:none;opacity:1}
-
-.intro-s{margin-top:24px;font-size:clamp(15px,1.4vw,19px);color:rgba(255,255,255,.66)}
-.intro-hint{position:absolute;bottom:30px;left:50%;transform:translateX(-50%);display:grid;justify-items:center;gap:10px;font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:rgba(255,255,255,.6);z-index:3}
-.intro-hint i{width:1px;height:48px;background:linear-gradient(#fff,transparent);transform-origin:top;animation:ihint 2.2s ease-in-out infinite}
-@keyframes ihint{0%{transform:scaleY(0)}50%{transform:scaleY(1)}100%{transform:scaleY(1);opacity:0}}
-.intro~.hero{margin-top:0}
-.intro-copy>div,.intro-floor,.intro-glow,.intro-hint{transition:transform .6s cubic-bezier(.6,0,.4,1),opacity .5s ease}
-.intro.leave .intro-copy>div{transform:perspective(900px) translateY(-18vh) translateZ(-260px) rotateX(48deg);opacity:0}
-.intro.leave .intro-floor{transform:rotateX(84deg) translateY(160px);opacity:0}
-.intro.leave .intro-glow{transform:scale(1.6);opacity:.3}
-.intro.leave .intro-hint{opacity:0}
-.intro-hint{cursor:pointer;pointer-events:auto}
-.hero.arrive .hero-grid{animation:arrive .8s cubic-bezier(.2,.9,.2,1) both;transform-origin:50% 0}
-@keyframes arrive{from{transform:perspective(1200px) translateY(90px) rotateX(14deg);opacity:0}}
-
-@media (prefers-reduced-motion:reduce){.intro{display:none}.intro~.hero{margin-top:-77px}}
 /* Header sur le hero */
 header{transition:background .3s,border-color .3s}
 header.top{background:rgba(6,27,49,.55);border-bottom-color:rgba(255,255,255,.08)}
@@ -566,20 +538,6 @@ header.top .burger{color:#fff;border-color:rgba(255,255,255,.2)}
 </header>
 
 <main id="top">
-
-<!-- INTRO 3D -->
-<section class="intro" id="intro" aria-label="Malo OneWeb">
-  <div class="intro-st">
-    <div class="intro-glow" id="iGlow"></div>
-    <div class="intro-floor" id="iFloor"></div>
-    <div class="intro-copy" id="iCopy"><div>
-      <div class="intro-k">Création de site internet</div>
-      <div class="intro-t"><span class="ln">Malo <span class="ig">OneWeb</span></span></div>
-      <div class="intro-s">Professionnels et particuliers, partout en France.</div>
-    </div></div>
-    <div class="intro-hint" id="iHint">Défiler<i></i></div>
-  </div>
-</section>
 
 <!-- HERO -->
 <section class="hero">
@@ -1168,55 +1126,13 @@ let ticking = false;
 const onScroll = () => {
   const y = scrollY, max = document.documentElement.scrollHeight - innerHeight;
   bar.style.transform = `scaleX(${max > 0 ? y / max : 0})`;
-  const hy = y - hero.offsetTop; // défilement depuis le haut de l'accueil (après l'intro)
+  const hy = y - hero.offsetTop; // défilement depuis le haut de l'accueil
   header.classList.toggle('top', hy < hero.offsetHeight - 76);
   if (!still && hy > 0 && hy < hero.offsetHeight) { blob.style.translate = `0 ${hy * .35}px`; mock.style.translate = `0 ${hy * -.08}px`; }
   ticking = false;
 };
 addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });
 onScroll();
-
-// Intro : au premier défilement, courte transition 3D puis arrivée directe sur l'accueil
-(() => {
-  const intro = document.getElementById('intro'); if (!intro) return;
-  // lettres une à une
-  intro.querySelectorAll('.intro-t .ln').forEach(ln => {
-    const walk = n => [...n.childNodes].forEach(c => {
-      if (c.nodeType === 3) { const f = document.createDocumentFragment(); [...c.textContent].forEach(ch => { const s = document.createElement('span'); s.className = 'ch'; s.textContent = ch === ' ' ? '\u00a0' : ch; f.appendChild(s); }); c.replaceWith(f); }
-      else walk(c);
-    });
-    walk(ln);
-  });
-  intro.querySelectorAll('.intro-t .ch').forEach((c, i) => c.style.transitionDelay = (40 + i * 22) + 'ms');
-  const g = [...intro.querySelectorAll('.ig .ch')], c0 = [60, 155, 255], c1 = [182, 207, 247], c2 = [255, 255, 255];
-  g.forEach((c, i) => { const t = i / (g.length - 1), [a, b, k] = t < .6 ? [c0, c1, t / .6] : [c1, c2, (t - .6) / .4]; c.style.color = `rgb(${a.map((v, j) => Math.round(v + (b[j] - v) * k))})`; });
-  if (still) { intro.classList.add('on'); return; }
-  requestAnimationFrame(() => requestAnimationFrame(() => intro.classList.add('on')));
-
-  let busy = false, done = false;
-  const go = () => {
-    if (busy || done) return;
-    busy = done = true;
-    intro.classList.add('leave');
-    setTimeout(() => {
-      hero.classList.remove('arrive'); void hero.offsetWidth; hero.classList.add('arrive');
-      scrollTo({ top: hero.offsetTop, behavior: 'instant' });
-      setTimeout(() => { busy = false; }, 500);
-    }, 520);
-  };
-  const atTop = () => scrollY < intro.offsetHeight * .5;
-  addEventListener('wheel', e => { if (busy) { e.preventDefault(); return; } if (!done && atTop() && e.deltaY > 0) { e.preventDefault(); go(); } }, { passive: false });
-  let ty = null;
-  addEventListener('touchstart', e => { ty = e.touches[0].clientY; }, { passive: true });
-  addEventListener('touchmove', e => { if (busy) { e.preventDefault(); return; } if (!done && atTop() && ty !== null && ty - e.touches[0].clientY > 12) { e.preventDefault(); go(); } }, { passive: false });
-  addEventListener('keydown', e => { if (!done && atTop() && ['ArrowDown', 'PageDown', ' '].includes(e.key) && !/INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName)) { e.preventDefault(); go(); } });
-  document.getElementById('iHint').addEventListener('click', go);
-  // de retour tout en haut : l'intro se réaffiche et la transition peut rejouer
-  addEventListener('scroll', () => { if (!busy && done && scrollY < 4) { done = false; intro.classList.remove('leave'); } }, { passive: true });
-  // légère réaction à la souris
-  const glow = document.getElementById('iGlow');
-  addEventListener('mousemove', e => { if (!done) glow.style.translate = `${(e.clientX / innerWidth - .5) * 60}px ${(e.clientY / innerHeight - .5) * 60}px`; }, { passive: true });
-})();
 </script>
 <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "cdb9eaec326c4f9896bf9120b4c93511"}'></script><!-- End Cloudflare Web Analytics -->
 </body>
