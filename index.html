@@ -121,6 +121,26 @@ section{padding:96px 0;border-bottom:1px solid var(--frost)}
   background:radial-gradient(circle at 30% 30%,rgba(60,155,255,.35),rgba(20,99,232,.12) 45%,transparent 70%);filter:blur(30px);animation:float 12s ease-in-out infinite}
 @keyframes float{50%{transform:translate(-40px,30px) scale(1.05)}}
 
+/* Exemple de site (boulangerie) */
+.bk{background:#f7f1e8;color:#3b2a1e;font-family:var(--font)}
+.bk-nav{display:flex;align-items:center;gap:16px;padding:12px 20px;font-size:11px;color:#7a6553;border-bottom:1px solid #eadfcf}
+.bk-nav b{font:600 16px/1 Georgia,'Times New Roman',serif;color:#3b2a1e;margin-right:auto;letter-spacing:-.01em}.bk-nav em{color:#c8763a;font-style:normal}
+.bk-cta{background:#3b2a1e;color:#f7f1e8;border-radius:9999px;padding:6px 12px}
+.bk-hero{display:grid;grid-template-columns:1.15fr .85fr;gap:12px;align-items:center;padding:22px 20px 18px}
+.bk-eye{display:inline-flex;align-items:center;gap:6px;font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:#7a6553;background:#fff;border:1px solid #eadfcf;border-radius:9999px;padding:4px 9px}
+.bk-eye i{width:6px;height:6px;border-radius:50%;background:#3fa36b;box-shadow:0 0 0 3px rgba(63,163,107,.18)}
+.bk-h{font:400 clamp(24px,2.4vw,32px)/1.02 Georgia,'Times New Roman',serif;letter-spacing:-.02em;margin:12px 0 8px}.bk-h em{color:#c8763a}
+.bk-txt p{font-size:12px;line-height:1.45;color:#7a6553;max-width:28ch}
+.bk-btns{display:flex;gap:6px;margin-top:14px}
+.bk-b{font-size:11px;padding:8px 12px;border-radius:9999px;background:#3b2a1e;color:#f7f1e8}.bk-b.o{background:transparent;color:#3b2a1e;border:1px solid #cbb89f}
+.bk-rate{margin-top:12px;font-size:10px;color:#7a6553;display:flex;gap:6px;align-items:center}.bk-rate span{color:#e0a100;letter-spacing:1px;font-size:11px}
+.bk-img{aspect-ratio:1;border-radius:14px;background:radial-gradient(circle at 70% 25%,#ffe3bd,#f2c58f 55%,#e3a967);display:grid;place-items:center;overflow:hidden}
+.bk-img svg{width:92%;height:auto;animation:bk-rise 6s ease-in-out infinite}
+@keyframes bk-rise{50%{transform:translateY(-4px) rotate(-1.5deg)}}
+.bk-strip{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid #eadfcf}
+.bk-strip span{font-size:10px;color:#7a6553;padding:10px 12px;border-right:1px solid #eadfcf;display:flex;flex-direction:column;gap:2px}.bk-strip span:last-child{border-right:0}
+.bk-strip b{font:400 14px Georgia,serif;color:#3b2a1e}
+@media (max-width:520px){.bk-nav span:not(.bk-cta){display:none}.bk-hero{grid-template-columns:1fr 34%}.bk-txt p{display:none}}
 /* Browser mock */
 .mock{border:1px solid var(--frost);border-radius:var(--r);background:#fff;overflow:hidden;transform:rotate(-1deg);transition:transform .4s}
 .mock:hover{transform:rotate(0)}
@@ -137,15 +157,6 @@ section{padding:96px 0;border-bottom:1px solid var(--frost)}
 .sk-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px}
 .sk-card{min-height:70px;border-radius:var(--r);background:var(--mist);border:1px solid var(--frost);position:relative;overflow:hidden;padding:10px;display:flex;flex-direction:column;justify-content:flex-end;gap:2px;color:var(--ink)}
 .sk-card b{font-weight:400;font-size:12px}.sk-card span{font-size:11px;color:var(--slate)}
-.ex-nav{display:flex;align-items:center;gap:8px;padding:10px 24px;border-bottom:1px solid var(--frost);color:var(--ink);font-size:13px}
-.ex-nav b{font-weight:400}.ex-logo{width:22px;height:22px;border-radius:50%;background:var(--indigo);color:#fff;display:grid;place-items:center;font-size:11px}
-.ex-menu{margin-left:auto;display:grid;gap:3px}.ex-menu i{display:block;width:14px;height:1.5px;background:var(--ink)}
-.ex-k{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--indigo)}
-.ex-t{font-size:clamp(20px,2vw,26px);line-height:1.1;letter-spacing:-.02em;color:var(--ink)}.ex-t span{color:var(--indigo)}
-.ex-p{font-size:13px;color:var(--slate)}
-.ex-btn{font-size:12px;padding:8px 14px;border-radius:var(--r);background:var(--indigo);color:#fff}
-.ex-btn.g{background:#fff;color:var(--indigo);border:1px solid var(--lavender)}
-.ex-stars{color:#f5b301;letter-spacing:1px}
 .mock-cap{margin-top:14px;width:max-content;margin-left:auto;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--lavender)}
 .sk-card::after{content:"";position:absolute;inset:0;background:linear-gradient(100deg,transparent 30%,rgba(255,255,255,.9) 50%,transparent 70%);transform:translateX(-100%);animation:shine 3s infinite}
 .sk-card:nth-child(2)::after{animation-delay:.3s}.sk-card:nth-child(3)::after{animation-delay:.6s}
@@ -407,6 +418,16 @@ footer{background:var(--mist);padding:64px 0 32px}
 .hero .cta-pair{margin-top:clamp(20px,4vh,40px)}
 .hero-meta{margin-top:clamp(24px,5vh,64px)}
 
+/* Section sur fond bleu (comme l'accueil) */
+section.blue{background:radial-gradient(ellipse 70% 80% at 85% 0%,#1650b8 0%,#0b2a66 40%,var(--ink) 80%);color:#fff;border-bottom:0}
+section.blue .label{color:var(--lavender)}section.blue .label::before{background:var(--lavender)}
+section.blue .hl{color:#8fc3ff}
+section.blue .lead{color:rgba(255,255,255,.72)}
+section.blue .offers{border:0;gap:16px}
+section.blue .offer{background:#fff;color:var(--ink);border:0;border-radius:var(--r)}
+section.blue .offer:hover{background:#f3f7ff}
+section.blue .offer.feat{background:var(--indigo);color:#fff;box-shadow:0 0 0 1px rgba(255,255,255,.25)}
+section.blue .offer.feat:hover{background:#0f56d0}
 /* Header sur le hero */
 header{transition:background .3s,border-color .3s}
 header.top{background:rgba(6,27,49,.55);border-bottom-color:rgba(255,255,255,.08)}
@@ -539,17 +560,28 @@ header.top .burger{color:#fff;border-color:rgba(255,255,255,.2)}
     <div class="mock-wrap hin from-r" aria-hidden="true">
       <div class="mock">
         <div class="mock-bar"><i></i><i></i><i></i><span class="mock-url">boulangerie-du-capitole.fr</span></div>
-        <div class="ex-nav"><span class="ex-logo">B</span><b>Boulangerie du Capitole</b><span class="ex-menu"><i></i><i></i><i></i></span></div>
-        <div class="mock-body">
-          <div class="ex-k">Boulangerie artisanale · Toulouse</div>
-          <div class="ex-t">Pain au levain et viennoiseries <span>faits maison</span></div>
-          <div class="ex-p">Ouvert du mardi au dimanche, de 7h à 19h30.</div>
-          <div class="sk-row"><span class="ex-btn">Nous appeler</span><span class="ex-btn g">Itinéraire</span></div>
-          <div class="sk-cards">
-            <div class="sk-card"><b>Nos produits</b><span>Pains, gâteaux</span></div>
-            <div class="sk-card"><b class="ex-stars">★★★★★</b><span>4,9 · 128 avis</span></div>
-            <div class="sk-card"><b>Horaires</b><span>7h – 19h30</span></div>
+        <div class="bk">
+          <div class="bk-nav"><b>Capitole<em>.</em></b><span>Produits</span><span>Horaires</span><span>Contact</span><span class="bk-cta">Commander</span></div>
+          <div class="bk-hero">
+            <div class="bk-txt">
+              <div class="bk-eye"><i></i>Ouvert · 7h – 19h30</div>
+              <div class="bk-h">Le bon pain, <em>chaque matin.</em></div>
+              <p>Boulangerie artisanale au cœur de Toulouse, levain naturel et farines locales.</p>
+              <div class="bk-btns"><span class="bk-b">Nous appeler</span><span class="bk-b o">Itinéraire</span></div>
+              <div class="bk-rate"><span>★★★★★</span>4,9 · 128 avis Google</div>
+            </div>
+            <div class="bk-img">
+              <svg viewBox="0 0 200 200"><defs><radialGradient id="bkL" cx=".4" cy=".35" r=".75"><stop offset="0" stop-color="#e9b47a"/><stop offset=".6" stop-color="#c47a3c"/><stop offset="1" stop-color="#8f4f22"/></radialGradient><radialGradient id="bkC" cx=".45" cy=".3" r=".8"><stop offset="0" stop-color="#f3c98c"/><stop offset="1" stop-color="#b8692c"/></radialGradient></defs>
+                <ellipse cx="100" cy="150" rx="78" ry="12" fill="#3b2a1e" opacity=".12"/>
+                <path d="M30 118c0-34 32-58 70-58s70 24 70 58c0 18-20 30-70 30s-70-12-70-30z" fill="url(#bkL)"/>
+                <path d="M62 92c10-8 20-12 30-12M92 84c12-6 24-8 36-6M118 98c10-6 20-8 30-6" fill="none" stroke="#f6d6a8" stroke-width="5" stroke-linecap="round" opacity=".85"/>
+                <path d="M118 150c8-18 28-26 46-20 10 3 14 12 8 20-6 6-16 4-24 8-10 5-20 6-30-8z" fill="url(#bkC)"/>
+                <path d="M136 136l6 10M150 132l2 12M162 136l-4 10" stroke="#8f4f22" stroke-width="2" stroke-linecap="round" opacity=".5"/>
+                <path d="M44 66c4-14 8-26 6-40M50 40c-8-2-12-6-12-12 8 0 12 4 12 12zm0 0c8-2 12-6 12-12-8 0-12 4-12 12zM48 54c-8-2-12-6-12-12 8 0 12 4 12 12zm2 0c8-2 12-6 12-12-8 0-12 4-12 12z" fill="#d9a35f" stroke="#b07a3a" stroke-width="1.5" stroke-linejoin="round"/>
+              </svg>
+            </div>
           </div>
+          <div class="bk-strip"><span>Baguette tradition <b>1,30€</b></span><span>Croissant pur beurre <b>1,20€</b></span><span>Pain au levain <b>4,50€</b></span></div>
         </div>
       </div>
       <div class="mock-cap">Exemple de site one page</div>
@@ -567,7 +599,7 @@ header.top .burger{color:#fff;border-color:rgba(255,255,255,.2)}
 </div>
 
 <!-- OFFRES -->
-<section id="offres">
+<section id="offres" class="blue">
   <div class="wrap">
     <div class="sec-head">
       <div><div class="label rv">Les offres OneWeb</div><h2 class="rv">Quatre solutions pour développer <span class="hl">votre présence en ligne.</span></h2></div>
