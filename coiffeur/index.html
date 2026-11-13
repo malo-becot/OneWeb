@@ -31,6 +31,8 @@ button{font:inherit;cursor:pointer}
 .opening.out{clip-path:inset(0 0 100% 0)}
 .opening.out span{opacity:0;transform:translateY(-20px)}
 .no-open .opening{display:none}
+h1,h2,h3{text-wrap:balance}
+p,li,dd,figcaption,blockquote,summary,.lead,.t{text-wrap:pretty}
 .toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,20px);z-index:99;background:#111;color:#fff;font:400 14px/1.3 system-ui,sans-serif;padding:12px 18px;border-radius:12px;opacity:0;pointer-events:none;transition:opacity .3s,transform .3s;max-width:calc(100% - 32px);text-align:center;box-shadow:0 10px 30px rgba(0,0,0,.25)}
 .toast.show{opacity:1;transform:translate(-50%,0)}
 .rv{opacity:0;transform:translateY(28px);transition:opacity .8s cubic-bezier(.2,.8,.2,1),transform .8s cubic-bezier(.2,.8,.2,1)}
@@ -235,6 +237,19 @@ footer a{color:var(--rose);font-weight:700}
     setTimeout(() => op.classList.add('out'), 850);
     setTimeout(() => op.remove(), 1900);
   }
+
+  // Pas de mot seul en dernière ligne : les deux derniers mots restent ensemble
+  (() => {
+    const sel = 'p, li, dd, figcaption, blockquote, .lead, .who, .sub, .pf-st';
+    document.querySelectorAll(sel).forEach(el => {
+      if (el.closest('script,style,[contenteditable]')) return;
+      const w = document.createTreeWalker(el, NodeFilter.SHOW_TEXT); let last = null, n;
+      while ((n = w.nextNode())) if (n.nodeValue.trim()) last = n;
+      if (!last) return;
+      const t = last.nodeValue, m = t.match(/^(.*\S)\s+(\S{1,14}\s*)$/s);
+      if (m && (el.textContent.trim().split(/\s+/).length > 3)) last.nodeValue = m[1] + '\u00a0' + m[2];
+    });
+  })();
   // liens « démo » : appel, itinéraire, réseaux… affichent un message au lieu d'agir
   document.addEventListener('click', e => {
     const a = e.target.closest('[data-demo]'); if (!a) return;

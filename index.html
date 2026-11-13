@@ -244,6 +244,8 @@ section{padding:96px 0;border-bottom:1px solid var(--frost)}
 
 .fr{display:block;font-size:14px;letter-spacing:0;color:var(--slate);margin-top:4px}
 main{overflow-x:clip}
+h1,h2,h3{text-wrap:balance}
+p,li,dd,figcaption,blockquote,summary,.lead,.t{text-wrap:pretty}
 /* Portfolio */
 .pf-head{display:flex;justify-content:space-between;align-items:end;gap:30px;flex-wrap:wrap;margin-bottom:40px}
 .pf-head p{color:var(--steel);max-width:40ch}
@@ -1242,6 +1244,19 @@ const onScroll = () => {
 };
 addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });
 onScroll();
+
+// Pas de mot seul en dernière ligne : les deux derniers mots restent ensemble
+(() => {
+  const sel = 'p, li, dd, figcaption, blockquote, .lead, .who, .sub, .pf-st';
+  document.querySelectorAll(sel).forEach(el => {
+    if (el.closest('script,style,[contenteditable]')) return;
+    const w = document.createTreeWalker(el, NodeFilter.SHOW_TEXT); let last = null, n;
+    while ((n = w.nextNode())) if (n.nodeValue.trim()) last = n;
+    if (!last) return;
+    const t = last.nodeValue, m = t.match(/^(.*\S)\s+(\S{1,14}\s*)$/s);
+    if (m && (el.textContent.trim().split(/\s+/).length > 3)) last.nodeValue = m[1] + '\u00a0' + m[2];
+  });
+})();
 
 // Portfolio : ouverture du site par un rideau aux couleurs du site
 (() => {
