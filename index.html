@@ -243,6 +243,20 @@ section{padding:96px 0;border-bottom:1px solid var(--frost)}
 .step.on{border-color:var(--indigo)}
 
 .fr{display:block;font-size:14px;letter-spacing:0;color:var(--slate);margin-top:4px}
+/* Portfolio */
+.pf-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+.pf{display:block;border:1px solid var(--frost);border-radius:var(--r);overflow:hidden;background:#fff;color:var(--ink);transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s}
+.pf:hover{transform:translateY(-6px);box-shadow:0 24px 50px rgba(6,27,49,.12)}
+.pf-shot{position:relative;aspect-ratio:16/9;overflow:hidden;background:var(--pf-bg)}
+.pf-shot img{width:100%;height:100%;object-fit:cover;opacity:.88;transition:transform .8s cubic-bezier(.2,.8,.2,1),opacity .4s}
+.pf:hover .pf-shot img{transform:scale(1.06);opacity:1}
+.pf-shot::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,var(--pf-bg),transparent 55%);opacity:.75}
+.pf-url{position:absolute;left:16px;bottom:14px;z-index:1;font-size:12px;color:#fff;background:rgba(0,0,0,.45);backdrop-filter:blur(6px);border-radius:999px;padding:5px 12px}
+.pf-txt{padding:24px 26px 26px;border-top:3px solid var(--pf-ac)}
+.pf-job{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--slate)}
+.pf h3{font-size:26px;margin:8px 0 6px}
+.pf p{color:var(--steel);font-size:15px;margin-bottom:14px}
+@media (max-width:760px){.pf-grid{grid-template-columns:1fr}}
 /* Care */
 .tabs{display:inline-flex;border:1px solid var(--frost);border-radius:var(--r);padding:4px;gap:4px;background:var(--mist);margin-bottom:32px;flex-wrap:wrap}
 .tabs button{font:400 14px/1 var(--font);border:0;background:none;color:var(--steel);padding:12px 18px;border-radius:3px;cursor:pointer;transition:background .2s,color .2s}
@@ -552,6 +566,7 @@ header.top .burger{color:#fff;border-color:rgba(255,255,255,.2)}
       <a href="#care">Care<small>maintenance</small></a>
       <a href="#review">Review<small>avis Google</small></a>
       <a href="#vip">VIP<small>abonnement</small></a>
+      <a href="#portfolio">Portfolio<small>exemples</small></a>
       <a href="#faq">FAQ</a>
     </nav>
     <div class="nav-cta">
@@ -875,6 +890,34 @@ header.top .burger{color:#fff;border-color:rgba(255,255,255,.2)}
   </div>
 </section>
 
+<!-- PORTFOLIO -->
+<section id="portfolio">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><div class="label rv">Portfolio · exemples de sites</div><h2 class="rv">Quatre métiers, <span class="hl">quatre univers.</span></h2></div>
+      <p class="lead rv">Des sites de démonstration complets et interactifs, chacun avec sa propre identité. Les entreprises sont fictives, le savoir-faire est bien réel.</p>
+    </div>
+    <div class="pf-grid">
+      <a class="pf rv" href="/garage/" style="--pf-bg:#0f1114;--pf-ac:#ffc21a">
+        <div class="pf-shot"><img src="/garage/img/hero.webp" alt="Aperçu du site Garage Delmas" loading="lazy" width="800" height="500"><span class="pf-url">malo-oneweb.fr/garage</span></div>
+        <div class="pf-txt"><span class="pf-job">Garage automobile · Muret</span><h3>Garage Delmas</h3><p>Tarifs, estimation en ligne, rappel</p><span class="link-chev">Visiter le site <span>›</span></span></div>
+      </a>
+      <a class="pf rv" href="/plombier/" style="--pf-bg:#0b2545;--pf-ac:#13c2c2">
+        <div class="pf-shot"><img src="/plombier/img/hero.webp" alt="Aperçu du site Laffont Plomberie" loading="lazy" width="800" height="500"><span class="pf-url">malo-oneweb.fr/plombier</span></div>
+        <div class="pf-txt"><span class="pf-job">Plombier-chauffagiste · Toulouse</span><h3>Laffont Plomberie</h3><p>Urgence 7j/7, zones, devis</p><span class="link-chev">Visiter le site <span>›</span></span></div>
+      </a>
+      <a class="pf rv" href="/restaurant/" style="--pf-bg:#16110d;--pf-ac:#d8a65b">
+        <div class="pf-shot"><img src="/restaurant/img/hero.webp" alt="Aperçu du site Le Comptoir des Carmes" loading="lazy" width="800" height="500"><span class="pf-url">malo-oneweb.fr/restaurant</span></div>
+        <div class="pf-txt"><span class="pf-job">Bistrot · Toulouse</span><h3>Le Comptoir des Carmes</h3><p>Carte, ardoise du jour, réservation</p><span class="link-chev">Visiter le site <span>›</span></span></div>
+      </a>
+      <a class="pf rv" href="/coiffeur/" style="--pf-bg:#faf6f1;--pf-ac:#b3705f">
+        <div class="pf-shot"><img src="/coiffeur/img/hero.webp" alt="Aperçu du site Atelier Lina" loading="lazy" width="800" height="500"><span class="pf-url">malo-oneweb.fr/coiffeur</span></div>
+        <div class="pf-txt"><span class="pf-job">Salon de coiffure · Carbonne</span><h3>Atelier Lina</h3><p>Tarifs, galerie, prise de rendez-vous</p><span class="link-chev">Visiter le site <span>›</span></span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
 <!-- PROCESS -->
 <section id="process">
   <div class="wrap">
@@ -995,7 +1038,7 @@ header.top .burger{color:#fff;border-color:rgba(255,255,255,.2)}
         <a href="#top" class="logo logo-foot"><span class="sym"><svg class="sym-l" viewBox="0 0 310 210" aria-hidden="true"><defs>  <linearGradient id="ftll" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#1c6ae6"/><stop offset="1" stop-color="#0b2c74"/></linearGradient>  <linearGradient id="ftlm" x1="0" y1="0" x2="1" y2="1"><stop offset=".15" stop-color="#1f6ff0"/><stop offset="1" stop-color="#4aa6ff"/></linearGradient>  <linearGradient id="ftld" x1="1" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#06173a"/><stop offset="1" stop-color="#1d58c9"/></linearGradient>  <linearGradient id="ftlp" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1fb4ff"/><stop offset="1" stop-color="#0f8ff0"/></linearGradient>  <mask id="ftlk" maskUnits="userSpaceOnUse" x="-20" y="-20" width="360" height="260"><rect x="-20" y="-20" width="360" height="260" fill="#fff"/><path d="M66 76 C78 50 100 32 130 30 L148 30 C160 30 168 34 176 42 L264 132 A34 34 0 0 1 216 180 L128 92 C110 76 88 72 66 76 Z" fill="#000" stroke="#000" stroke-width="16" stroke-linejoin="round"/></mask></defs><g mask="url(#ftlk)">  <path d="M42 164 L98 98" stroke="url(#ftll)" stroke-width="62" stroke-linecap="round" fill="none"/>  <path d="M258 94 m-48 0 a48 48 0 1 1 96 0 a48 48 0 1 1 -96 0" fill="url(#ftld)"/></g><path d="M66 76 C78 50 100 32 130 30 L148 30 C160 30 168 34 176 42 L264 132 A34 34 0 0 1 216 180 L128 92 C110 76 88 72 66 76 Z" fill="url(#ftlm)"/><circle cx="290" cy="22" r="18" fill="url(#ftlp)"/></svg></span><span class="wm"><small>Malo</small> <span>One<em>Web</em></span><i>Accompagnement web &amp; solutions digitales</i></span></a>
         <p>Création de site internet sur mesure pour les professionnels et les particuliers, en Haute-Garonne et partout en France. Basé à Longages (31410).</p>
       </div>
-      <div><h3 class="foot-t">Offres</h3><ul><li><a href="#sites">OneWeb Sites · création</a></li><li><a href="#care">OneWeb Care · maintenance</a></li><li><a href="#review">OneWeb Review · avis Google</a></li><li><a href="#vip">OneWeb VIP · abonnement</a></li></ul></div>
+      <div><h3 class="foot-t">Offres</h3><ul><li><a href="#sites">OneWeb Sites · création</a></li><li><a href="#care">OneWeb Care · maintenance</a></li><li><a href="#review">OneWeb Review · avis Google</a></li><li><a href="#vip">OneWeb VIP · abonnement</a></li><li><a href="#portfolio">Portfolio · exemples</a></li></ul></div>
       <div><h3 class="foot-t">Contact</h3><ul><li><a href="tel:+33777788562">07 77 78 85 62</a></li><li><a class="mail-link" href="mailto:contact@malo-oneweb.fr?subject=Demande%20par%20rapport%20%C3%A0%20vos%20Services%20d%27Accompagnement%20Web&amp;body=Bonjour%2C%0A%0AJ%27aimerais%20en%20savoir%20plus%20sur%20vos%20services.%0A%0A">contact@malo-oneweb.fr</a></li><li><a href="https://tally.so/r/rjxBel" target="_blank" rel="noopener">Demande de devis</a></li><li><a href="#zone">Longages (31) · à distance partout en France</a></li></ul></div>
       <div><h3 class="foot-t">Suivre</h3><ul><li><a href="https://www.instagram.com/malo.oneweb" target="_blank" rel="noopener">Instagram</a></li><li><a href="https://www.facebook.com/profile.php?id=61594861750441" target="_blank" rel="noopener">Facebook</a></li><li><a href="https://share.google/DD7uOuEbsURMxU5QQ" target="_blank" rel="noopener">Fiche Google</a></li></ul></div>
     </div>

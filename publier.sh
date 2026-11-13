@@ -11,7 +11,7 @@ export NODE_USE_ENV_PROXY=1 NODE_EXTRA_CA_CERTS="${NODE_EXTRA_CA_CERTS:-/root/.c
 SURGE="${SURGE:-npx --yes surge@0.55.0}"
 DIST="$(mktemp -d)"; trap 'rm -rf "$DIST"' EXIT
 cp index.html "$DIST/"
-cp -r fonts logos "$DIST/"
+cp -r fonts logos garage plombier restaurant coiffeur "$DIST/"
 echo "malo-oneweb.fr" > "$DIST/CNAME"
 $SURGE "$DIST" malo-oneweb.fr
 # Vérification : la page en ligne doit être identique au fichier local

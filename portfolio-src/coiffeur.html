@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<!--HEAD-->
+<title>Atelier Lina – Salon de coiffure à Carbonne (démo)</title>
+<meta name="description" content="Site de démonstration réalisé par Malo OneWeb : salon de coiffure fictif à Carbonne (31).">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/*CSS*/
+:root{--bg:#faf6f1;--bg2:#f3ebe2;--rose:#c98b7e;--rose2:#b3705f;--ink:#2d2420;--mute:#7d6c63;--line:#e6dbd0}
+body{background:var(--bg);color:var(--ink);font:400 16px/1.65 'DM Sans',system-ui,sans-serif}
+.ser{font-family:'Fraunces',Georgia,serif;font-weight:300;letter-spacing:-.02em;line-height:1.02}
+.ser em{font-style:italic;color:var(--rose2)}
+.wrap{width:min(1160px,100% - 40px);margin:0 auto}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font:500 15px/1 'DM Sans',sans-serif;padding:15px 26px;border-radius:999px;border:1px solid var(--ink);background:var(--ink);color:var(--bg);transition:all .25s}
+.btn:hover{background:var(--rose2);border-color:var(--rose2)}
+.btn.o{background:transparent;color:var(--ink)}.btn.o:hover{background:var(--ink);color:var(--bg)}
+.kick{font-size:13px;letter-spacing:.24em;text-transform:uppercase;color:var(--rose2)}
+header{position:sticky;top:0;z-index:50;background:rgba(250,246,241,.88);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;height:76px;gap:30px}
+.logo{margin-right:auto;font-size:26px}
+.logo small{font:500 11px 'DM Sans',sans-serif;letter-spacing:.3em;text-transform:uppercase;color:var(--mute);margin-left:8px;vertical-align:middle}
+.nav nav{display:flex;gap:26px;font-size:15px;color:var(--mute)}.nav nav a:hover{color:var(--ink)}
+@media (max-width:860px){.nav nav{display:none}.logo small{display:none}.nav .btn{padding:12px 18px}}
+/* hero */
+.hero{padding:60px 0 90px}
+.hero .wrap{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.hero h1{font-size:clamp(52px,7vw,96px);margin:20px 0 22px}
+.hero p{font-size:18px;color:var(--mute);max-width:40ch}
+.hero .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:32px}
+.hero .note{display:flex;align-items:center;gap:12px;margin-top:38px;font-size:14px;color:var(--mute)}
+.hero .note b{color:var(--ink);font-size:18px}
+.arch{position:relative}
+.arch img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:999px 999px 24px 24px}
+.arch .badge{position:absolute;left:-30px;bottom:40px;width:130px;height:130px;border-radius:50%;background:var(--rose);color:#fff;display:grid;place-items:center;text-align:center;font-size:13px;line-height:1.3;animation:spin 18s linear infinite}
+.arch .badge b{display:block;font:300 34px 'Fraunces',serif}
+@keyframes spin{50%{transform:rotate(8deg) scale(1.04)}}
+@media (max-width:900px){.hero .wrap{grid-template-columns:1fr}.arch{max-width:460px}.arch .badge{left:auto;right:10px}}
+section{padding:100px 0}
+.head{text-align:center;max-width:620px;margin:0 auto 46px}
+.head h2{font-size:clamp(40px,5.5vw,64px);margin-top:14px}
+.head p{color:var(--mute);margin-top:12px}
+/* tarifs */
+.price-tabs{display:flex;justify-content:center;gap:8px;margin-bottom:36px}
+.price-tabs button{border:1px solid var(--line);background:transparent;border-radius:999px;padding:11px 22px;font:500 15px 'DM Sans',sans-serif;color:var(--mute);transition:all .25s}
+.price-tabs button.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.plist{max-width:780px;margin:0 auto;display:none}
+.plist.on{display:block;animation:fade .45s ease}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}}
+.pr{display:flex;align-items:baseline;gap:14px;padding:18px 0;border-bottom:1px solid var(--line)}
+.pr span{font:400 22px 'Fraunces',serif}
+.pr i{flex:1;border-bottom:1px dotted #cdbcae;transform:translateY(-5px)}
+.pr small{color:var(--mute);font-size:14px}
+.pr b{font:400 22px 'Fraunces',serif;color:var(--rose2)}
+/* galerie */
+.gal{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.gal figure{position:relative;overflow:hidden;border-radius:18px}
+.gal img{width:100%;aspect-ratio:3/4;object-fit:cover;transition:transform .7s}
+.gal figure:hover img{transform:scale(1.06)}
+.gal figcaption{position:absolute;left:14px;bottom:14px;background:rgba(250,246,241,.92);border-radius:999px;padding:6px 14px;font-size:13px}
+.gal figure:nth-child(even){margin-top:40px}
+@media (max-width:860px){.gal{grid-template-columns:1fr 1fr}}
+/* équipe / engagements */
+.eng{background:var(--bg2)}
+.eng .wrap{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;text-align:center}
+.eng .ic{width:64px;height:64px;border-radius:50%;background:var(--bg);display:grid;place-items:center;margin:0 auto 18px;color:var(--rose2);font-size:26px}
+.eng h3{font:400 26px 'Fraunces',serif;margin-bottom:8px}
+.eng p{color:var(--mute);font-size:15px}
+@media (max-width:760px){.eng .wrap{grid-template-columns:1fr}}
+/* rendez-vous */
+.rdv{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:start}
+.card{background:#fff;border-radius:26px;padding:32px;box-shadow:0 20px 60px rgba(45,36,32,.07)}
+.step{font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:var(--mute);margin:4px 0 12px}
+.choices{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px}
+.choices button{border:1px solid var(--line);background:var(--bg);border-radius:999px;padding:10px 16px;font:400 14px 'DM Sans',sans-serif;color:var(--ink);transition:all .2s}
+.choices button.on,.choices button:hover{background:var(--rose);border-color:var(--rose);color:#fff}
+.days{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;margin-bottom:22px}
+.days button{border:1px solid var(--line);background:var(--bg);border-radius:14px;padding:10px 0;font:400 13px 'DM Sans',sans-serif;color:var(--mute);line-height:1.3;transition:all .2s}
+.days button b{display:block;font:400 20px 'Fraunces',serif;color:var(--ink)}
+.days button.on{background:var(--ink);border-color:var(--ink);color:#e9ddd2}.days button.on b{color:#fff}
+.sum{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;padding-top:20px;border-top:1px solid var(--line)}
+.sum b{font:400 20px 'Fraunces',serif}
+.info{display:grid;gap:18px;margin-top:28px}
+.info div{display:flex;justify-content:space-between;gap:16px;padding-bottom:14px;border-bottom:1px solid var(--line)}
+.info span:first-child{color:var(--mute)}
+.info .now{color:var(--rose2);font-weight:500}
+@media (max-width:900px){.rdv{grid-template-columns:1fr}}@media (max-width:480px){.days{grid-template-columns:repeat(3,1fr)}}
+footer{padding:44px 0;border-top:1px solid var(--line);text-align:center;color:var(--mute);font-size:14px}
+</style>
+</head>
+<body>
+<!--BAR-->
+<header><div class="wrap nav">
+  <a href="#top" class="logo ser">Atelier <em>Lina</em><small>Coiffure</small></a>
+  <nav><a href="#prestations">Prestations</a><a href="#realisations">Réalisations</a><a href="#rdv">Rendez-vous</a></nav>
+  <a class="btn" href="#rdv">Prendre RDV</a>
+</div></header>
+
+<main id="top">
+<section class="hero">
+  <div class="wrap">
+    <div class="rv">
+      <div class="kick">Salon de coiffure · Carbonne</div>
+      <h1 class="ser">Prenez soin<br>de <em>vous.</em></h1>
+      <p>Coupes, couleurs et soins sur mesure, dans un salon lumineux où l'on prend le temps de vous écouter. Produits naturels et vegan.</p>
+      <div class="cta"><a class="btn" href="#rdv">Réserver en ligne</a><a class="btn o" href="#prestations">Voir les tarifs</a></div>
+      <div class="note"><span style="color:#e0a100;letter-spacing:2px">★★★★★</span><span><b>4,9</b> · 154 avis Google</span></div>
+    </div>
+    <div class="arch rv"><img src="img/hero.webp" alt="Shampoing d'une cliente au bac du salon" fetchpriority="high"><div class="badge"><div><b>15 ans</b>de passion</div></div></div>
+  </div>
+</section>
+
+<section id="prestations" style="padding-top:20px">
+  <div class="wrap">
+    <div class="head rv"><div class="kick">Prestations</div><h2 class="ser">Nos <em>tarifs</em></h2><p>Shampoing et coiffage compris. Tarifs donnés à titre indicatif pour cheveux mi-longs.</p></div>
+    <div class="price-tabs rv" id="ptabs"><button class="on" data-t="f">Femme</button><button data-t="h">Homme</button><button data-t="c">Couleur &amp; soins</button></div>
+    <div class="plist on" data-c="f"><div class="pr"><span>Coupe &amp; brushing</span><i></i><small>45 min</small><b>42 €</b></div><div class="pr"><span>Brushing</span><i></i><small>30 min</small><b>26 €</b></div><div class="pr"><span>Chignon &amp; coiffure de mariage</span><i></i><small>1 h</small><b>65 €</b></div></div>
+    <div class="plist" data-c="h"><div class="pr"><span>Coupe homme</span><i></i><small>30 min</small><b>24 €</b></div><div class="pr"><span>Coupe &amp; taille de barbe</span><i></i><small>45 min</small><b>34 €</b></div><div class="pr"><span>Coupe enfant (–12 ans)</span><i></i><small>20 min</small><b>16 €</b></div></div>
+    <div class="plist" data-c="c"><div class="pr"><span>Couleur racines</span><i></i><small>1 h</small><b>45 €</b></div><div class="pr"><span>Balayage</span><i></i><small>2 h</small><b>89 €</b></div><div class="pr"><span>Soin profond à la kératine</span><i></i><small>30 min</small><b>29 €</b></div></div>
+  </div>
+</section>
+
+<section id="realisations" style="padding-top:0">
+  <div class="wrap">
+    <div class="head rv"><div class="kick">Réalisations</div><h2 class="ser">L'atelier en <em>images</em></h2></div>
+    <div class="gal rv">
+      <figure><img src="img/brushing.webp" alt="Brushing au sèche-cheveux et brosse ronde" loading="lazy"><figcaption>Brushing</figcaption></figure>
+      <figure><img src="img/boucles.webp" alt="Mise en boucles au fer" loading="lazy"><figcaption>Boucles wavy</figcaption></figure>
+      <figure><img src="img/barbier.webp" alt="Coiffage homme au salon" loading="lazy"><figcaption>Coupe homme</figcaption></figure>
+      <figure><img src="img/salon.webp" alt="Intérieur du salon avec miroirs ronds" loading="lazy"><figcaption>Le salon</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="eng">
+  <div class="wrap">
+    <div class="rv"><div class="ic">✿</div><h3>Produits naturels</h3><p>Des soins vegan et sans sulfates, respectueux de vos cheveux.</p></div>
+    <div class="rv"><div class="ic">☾</div><h3>Le temps d'écouter</h3><p>Un diagnostic personnalisé avant chaque prestation.</p></div>
+    <div class="rv"><div class="ic">❀</div><h3>Carte fidélité</h3><p>La 10ᵉ coupe offerte, et une attention pour votre anniversaire.</p></div>
+  </div>
+</section>
+
+<section id="rdv">
+  <div class="wrap rdv">
+    <div class="rv">
+      <div class="kick">Rendez-vous</div>
+      <h2 class="ser" style="font-size:clamp(40px,5vw,60px);margin:14px 0 16px">Réservez en <em>quelques clics.</em></h2>
+      <p style="color:var(--mute)">Choisissez votre prestation et votre créneau. Vous recevez une confirmation par SMS.</p>
+      <div class="info" id="hrs"><div><span>Mardi – Vendredi</span><span>9h – 19h</span></div><div><span>Samedi</span><span>9h – 17h</span></div><div><span>Dimanche – Lundi</span><span>Fermé</span></div><div><span>Adresse</span><span>8 place de la République, Carbonne (fictive)</span></div></div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:24px"><a class="btn o" href="#" data-demo="📞 Appel vers le salon (numéro fictif)">05 61 00 00 00</a><a class="btn o" href="#" data-demo="📸 Ouverture d'Instagram (démonstration)">Instagram</a></div>
+    </div>
+    <div class="card rv">
+      <div class="step">1 · Prestation</div>
+      <div class="choices" id="cP"><button class="on">Coupe &amp; brushing · 42 €</button><button>Coupe homme · 24 €</button><button>Couleur racines · 45 €</button><button>Balayage · 89 €</button></div>
+      <div class="step">2 · Jour</div>
+      <div class="days" id="cD"></div>
+      <div class="step">3 · Heure</div>
+      <div class="choices" id="cH"><button>9:30</button><button class="on">10:30</button><button>11:30</button><button>14:00</button><button>15:30</button><button>17:00</button></div>
+      <div class="sum"><span id="cS"></span><button class="btn" id="cB">Confirmer</button></div>
+    </div>
+  </div>
+</section>
+</main>
+<footer><div class="wrap">© <span data-year></span> Atelier Lina · salon fictif · site réalisé par <a href="/" style="color:var(--rose2)">Malo OneWeb</a></div></footer>
+<!--JS-->
+<script>
+(() => {
+  const pick = id => { const el = document.getElementById(id); el.addEventListener('click', e => { const b = e.target.closest('button'); if (!b) return; el.querySelectorAll('button').forEach(x => x.classList.toggle('on', x === b)); upd(); }); return el; };
+  const pt = document.getElementById('ptabs');
+  pt.addEventListener('click', e => { const b = e.target.closest('button'); if (!b) return; pt.querySelectorAll('button').forEach(x => x.classList.toggle('on', x === b)); document.querySelectorAll('.plist').forEach(x => x.classList.toggle('on', x.dataset.c === b.dataset.t)); });
+  // 6 prochains jours d'ouverture (mardi → samedi)
+  const D = document.getElementById('cD'), d = new Date(); let n = 0, html = '';
+  while (n < 6) { d.setDate(d.getDate() + 1); const w = d.getDay(); if (w === 0 || w === 1) continue;
+    html += `<button${n === 0 ? ' class="on"' : ''} data-d="${d.toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long' })}">${d.toLocaleDateString('fr-FR', { weekday: 'short' }).replace('.', '')}<b>${d.getDate()}</b></button>`; n++; }
+  D.innerHTML = html;
+  const P = pick('cP'), H = pick('cH'); pick('cD');
+  const S = document.getElementById('cS');
+  let txt = '';
+  function upd() { const p = P.querySelector('.on').textContent.split(' · ')[0], w = `${D.querySelector('.on').dataset.d} à ${H.querySelector('.on').textContent}`; txt = `${p}, ${w}`; S.innerHTML = `<b>${p}</b><br>${w}`; }
+  upd();
+  document.getElementById('cB').addEventListener('click', () => say('✅ Rendez-vous réservé : ' + txt + ' (démonstration)'));
+  const w = new Date().getDay(), rows = document.querySelectorAll('#hrs div'), r = w >= 2 && w <= 5 ? 0 : w === 6 ? 1 : 2;
+  rows[r].querySelectorAll('span').forEach(s => s.classList.add('now'));
+})();
+</script>
+</body>
+</html>

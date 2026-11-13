@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, follow">
+<link rel="icon" type="image/svg+xml" href="/logos/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<title>Le Comptoir des Carmes – Bistrot à Toulouse (démo)</title>
+<meta name="description" content="Site de démonstration réalisé par Malo OneWeb : bistrot fictif dans le quartier des Carmes à Toulouse.">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:110px}
+body{-webkit-font-smoothing:antialiased;overflow-x:clip}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer}
+.demo-bar{position:relative;z-index:60;background:#061b31;color:#cfe0ff;font:400 12.5px/1.3 system-ui,-apple-system,'Segoe UI',sans-serif;text-align:center;padding:9px 16px;display:flex;justify-content:center;align-items:center;gap:10px;flex-wrap:wrap}
+.demo-bar b{color:#fff;font-weight:500}
+.demo-bar a{color:#fff;background:#1463e8;border-radius:999px;padding:4px 12px;white-space:nowrap;transition:background .2s}
+.demo-bar a:hover{background:#3c9bff}
+.demo-bar .back{background:transparent;border:1px solid rgba(255,255,255,.3)}
+@media (max-width:600px){.demo-bar{gap:8px;padding:7px 12px;font-size:12px}.demo-bar .fx{display:none}.demo-bar a{padding:3px 10px}}
+.toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,20px);z-index:99;background:#111;color:#fff;font:400 14px/1.3 system-ui,sans-serif;padding:12px 18px;border-radius:12px;opacity:0;pointer-events:none;transition:opacity .3s,transform .3s;max-width:calc(100% - 32px);text-align:center;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+.rv{opacity:0;transform:translateY(28px);transition:opacity .8s cubic-bezier(.2,.8,.2,1),transform .8s cubic-bezier(.2,.8,.2,1)}
+.rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}html{scroll-behavior:auto}}
+
+:root{--bg:#16110d;--bg2:#1f1813;--card:#261e18;--line:rgba(232,206,170,.16);--txt:#f3e9dc;--mute:#b6a48e;--gold:#d8a65b;--wine:#8e2c2c}
+body{background:var(--bg);color:var(--txt);font:300 17px/1.65 'Jost',system-ui,sans-serif}
+.serif{font-family:'Cormorant Garamond',Georgia,serif;font-weight:500;letter-spacing:-.01em;line-height:1}
+.wrap{width:min(1140px,100% - 40px);margin:0 auto}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font:400 14px/1 'Jost',sans-serif;letter-spacing:.14em;text-transform:uppercase;padding:16px 26px;border:1px solid var(--gold);color:var(--gold);background:transparent;transition:background .3s,color .3s}
+.btn:hover,.btn.f{background:var(--gold);color:var(--bg)}
+.btn.f:hover{background:#e6bb78}
+.eyebrow{font-size:12px;letter-spacing:.32em;text-transform:uppercase;color:var(--gold)}
+header{position:sticky;top:0;z-index:50;transition:background .3s,border-color .3s;border-bottom:1px solid transparent}
+header.s{background:rgba(22,17,13,.9);backdrop-filter:blur(10px);border-color:var(--line)}
+.nav{display:flex;align-items:center;height:76px;gap:32px}
+.logo{margin-right:auto;font-size:28px}
+.logo em{color:var(--gold)}
+.nav nav{display:flex;gap:28px;font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:var(--mute)}
+.nav nav a:hover{color:var(--txt)}
+@media (max-width:860px){.nav nav{display:none}.nav .btn{padding:12px 16px}.logo{font-size:22px}}
+.hero{position:relative;height:calc(100svh - 110px);min-height:560px;display:grid;place-items:center;text-align:center;overflow:hidden;margin-top:-76px}
+.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;animation:slow 20s ease-out forwards}
+@keyframes slow{from{transform:scale(1.12)}to{transform:scale(1)}}
+.hero::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(22,17,13,.45),rgba(22,17,13,.88) 75%),linear-gradient(0deg,var(--bg),transparent 30%)}
+.hero>div{position:relative;z-index:1;padding:0 20px}
+.hero h1{font-size:clamp(56px,10vw,128px);margin:22px 0 18px}
+.hero h1 em{font-style:italic;color:var(--gold)}
+.hero p{color:#e3d4c0;max-width:40ch;margin:0 auto}
+.hero .cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:34px}
+.orn{display:flex;align-items:center;justify-content:center;gap:14px;color:var(--gold)}
+.orn::before,.orn::after{content:"";width:46px;height:1px;background:var(--gold);opacity:.6}
+section{padding:110px 0}
+/* histoire */
+.story{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center}
+.story h2{font-size:clamp(42px,5vw,64px);margin:16px 0 22px}
+.story p{color:var(--mute);margin-bottom:14px}
+.story .imgs{position:relative}
+.story .imgs img{width:78%;aspect-ratio:3/4;object-fit:cover}
+.story .imgs img+img{position:absolute;right:0;bottom:-40px;width:52%;aspect-ratio:1;border:8px solid var(--bg)}
+.sign{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:30px;color:var(--gold);margin-top:20px}
+@media (max-width:900px){.story{grid-template-columns:1fr;gap:70px}}
+/* ardoise */
+.slate{background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.slate .box{max-width:720px;margin:0 auto;text-align:center;border:1px solid var(--line);padding:50px 30px;position:relative}
+.slate .box::before{content:"";position:absolute;inset:8px;border:1px solid var(--line);pointer-events:none}
+.slate h2{font-size:clamp(40px,5vw,56px);margin:14px 0 6px}
+.slate .date{color:var(--mute);font-size:14px;letter-spacing:.12em;text-transform:uppercase}
+.slate ul{list-style:none;margin:30px 0 26px;display:grid;gap:16px}
+.slate li{font-family:'Cormorant Garamond',serif;font-size:24px}
+.slate li small{display:block;font:300 14px 'Jost',sans-serif;color:var(--mute);letter-spacing:.04em}
+.slate .px{font-family:'Cormorant Garamond',serif;font-size:44px;color:var(--gold)}
+/* carte */
+.menu-head{text-align:center;margin-bottom:40px}
+.menu-head h2{font-size:clamp(46px,6vw,72px);margin-top:14px}
+.tabs{display:flex;justify-content:center;gap:6px;flex-wrap:wrap;margin-bottom:40px}
+.tabs button{background:none;border:0;color:var(--mute);font-size:13px;letter-spacing:.2em;text-transform:uppercase;padding:10px 16px;border-bottom:1px solid transparent;transition:all .25s}
+.tabs button.on,.tabs button:hover{color:var(--gold);border-color:var(--gold)}
+.dishes{max-width:820px;margin:0 auto;display:none;gap:4px}
+.dishes.on{display:grid;animation:fade .5s ease}
+@keyframes fade{from{opacity:0;transform:translateY(10px)}}
+.dish{display:grid;grid-template-columns:1fr auto;gap:4px 20px;padding:18px 0;border-bottom:1px dashed var(--line)}
+.dish h3{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:26px}
+.dish b{font-family:'Cormorant Garamond',serif;font-size:26px;color:var(--gold);font-weight:500}
+.dish p{grid-column:1/-1;color:var(--mute);font-size:15px}
+.dish .tg{font:400 11px 'Jost',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--bg);background:var(--gold);padding:2px 7px;margin-left:10px;vertical-align:middle}
+/* galerie */
+.gal{display:grid;grid-template-columns:2fr 1fr 1fr;gap:10px}
+.gal img{width:100%;height:100%;object-fit:cover;aspect-ratio:1;transition:transform .6s,filter .6s;filter:saturate(.9)}
+.gal div{overflow:hidden}
+.gal div:hover img{transform:scale(1.06);filter:saturate(1.1)}
+.gal div:first-child{grid-row:span 2}
+.gal div:first-child img{aspect-ratio:auto}
+@media (max-width:700px){.gal{grid-template-columns:1fr 1fr}.gal div:first-child{grid-column:span 2;grid-row:auto}.gal div:first-child img{aspect-ratio:16/10}}
+/* réservation */
+.resa{display:grid;grid-template-columns:1fr 1.1fr;gap:60px;align-items:start}
+.resa h2{font-size:clamp(42px,5vw,62px);margin:16px 0 20px}
+.hours{display:grid;grid-template-columns:1fr auto;gap:10px 20px;margin-top:26px;color:var(--mute)}
+.hours .now{color:var(--gold)}
+.form{border:1px solid var(--line);padding:34px;display:grid;gap:18px;background:var(--bg2)}
+.form label{display:grid;gap:8px;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--mute)}
+.form input,.form select{font:300 17px 'Jost',sans-serif;color:var(--txt);background:transparent;border:0;border-bottom:1px solid var(--line);padding:10px 0;outline:none;transition:border-color .25s;color-scheme:dark}
+.form input:focus,.form select:focus{border-color:var(--gold)}
+.form select option{background:var(--bg2)}
+.slots{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.slots button{background:none;border:1px solid var(--line);color:var(--txt);padding:10px 0;font-size:15px;transition:all .2s}
+.slots button.on,.slots button:hover{border-color:var(--gold);color:var(--gold)}
+.slots button.on{background:rgba(216,166,91,.1)}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+@media (max-width:900px){.resa{grid-template-columns:1fr}}@media (max-width:520px){.row2{grid-template-columns:1fr}.slots{grid-template-columns:repeat(3,1fr)}}
+footer{padding:50px 0;border-top:1px solid var(--line);text-align:center;color:var(--mute);font-size:14px}
+footer .logo{display:block;margin:0 auto 14px}
+</style>
+</head>
+<body>
+<div class="demo-bar" role="note"><span><b>Site de démonstration</b><span class="fx"> réalisé par Malo OneWeb · entreprise fictive</span></span><a class="back" href="/#portfolio">← Portfolio</a><a href="/#contact">Créer mon site</a></div>
+
+<header id="hd"><div class="wrap nav">
+  <a href="#top" class="logo serif">Le Comptoir <em>des Carmes</em></a>
+  <nav><a href="#histoire">Histoire</a><a href="#ardoise">Ardoise</a><a href="#carte">La carte</a><a href="#reserver">Réserver</a></nav>
+  <a class="btn f" href="#reserver">Réserver</a>
+</div></header>
+
+<main id="top">
+<section class="hero" style="padding:0">
+  <img src="img/hero.webp" alt="Assiette gastronomique dressée sur une table" fetchpriority="high">
+  <div>
+    <div class="orn eyebrow">Bistrot · Toulouse</div>
+    <h1 class="serif">Le goût<br>du <em>marché.</em></h1>
+    <p>Cuisine de saison, produits du Sud-Ouest et vins de petits vignerons, au cœur du quartier des Carmes.</p>
+    <div class="cta"><a class="btn f" href="#reserver">Réserver une table</a><a class="btn" href="#carte">Voir la carte</a></div>
+  </div>
+</section>
+
+<section id="histoire">
+  <div class="wrap story">
+    <div class="rv">
+      <div class="eyebrow">Notre histoire</div>
+      <h2 class="serif">Une cuisine sincère, faite chaque matin.</h2>
+      <p>Chaque jour, le chef compose son ardoise avec ce que les producteurs du marché Victor-Hugo ont de meilleur. Rien n'est surgelé, tout est fait maison.</p>
+      <p>Une trentaine de couverts, une salle en pierre et brique, et une terrasse ombragée aux beaux jours.</p>
+      <div class="sign">Thomas &amp; Clara</div>
+    </div>
+    <div class="imgs rv"><img src="img/salle.webp" alt="Salle du restaurant aux lumières tamisées" loading="lazy"><img src="img/assiette.webp" alt="Assiette du jour" loading="lazy"></div>
+  </div>
+</section>
+
+<section id="ardoise" class="slate">
+  <div class="wrap"><div class="box rv">
+    <div class="eyebrow">L'ardoise du jour</div>
+    <h2 class="serif">Menu du midi</h2>
+    <div class="date" id="today"></div>
+    <ul><li>Velouté de potimarron, éclats de châtaigne<small>ou terrine de campagne maison</small></li><li>Magret de canard, jus au miel et thym<small>ou dos de cabillaud, beurre blanc</small></li><li>Croustade aux pommes du Gers<small>ou café gourmand</small></li></ul>
+    <div class="px">19 €</div><div class="date" style="margin-top:6px">Entrée · plat · dessert</div>
+  </div></div>
+</section>
+
+<section id="carte">
+  <div class="wrap">
+    <div class="menu-head rv"><div class="eyebrow">La carte</div><h2 class="serif">À la carte</h2></div>
+    <div class="tabs rv" id="tabs"><button class="on" data-t="e">Entrées</button><button data-t="p">Plats</button><button data-t="d">Desserts</button><button data-t="v">Vins</button></div>
+    <div class="dishes on" data-c="e">
+      <div class="dish"><h3>Foie gras mi-cuit maison</h3><b>16</b><p>Chutney de figues, pain de campagne toasté</p></div>
+      <div class="dish"><h3>Œuf parfait<span class="tg">Végé</span></h3><b>11</b><p>Crème de champignons, noisettes torréfiées</p></div>
+      <div class="dish"><h3>Tartare de truite des Pyrénées</h3><b>13</b><p>Pomme verte, raifort et herbes fraîches</p></div>
+    </div>
+    <div class="dishes" data-c="p">
+      <div class="dish"><h3>Cassoulet du Comptoir<span class="tg">Signature</span></h3><b>24</b><p>Haricots tarbais, saucisse de Toulouse, confit de canard</p></div>
+      <div class="dish"><h3>Pièce du boucher</h3><b>26</b><p>Bœuf d'Aubrac, frites maison, sauce au poivre</p></div>
+      <div class="dish"><h3>Risotto de saison<span class="tg">Végé</span></h3><b>19</b><p>Courge rôtie, sauge, parmesan 24 mois</p></div>
+    </div>
+    <div class="dishes" data-c="d">
+      <div class="dish"><h3>Croustade gersoise</h3><b>9</b><p>Pommes caramélisées, armagnac, glace vanille</p></div>
+      <div class="dish"><h3>Mousse au chocolat</h3><b>8</b><p>Chocolat noir 70 %, fleur de sel</p></div>
+      <div class="dish"><h3>Assiette de fromages</h3><b>11</b><p>Sélection affinée de la fromagerie du marché</p></div>
+    </div>
+    <div class="dishes" data-c="v">
+      <div class="dish"><h3>Fronton rouge, domaine local</h3><b>6 / 28</b><p>Négrette fruitée · verre / bouteille</p></div>
+      <div class="dish"><h3>Gaillac blanc sec</h3><b>6 / 27</b><p>Mauzac et loin-de-l'œil · verre / bouteille</p></div>
+      <div class="dish"><h3>Madiran</h3><b>34</b><p>Tannat puissant, idéal avec le cassoulet</p></div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap gal rv"><div><img src="img/terrasse.webp" alt="Terrasse animée d'un restaurant" loading="lazy"></div><div><img src="img/table.webp" alt="Plats partagés sur une table" loading="lazy"></div><div><img src="img/assiette.webp" alt="Assiette du chef" loading="lazy"></div><div><img src="img/hero.webp" alt="Assiette dressée" loading="lazy"></div><div><img src="img/salle.webp" alt="Salle du restaurant" loading="lazy"></div></div>
+</section>
+
+<section id="reserver" style="padding-top:0">
+  <div class="wrap resa">
+    <div class="rv">
+      <div class="eyebrow">Réservation</div>
+      <h2 class="serif">Réservez votre table.</h2>
+      <p style="color:var(--mute)">12 rue des Filatiers, 31000 Toulouse (adresse fictive). Pour les groupes de plus de 8 personnes, appelez-nous.</p>
+      <div class="hours" id="hrs"><span>Mardi – Vendredi</span><span>12h – 14h · 19h30 – 22h30</span><span>Samedi</span><span>19h30 – 23h</span><span>Dimanche – Lundi</span><span>Fermé</span></div>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:30px"><a class="btn" href="#" data-demo="📞 Appel vers le restaurant (numéro fictif)">05 61 00 00 00</a><a class="btn" href="#" data-demo="🗺️ Ouverture de l'itinéraire (démonstration)">Itinéraire</a></div>
+    </div>
+    <form class="form rv" id="rf">
+      <div class="row2"><label>Date<input type="date" id="rd" required></label><label>Couverts<select id="rp"><option>1</option><option selected>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option></select></label></div>
+      <label>Horaire</label>
+      <div class="slots" id="slots"><button type="button">12:00</button><button type="button" class="on">12:30</button><button type="button">13:00</button><button type="button">13:30</button><button type="button">19:30</button><button type="button">20:00</button><button type="button">20:30</button><button type="button">21:00</button></div>
+      <div class="row2"><label>Nom<input required autocomplete="off" placeholder="Votre nom"></label><label>Téléphone<input required type="tel" autocomplete="off" placeholder="06 …"></label></div>
+      <button class="btn f">Confirmer la réservation</button>
+    </form>
+  </div>
+</section>
+</main>
+<footer><div class="wrap"><span class="logo serif" style="font-size:30px">Le Comptoir <em style="color:var(--gold)">des Carmes</em></span>© <span data-year></span> · restaurant fictif · site réalisé par <a href="/" style="color:var(--gold)">Malo OneWeb</a></div></footer>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script>
+(() => {
+  const t = document.getElementById('toast'); let tt;
+  window.say = m => { t.textContent = m; t.classList.add('show'); clearTimeout(tt); tt = setTimeout(() => t.classList.remove('show'), 2600); };
+  // liens « démo » : appel, itinéraire, réseaux… affichent un message au lieu d'agir
+  document.addEventListener('click', e => {
+    const a = e.target.closest('[data-demo]'); if (!a) return;
+    e.preventDefault(); say(a.dataset.demo || 'Démonstration : ce bouton est actif sur un vrai site.');
+  });
+  // formulaires de démonstration
+  document.querySelectorAll('form[data-demo-form]').forEach(f => f.addEventListener('submit', e => {
+    e.preventDefault(); if (!f.reportValidity()) return;
+    say(f.dataset.demoForm); f.reset();
+  }));
+  // apparitions au défilement
+  const io = new IntersectionObserver(es => es.forEach(x => { if (x.isIntersecting) { x.target.classList.add('in'); io.unobserve(x.target); } }), { threshold: .12 });
+  document.querySelectorAll('.rv').forEach(el => io.observe(el));
+  // année
+  document.querySelectorAll('[data-year]').forEach(el => el.textContent = new Date().getFullYear());
+})();
+</script>
+
+<script>
+(() => {
+  const hd = document.getElementById('hd'); const sc = () => hd.classList.toggle('s', scrollY > 40); addEventListener('scroll', sc, { passive: true }); sc();
+  const now = new Date();
+  document.getElementById('today').textContent = now.toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long' });
+  const tabs = document.getElementById('tabs');
+  tabs.addEventListener('click', e => { const b = e.target.closest('button'); if (!b) return;
+    tabs.querySelectorAll('button').forEach(x => x.classList.toggle('on', x === b));
+    document.querySelectorAll('.dishes').forEach(x => x.classList.toggle('on', x.dataset.c === b.dataset.t)); });
+  const sl = document.getElementById('slots');
+  sl.addEventListener('click', e => { const b = e.target.closest('button'); if (!b) return; sl.querySelectorAll('button').forEach(x => x.classList.toggle('on', x === b)); });
+  const rd = document.getElementById('rd'), iso = d => d.toISOString().slice(0, 10), t = new Date(now); t.setDate(t.getDate() + 1);
+  rd.min = iso(now); rd.value = iso(t);
+  document.getElementById('rf').addEventListener('submit', e => {
+    e.preventDefault(); if (!e.target.reportValidity()) return;
+    const d = new Date(rd.value + 'T12:00').toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long' });
+    say(`✅ Table pour ${document.getElementById('rp').value}, ${d} à ${sl.querySelector('.on').textContent} (démonstration)`);
+  });
+  const day = now.getDay(), c = document.querySelectorAll('#hrs span'), r = day >= 2 && day <= 5 ? 0 : day === 6 ? 1 : 2;
+  c[r * 2].classList.add('now'); c[r * 2 + 1].classList.add('now');
+})();
+</script>
+</body>
+</html>
