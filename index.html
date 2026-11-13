@@ -243,20 +243,25 @@ section{padding:96px 0;border-bottom:1px solid var(--frost)}
 .step.on{border-color:var(--indigo)}
 
 .fr{display:block;font-size:14px;letter-spacing:0;color:var(--slate);margin-top:4px}
+main{overflow-x:clip}
 /* Portfolio */
-.pf-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
-.pf{display:block;border:1px solid var(--frost);border-radius:var(--r);overflow:hidden;background:#fff;color:var(--ink);transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s}
-.pf:hover{transform:translateY(-6px);box-shadow:0 24px 50px rgba(6,27,49,.12)}
-.pf-shot{position:relative;aspect-ratio:16/9;overflow:hidden;background:var(--pf-bg)}
-.pf-shot img{width:100%;height:100%;object-fit:cover;opacity:.88;transition:transform .8s cubic-bezier(.2,.8,.2,1),opacity .4s}
-.pf:hover .pf-shot img{transform:scale(1.06);opacity:1}
-.pf-shot::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,var(--pf-bg),transparent 55%);opacity:.75}
-.pf-url{position:absolute;left:16px;bottom:14px;z-index:1;font-size:12px;color:#fff;background:rgba(0,0,0,.45);backdrop-filter:blur(6px);border-radius:999px;padding:5px 12px}
-.pf-txt{padding:24px 26px 26px;border-top:3px solid var(--pf-ac)}
+.pf-head{display:flex;justify-content:space-between;align-items:end;gap:30px;flex-wrap:wrap;margin-bottom:40px}
+.pf-head p{color:var(--steel);max-width:40ch}
+.pf-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.pf{display:flex;flex-direction:column;color:var(--ink);transition-delay:var(--d)}
+.pf-shot{position:relative;display:block;aspect-ratio:4/3;border-radius:var(--r);overflow:hidden;background:#e9eef5;margin-bottom:14px;box-shadow:0 1px 0 var(--frost)}
+.pf-shot img{width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.2,.8,.2,1)}
+.pf:hover .pf-shot img{transform:scale(1.07)}
+.pf-go{position:absolute;right:12px;top:12px;width:38px;height:38px;border-radius:50%;background:#fff;color:var(--ink);display:grid;place-items:center;font-size:18px;transform:scale(.6);opacity:0;transition:transform .35s cubic-bezier(.2,1.4,.4,1),opacity .25s}
+.pf:hover .pf-go{transform:none;opacity:1}
 .pf-job{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--slate)}
-.pf h3{font-size:26px;margin:8px 0 6px}
-.pf p{color:var(--steel);font-size:15px;margin-bottom:14px}
-@media (max-width:760px){.pf-grid{grid-template-columns:1fr}}
+.pf-name{font-size:21px;letter-spacing:-.02em;margin:4px 0 2px;transition:color .2s}
+.pf:hover .pf-name{color:var(--indigo)}
+.pf-st{font-size:14px;color:var(--steel)}
+.pf-veil{position:fixed;z-index:300;pointer-events:none;opacity:0;border-radius:var(--r)}
+.pf-veil.go{opacity:1;transition:inset .6s cubic-bezier(.77,0,.18,1),border-radius .6s}
+@media (max-width:980px){.pf-grid{grid-template-columns:repeat(4,72%);overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:10px;margin:0 -16px;padding-left:16px;scroll-padding-left:16px}.pf{scroll-snap-align:start}}
+@media (min-width:600px) and (max-width:980px){.pf-grid{grid-template-columns:repeat(4,42%)}}
 /* Care */
 .tabs{display:inline-flex;border:1px solid var(--frost);border-radius:var(--r);padding:4px;gap:4px;background:var(--mist);margin-bottom:32px;flex-wrap:wrap}
 .tabs button{font:400 14px/1 var(--font);border:0;background:none;color:var(--steel);padding:12px 18px;border-radius:3px;cursor:pointer;transition:background .2s,color .2s}
@@ -893,29 +898,38 @@ header.top .burger{color:#fff;border-color:rgba(255,255,255,.2)}
 <!-- PORTFOLIO -->
 <section id="portfolio">
   <div class="wrap">
-    <div class="sec-head">
+    <div class="pf-head">
       <div><div class="label rv">Portfolio · exemples de sites</div><h2 class="rv">Quatre métiers, <span class="hl">quatre univers.</span></h2></div>
-      <p class="lead rv">Des sites de démonstration complets et interactifs, chacun avec sa propre identité. Les entreprises sont fictives, le savoir-faire est bien réel.</p>
+      <p class="rv">Des sites de démonstration complets et interactifs. Les entreprises sont fictives, le savoir-faire est bien réel.</p>
     </div>
     <div class="pf-grid">
-      <a class="pf rv" href="/garage/" style="--pf-bg:#0f1114;--pf-ac:#ffc21a">
-        <div class="pf-shot"><img src="/garage/img/hero.webp" alt="Aperçu du site Garage Delmas" loading="lazy" width="800" height="500"><span class="pf-url">malo-oneweb.fr/garage</span></div>
-        <div class="pf-txt"><span class="pf-job">Garage automobile · Muret</span><h3>Garage Delmas</h3><p>Tarifs, estimation en ligne, rappel</p><span class="link-chev">Visiter le site <span>›</span></span></div>
+      <a class="pf rv" href="/garage/" data-ob="#121212" style="--d:0ms">
+        <span class="pf-shot"><img src="/garage/img/hero.webp" alt="" loading="lazy" width="600" height="450"><span class="pf-go" aria-hidden="true">↗</span></span>
+        <span class="pf-job">Garage · Muret</span>
+        <span class="pf-name">Garage Delmas</span>
+        <span class="pf-st">Style automobile épuré</span>
       </a>
-      <a class="pf rv" href="/plombier/" style="--pf-bg:#0b2545;--pf-ac:#13c2c2">
-        <div class="pf-shot"><img src="/plombier/img/hero.webp" alt="Aperçu du site Laffont Plomberie" loading="lazy" width="800" height="500"><span class="pf-url">malo-oneweb.fr/plombier</span></div>
-        <div class="pf-txt"><span class="pf-job">Plombier-chauffagiste · Toulouse</span><h3>Laffont Plomberie</h3><p>Urgence 7j/7, zones, devis</p><span class="link-chev">Visiter le site <span>›</span></span></div>
+      <a class="pf rv" href="/plombier/" data-ob="#0a2540" style="--d:80ms">
+        <span class="pf-shot"><img src="/plombier/img/hero.webp" alt="" loading="lazy" width="600" height="450"><span class="pf-go" aria-hidden="true">↗</span></span>
+        <span class="pf-job">Plombier · Toulouse</span>
+        <span class="pf-name">Laffont Plomberie</span>
+        <span class="pf-st">Style tech et dégradés</span>
       </a>
-      <a class="pf rv" href="/restaurant/" style="--pf-bg:#16110d;--pf-ac:#d8a65b">
-        <div class="pf-shot"><img src="/restaurant/img/hero.webp" alt="Aperçu du site Le Comptoir des Carmes" loading="lazy" width="800" height="500"><span class="pf-url">malo-oneweb.fr/restaurant</span></div>
-        <div class="pf-txt"><span class="pf-job">Bistrot · Toulouse</span><h3>Le Comptoir des Carmes</h3><p>Carte, ardoise du jour, réservation</p><span class="link-chev">Visiter le site <span>›</span></span></div>
+      <a class="pf rv" href="/restaurant/" data-ob="#1d1b18" style="--d:160ms">
+        <span class="pf-shot"><img src="/restaurant/img/hero.webp" alt="" loading="lazy" width="600" height="450"><span class="pf-go" aria-hidden="true">↗</span></span>
+        <span class="pf-job">Restaurant · Toulouse</span>
+        <span class="pf-name">Le Comptoir des Carmes</span>
+        <span class="pf-st">Style éditorial</span>
       </a>
-      <a class="pf rv" href="/coiffeur/" style="--pf-bg:#faf6f1;--pf-ac:#b3705f">
-        <div class="pf-shot"><img src="/coiffeur/img/hero.webp" alt="Aperçu du site Atelier Lina" loading="lazy" width="800" height="500"><span class="pf-url">malo-oneweb.fr/coiffeur</span></div>
-        <div class="pf-txt"><span class="pf-job">Salon de coiffure · Carbonne</span><h3>Atelier Lina</h3><p>Tarifs, galerie, prise de rendez-vous</p><span class="link-chev">Visiter le site <span>›</span></span></div>
+      <a class="pf rv" href="/coiffeur/" data-ob="#fde8ec" style="--d:240ms">
+        <span class="pf-shot"><img src="/coiffeur/img/hero.webp" alt="" loading="lazy" width="600" height="450"><span class="pf-go" aria-hidden="true">↗</span></span>
+        <span class="pf-job">Coiffeur · Carbonne</span>
+        <span class="pf-name">Atelier Lina</span>
+        <span class="pf-st">Style beauté pop</span>
       </a>
     </div>
   </div>
+  <div class="pf-veil" id="pfVeil" aria-hidden="true"></div>
 </section>
 
 <!-- PROCESS -->
@@ -1228,6 +1242,22 @@ const onScroll = () => {
 };
 addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });
 onScroll();
+
+// Portfolio : ouverture du site par un rideau aux couleurs du site
+(() => {
+  const veil = document.getElementById('pfVeil'); if (!veil) return;
+  document.querySelectorAll('.pf').forEach(a => a.addEventListener('click', e => {
+    if (still || e.metaKey || e.ctrlKey || e.shiftKey || e.button) return;
+    e.preventDefault();
+    const r = a.querySelector('.pf-shot').getBoundingClientRect();
+    veil.className = 'pf-veil'; veil.style.background = a.dataset.ob;
+    veil.style.inset = `${r.top}px ${innerWidth - r.right}px ${innerHeight - r.bottom}px ${r.left}px`;
+    requestAnimationFrame(() => requestAnimationFrame(() => { veil.classList.add('go'); veil.style.inset = '0px'; veil.style.borderRadius = '0'; }));
+    setTimeout(() => { location.href = a.href; }, 620);
+  }));
+  // retour arrière (cache du navigateur) : on retire le rideau
+  addEventListener('pageshow', () => { veil.className = 'pf-veil'; });
+})();
 
 // Mini site d'exemple (boulangerie) : onglets et messages
 (() => {

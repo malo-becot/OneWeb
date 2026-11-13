@@ -9,7 +9,8 @@
 
 <title>Garage Delmas – Mécanique et entretien auto à Muret (démo)</title>
 <meta name="description" content="Site de démonstration réalisé par Malo OneWeb : garage automobile fictif à Muret (31).">
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@400;500&display=swap" rel="stylesheet">
+<meta name="theme-color" content="#f4f4f2">
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;scroll-padding-top:110px}
@@ -23,196 +24,225 @@ button{font:inherit;cursor:pointer}
 .demo-bar a:hover{background:#3c9bff}
 .demo-bar .back{background:transparent;border:1px solid rgba(255,255,255,.3)}
 @media (max-width:600px){.demo-bar{gap:8px;padding:7px 12px;font-size:12px}.demo-bar .fx{display:none}.demo-bar a{padding:3px 10px}}
+.opening{position:fixed;inset:0;z-index:200;background:var(--ob,#111);color:var(--of,#fff);display:grid;place-items:center;pointer-events:none;clip-path:inset(0 0 0 0);transition:clip-path .9s cubic-bezier(.77,0,.18,1)}
+.opening span{font:600 clamp(26px,5vw,56px)/1.1 system-ui,-apple-system,'Segoe UI',sans-serif;letter-spacing:-.03em;opacity:0;transform:translateY(16px);transition:opacity .5s,transform .7s cubic-bezier(.2,.8,.2,1);padding:0 24px;text-align:center}
+.opening small{display:block;font-size:12px;letter-spacing:.3em;text-transform:uppercase;opacity:.6;margin-top:12px;font-weight:500}
+.opening.show span{opacity:1;transform:none}
+.opening.out{clip-path:inset(0 0 100% 0)}
+.opening.out span{opacity:0;transform:translateY(-20px)}
+.no-open .opening{display:none}
 .toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,20px);z-index:99;background:#111;color:#fff;font:400 14px/1.3 system-ui,sans-serif;padding:12px 18px;border-radius:12px;opacity:0;pointer-events:none;transition:opacity .3s,transform .3s;max-width:calc(100% - 32px);text-align:center;box-shadow:0 10px 30px rgba(0,0,0,.25)}
 .toast.show{opacity:1;transform:translate(-50%,0)}
 .rv{opacity:0;transform:translateY(28px);transition:opacity .8s cubic-bezier(.2,.8,.2,1),transform .8s cubic-bezier(.2,.8,.2,1)}
 .rv.in{opacity:1;transform:none}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}html{scroll-behavior:auto}}
 
-:root{--bg:#0f1114;--bg2:#171a1f;--card:#1d2127;--line:#2a2f37;--txt:#eef1f5;--mute:#9aa3ae;--acc:#ffc21a;--acc2:#ff8a00}
-body{background:var(--bg);color:var(--txt);font:400 16px/1.55 'Barlow',system-ui,sans-serif}
-h1,h2,h3,.cond{font-family:'Barlow Condensed',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.01em;line-height:.95}
-.wrap{width:min(1180px,100% - 40px);margin:0 auto}
-.btn{display:inline-flex;align-items:center;gap:10px;font:600 15px/1 'Barlow',sans-serif;padding:15px 22px;border-radius:4px;border:0;transition:transform .2s,background .2s}
-.btn-y{background:var(--acc);color:#111}.btn-y:hover{background:#ffd451;transform:translateY(-2px)}
-.btn-o{border:1px solid rgba(255,255,255,.3);color:#fff;background:transparent}.btn-o:hover{background:rgba(255,255,255,.08)}
-.btn svg{width:18px;height:18px}
-/* en-tête */
-header{position:sticky;top:0;z-index:50;background:rgba(15,17,20,.88);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
-.nav{display:flex;align-items:center;gap:28px;height:68px}
-.logo{display:flex;align-items:center;gap:10px;font:700 24px/1 'Barlow Condensed',sans-serif;text-transform:uppercase;letter-spacing:.02em;margin-right:auto}
-.logo i{width:34px;height:34px;border-radius:4px;background:var(--acc);display:grid;place-items:center;color:#111;font-style:normal;font-size:20px}
-.logo small{display:block;font:500 11px 'Barlow',sans-serif;letter-spacing:.18em;color:var(--mute)}
-.nav nav{display:flex;gap:26px;font-weight:500;font-size:15px;color:var(--mute)}
-.nav nav a:hover{color:#fff}
-@media (max-width:860px){.nav nav{display:none}.nav .btn{padding:12px 14px}.nav .btn span{display:none}}
-/* hero */
-.hero{position:relative;min-height:min(86vh,760px);display:flex;align-items:flex-end;padding:120px 0 70px;overflow:hidden}
-.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.08);animation:zoom 14s ease-out forwards}
-@keyframes zoom{to{transform:scale(1)}}
-.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(15,17,20,.95) 0%,rgba(15,17,20,.75) 45%,rgba(15,17,20,.2) 100%),linear-gradient(0deg,var(--bg),transparent 40%)}
-.hero .wrap{position:relative;z-index:1}
-.tag{display:inline-flex;align-items:center;gap:8px;font:600 13px 'Barlow',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--acc)}
-.tag::before{content:"";width:28px;height:2px;background:var(--acc)}
-.hero h1{font-size:clamp(52px,8.5vw,112px);margin:18px 0 20px;max-width:12ch}
-.hero h1 em{font-style:normal;color:var(--acc)}
-.hero p{font-size:19px;color:#c9d0d8;max-width:46ch}
-.hero .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:32px}
-.trust{display:flex;gap:36px;flex-wrap:wrap;margin-top:46px;padding-top:26px;border-top:1px solid rgba(255,255,255,.12)}
-.trust b{display:block;font:700 34px/1 'Barlow Condensed',sans-serif;color:#fff}
-.trust span{font-size:13px;color:var(--mute);text-transform:uppercase;letter-spacing:.1em}
-/* bandeau */
-.strip{background:var(--acc);color:#111;overflow:hidden;white-space:nowrap}
-.strip div{display:inline-flex;gap:46px;padding:14px 0;animation:mq 30s linear infinite;font:700 20px 'Barlow Condensed',sans-serif;text-transform:uppercase;letter-spacing:.04em}
-.strip span::after{content:"●";margin-left:46px;font-size:10px;vertical-align:middle}
-@keyframes mq{to{transform:translateX(-50%)}}
-section{padding:100px 0}
-.head{display:flex;justify-content:space-between;align-items:end;gap:30px;flex-wrap:wrap;margin-bottom:48px}
-.head h2{font-size:clamp(40px,5.5vw,68px);margin-top:14px}
-.head p{color:var(--mute);max-width:42ch}
-/* prestations */
-.svc{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
-.svc article{background:var(--bg2);padding:30px;display:flex;flex-direction:column;gap:12px;transition:background .25s}
-.svc article:hover{background:var(--card)}
-.svc .ic{width:46px;height:46px;border-radius:4px;border:1px solid var(--line);display:grid;place-items:center;color:var(--acc)}
-.svc .ic svg{width:24px;height:24px}
-.svc h3{font-size:30px}
-.svc p{color:var(--mute);font-size:15px}
-.svc .pr{margin-top:auto;padding-top:14px;display:flex;justify-content:space-between;align-items:baseline;border-top:1px dashed var(--line)}
-.svc .pr b{font:700 30px/1 'Barlow Condensed',sans-serif;color:var(--acc)}
-.svc .pr span{font-size:13px;color:var(--mute)}
-@media (max-width:900px){.svc{grid-template-columns:1fr 1fr}}@media (max-width:600px){.svc{grid-template-columns:1fr}}
+/* Inspiration : minimalisme automobile scandinave (type Polestar) */
+:root{--ob:#121212;--of:#f4f4f2;--bg:#f4f4f2;--paper:#fff;--ink:#121212;--mute:#6f6f6b;--line:#dcdcd7;--acc:#d9661f}
+body{background:var(--bg);color:var(--ink);font:300 16px/1.6 'Inter Tight',system-ui,sans-serif;letter-spacing:-.005em}
+.wrap{width:min(1240px,100% - 48px);margin:0 auto}
+.micro{font-size:11px;font-weight:500;letter-spacing:.22em;text-transform:uppercase}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:12px;font:400 14px/1 'Inter Tight',sans-serif;padding:17px 28px;border:1px solid var(--ink);background:var(--ink);color:#fff;transition:background .25s,color .25s}
+.btn:hover{background:transparent;color:var(--ink)}
+.btn.l{background:transparent;color:var(--ink)}.btn.l:hover{background:var(--ink);color:#fff}
+.btn.w{background:#fff;color:var(--ink);border-color:#fff}.btn.w:hover{background:transparent;color:#fff}
+.btn.wl{background:transparent;color:#fff;border-color:rgba(255,255,255,.6)}.btn.wl:hover{background:#fff;color:var(--ink)}
+.arrow{width:16px;height:10px}
+header{position:sticky;top:0;z-index:50;background:rgba(244,244,242,.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;height:64px;gap:36px}
+.logo{margin-right:auto;font-weight:500;font-size:15px;letter-spacing:.32em;text-transform:uppercase}
+.logo span{color:var(--acc)}
+.nav nav{display:flex;gap:30px;font-size:14px}
+.nav nav a{position:relative}.nav nav a::after{content:"";position:absolute;left:0;right:0;bottom:-4px;height:1px;background:var(--ink);transform:scaleX(0);transform-origin:right;transition:transform .35s}
+.nav nav a:hover::after{transform:scaleX(1);transform-origin:left}
+.nav .btn{padding:11px 18px;font-size:13px}
+@media (max-width:860px){.nav nav{display:none}}
+/* hero plein écran */
+.hero{position:relative;height:calc(100svh - 64px - 34px);min-height:560px;color:#fff;overflow:hidden}
+.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.06);animation:settle 2.4s cubic-bezier(.2,.8,.2,1) forwards}
+@keyframes settle{to{transform:scale(1)}}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(10,10,10,.78),rgba(10,10,10,.1) 60%,rgba(10,10,10,.25))}
+.hero .wrap{position:relative;z-index:1;height:100%;display:flex;flex-direction:column;justify-content:flex-end;padding-bottom:56px}
+.hero h1{font-size:clamp(46px,7.4vw,108px);font-weight:300;letter-spacing:-.045em;line-height:.95;max-width:13ch;margin:18px 0 26px}
+.hero-row{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;flex-wrap:wrap}
+.hero p{max-width:40ch;color:rgba(255,255,255,.82);font-size:17px}
+.hero .cta{display:flex;gap:10px;flex-wrap:wrap}
+/* chiffres */
+.facts{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid var(--line)}
+.facts div{padding:34px 24px 30px 0;border-right:1px solid var(--line);margin-right:24px}
+.facts div:last-child{border-right:0}
+.facts b{display:block;font-size:clamp(32px,3.6vw,48px);font-weight:300;letter-spacing:-.04em;line-height:1}
+.facts span{color:var(--mute);font-size:13px}
+@media (max-width:760px){.facts{grid-template-columns:1fr 1fr}.facts div{border-right:0;border-bottom:1px solid var(--line);margin-right:0}}
+section{padding:110px 0}
+.sh{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:end;margin-bottom:56px}
+.sh h2{font-size:clamp(34px,4.4vw,60px);font-weight:300;letter-spacing:-.04em;line-height:1;margin-top:16px}
+.sh p{color:var(--mute);max-width:44ch;justify-self:end}
+@media (max-width:860px){.sh{grid-template-columns:1fr}.sh p{justify-self:start}}
+/* prestations en lignes */
+.rows{border-top:1px solid var(--ink)}
+.r{display:grid;grid-template-columns:60px 1.1fr 1.6fr 140px;gap:24px;align-items:baseline;padding:26px 0;border-bottom:1px solid var(--line);transition:padding .35s,background .35s}
+.r:hover{padding-left:14px;background:var(--paper)}
+.r i{font-style:normal;color:var(--mute);font-size:13px}
+.r h3{font-size:24px;font-weight:400;letter-spacing:-.02em}
+.r p{color:var(--mute);font-size:15px}
+.r b{font-weight:400;font-size:22px;text-align:right;letter-spacing:-.02em}
+.r b small{display:block;font-size:11px;color:var(--mute);letter-spacing:.14em;text-transform:uppercase}
+@media (max-width:760px){.r{grid-template-columns:32px 1fr auto;gap:4px 14px}.r i{grid-row:1}.r h3{grid-column:2;grid-row:1}.r b{grid-column:3;grid-row:1}.r p{grid-column:2/-1;grid-row:2}.r:hover{padding-left:0}}
 /* atelier */
-.split{display:grid;grid-template-columns:1.1fr 1fr;gap:60px;align-items:center}
-.pics{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.pics img{width:100%;height:100%;object-fit:cover;border-radius:4px;aspect-ratio:4/5}
-.pics img:first-child{grid-row:span 2;aspect-ratio:auto}
-.checks{list-style:none;display:grid;gap:14px;margin-top:26px}
-.checks li{display:flex;gap:14px;align-items:flex-start}
-.checks li::before{content:"✓";flex:none;width:26px;height:26px;border-radius:50%;background:rgba(255,194,26,.14);color:var(--acc);display:grid;place-items:center;font-weight:600;font-size:14px}
-@media (max-width:900px){.split{grid-template-columns:1fr;gap:40px}}
-/* devis */
-.quote{background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-.calc{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
-.form{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:30px;display:grid;gap:16px}
-.form label{display:grid;gap:7px;font-size:13px;color:var(--mute);text-transform:uppercase;letter-spacing:.08em}
-.form input,.form select{font:400 16px 'Barlow',sans-serif;color:#fff;background:var(--bg);border:1px solid var(--line);border-radius:4px;padding:13px 14px;outline:none;transition:border-color .2s}
-.form input:focus,.form select:focus{border-color:var(--acc)}
-.row2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.estim{display:flex;justify-content:space-between;align-items:baseline;padding:16px 18px;border-radius:4px;background:rgba(255,194,26,.08);border:1px solid rgba(255,194,26,.3)}
-.estim b{font:700 34px/1 'Barlow Condensed',sans-serif;color:var(--acc)}
-@media (max-width:900px){.calc{grid-template-columns:1fr}}@media (max-width:520px){.row2{grid-template-columns:1fr}}
+.duo{display:grid;grid-template-columns:1.25fr 1fr;gap:0;background:var(--paper)}
+.duo img{width:100%;height:100%;object-fit:cover;min-height:520px}
+.duo .txt{padding:clamp(32px,6vw,80px);display:flex;flex-direction:column;justify-content:center}
+.duo h2{font-size:clamp(32px,3.8vw,52px);font-weight:300;letter-spacing:-.04em;line-height:1.02;margin:16px 0 20px}
+.list{list-style:none;margin-top:26px;border-top:1px solid var(--line)}
+.list li{padding:14px 0;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:16px}
+.list li span{color:var(--acc)}
+@media (max-width:860px){.duo{grid-template-columns:1fr}.duo img{min-height:320px}}
+/* estimation */
+.est{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:start}
+.form{display:grid;gap:26px}
+.field{display:grid;gap:10px}
+.field>span{color:var(--mute)}
+.seg{display:flex;flex-wrap:wrap;gap:8px}
+.seg button{border:1px solid var(--line);background:transparent;padding:11px 16px;font:400 14px 'Inter Tight',sans-serif;color:var(--ink);transition:all .2s}
+.seg button:hover{border-color:var(--ink)}.seg button.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.total{display:flex;justify-content:space-between;align-items:baseline;border-top:1px solid var(--ink);padding-top:20px}
+.total b{font-size:clamp(44px,5vw,64px);font-weight:300;letter-spacing:-.05em;line-height:1}
+.total b small{font-size:.4em;color:var(--mute);letter-spacing:0}
+.form input{font:300 17px 'Inter Tight',sans-serif;background:transparent;border:0;border-bottom:1px solid var(--line);padding:12px 0;outline:none;color:var(--ink);transition:border-color .2s;width:100%}
+.form input:focus{border-color:var(--ink)}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media (max-width:860px){.est{grid-template-columns:1fr;gap:40px}}@media (max-width:520px){.row2{grid-template-columns:1fr}}
 /* avis */
-.reviews{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.reviews figure{background:var(--bg2);border:1px solid var(--line);border-radius:6px;padding:26px}
-.reviews .st{color:var(--acc);letter-spacing:3px}
-.reviews blockquote{margin:14px 0 18px;color:#d8dde3}
-.reviews figcaption{font-size:14px;color:var(--mute)}
-@media (max-width:900px){.reviews{grid-template-columns:1fr}}
+.quotes{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line)}
+.quotes figure{padding:34px 30px 10px 0;border-right:1px solid var(--line);margin-right:30px}
+.quotes figure:last-child{border-right:0}
+.quotes blockquote{font-size:21px;line-height:1.4;letter-spacing:-.015em;font-weight:300}
+.quotes figcaption{margin-top:20px;color:var(--mute);font-size:13px}
+.quotes .st{color:var(--acc);letter-spacing:3px;font-size:12px;margin-bottom:14px}
+@media (max-width:860px){.quotes{grid-template-columns:1fr}.quotes figure{border-right:0;border-bottom:1px solid var(--line);margin-right:0;padding-bottom:30px}}
 /* infos */
-.info{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
-.info>div{background:var(--bg2);border:1px solid var(--line);border-radius:6px;padding:26px}
-.info h3{font-size:26px;margin-bottom:14px;color:var(--acc)}
-.hours{display:grid;grid-template-columns:1fr auto;gap:8px 16px;font-size:15px}
-.hours .now{color:var(--acc);font-weight:500}
-@media (max-width:900px){.info{grid-template-columns:1fr}}
-footer{padding:40px 0;border-top:1px solid var(--line);color:var(--mute);font-size:14px}
-footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.dark{background:var(--ink);color:#fff}
+.info{display:grid;grid-template-columns:repeat(3,1fr);gap:40px}
+.info h3{font-size:11px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:18px}
+.info p,.hours{font-size:17px}
+.hours{display:grid;grid-template-columns:1fr auto;gap:8px 16px}
+.hours .now{color:var(--acc)}
+@media (max-width:860px){.info{grid-template-columns:1fr}}
+footer{background:var(--ink);color:rgba(255,255,255,.5);font-size:13px;padding:0 0 40px}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;border-top:1px solid rgba(255,255,255,.12);padding-top:26px}
+footer a{color:#fff}
 </style>
 </head>
 <body>
+<div class="opening" id="opening" aria-hidden="true"><span></span></div>
 <div class="demo-bar" role="note"><span><b>Site de démonstration</b><span class="fx"> réalisé par Malo OneWeb · entreprise fictive</span></span><a class="back" href="/#portfolio">← Portfolio</a><a href="/#contact">Créer mon site</a></div>
 
 <header><div class="wrap nav">
-  <a href="#top" class="logo"><i>D</i><span>Garage Delmas<small>Muret · depuis 1998</small></span></a>
-  <nav><a href="#prestations">Prestations</a><a href="#atelier">L'atelier</a><a href="#devis">Devis</a><a href="#infos">Infos</a></nav>
-  <a class="btn btn-y" href="#" data-demo="📞 Appel vers le garage (numéro fictif)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg><span>05 61 00 00 00</span></a>
+  <a href="#top" class="logo">Delmas<span>.</span></a>
+  <nav><a href="#prestations">Prestations</a><a href="#atelier">Atelier</a><a href="#estimation">Estimation</a><a href="#infos">Contact</a></nav>
+  <a class="btn" href="#estimation">Prendre rendez-vous</a>
 </div></header>
 
 <main id="top">
-<section class="hero">
+<section class="hero" style="padding:0">
   <img src="img/hero.webp" alt="Atelier de mécanique lumineux avec des voitures sur pont élévateur" fetchpriority="high">
   <div class="wrap">
-    <div class="tag">Mécanique toutes marques · Muret (31)</div>
-    <h1>Votre voiture entre de <em>bonnes mains.</em></h1>
-    <p>Entretien, réparation, pneus et diagnostic électronique. Devis clair avant toute intervention, véhicule de courtoisie sur demande.</p>
-    <div class="cta"><a class="btn btn-y" href="#devis">Estimer mon entretien →</a><a class="btn btn-o" href="#prestations">Nos prestations</a></div>
-    <div class="trust"><div><b>25 ans</b><span>d'expérience</span></div><div><b>4,8/5</b><span>212 avis Google</span></div><div><b>48 h</b><span>délai moyen</span></div></div>
+    <div class="micro">Garage indépendant · Muret (31)</div>
+    <h1>L'entretien automobile, sans compromis.</h1>
+    <div class="hero-row">
+      <p>Mécanique toutes marques, diagnostic électronique et pneumatiques. Un devis clair avant chaque intervention.</p>
+      <div class="cta"><a class="btn w" href="#estimation">Estimer mon entretien <svg class="arrow" viewBox="0 0 16 10" fill="none" stroke="currentColor"><path d="M0 5h15M11 1l4 4-4 4"/></svg></a><a class="btn wl" href="#prestations">Prestations</a></div>
+    </div>
   </div>
 </section>
 
-<div class="strip" aria-hidden="true"><div><span>Vidange</span><span>Freinage</span><span>Pneumatiques</span><span>Climatisation</span><span>Diagnostic</span><span>Distribution</span><span>Contrôle technique</span><span>Vidange</span><span>Freinage</span><span>Pneumatiques</span><span>Climatisation</span><span>Diagnostic</span><span>Distribution</span><span>Contrôle technique</span></div></div>
+<div class="wrap facts rv">
+  <div><b>25 ans</b><span>d'expérience à Muret</span></div>
+  <div><b>4,8/5</b><span>212 avis Google</span></div>
+  <div><b>48 h</b><span>délai moyen d'intervention</span></div>
+  <div><b>2 ans</b><span>de garantie sur les pièces</span></div>
+</div>
 
 <section id="prestations">
   <div class="wrap">
-    <div class="head rv"><div><div class="tag">Prestations</div><h2>Tarifs clairs,<br>sans surprise.</h2></div><p>Prix indicatifs pour une citadine, pièces et main-d'œuvre comprises. Devis précis gratuit pour votre véhicule.</p></div>
-    <div class="svc rv">
-      <article><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3c3 4 5 6.5 5 9a5 5 0 0 1-10 0c0-2.5 2-5 5-9z"/></svg></div><h3>Vidange</h3><p>Huile adaptée au constructeur, filtre à huile et contrôle des niveaux.</p><div class="pr"><span>à partir de</span><b>89 €</b></div></article>
-      <article><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/></svg></div><h3>Freinage</h3><p>Plaquettes, disques et liquide de frein, contrôle sur banc.</p><div class="pr"><span>à partir de</span><b>129 €</b></div></article>
-      <article><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 3v4M12 17v4M3 12h4M17 12h4"/></svg></div><h3>Pneumatiques</h3><p>Montage, équilibrage et géométrie. Toutes marques en stock.</p><div class="pr"><span>montage dès</span><b>15 €</b></div></article>
-      <article><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2v20M4 6l16 12M20 6 4 18"/></svg></div><h3>Climatisation</h3><p>Recharge, recherche de fuite et désinfection du circuit.</p><div class="pr"><span>recharge</span><b>79 €</b></div></article>
-      <article><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="12" rx="2"/><path d="M7 21h10M7 10l3 3 7-6"/></svg></div><h3>Diagnostic</h3><p>Lecture des codes défaut et explication claire du problème.</p><div class="pr"><span>forfait</span><b>49 €</b></div></article>
-      <article><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 7h16M4 12h16M4 17h10"/></svg></div><h3>Révision</h3><p>Entretien constructeur complet, carnet tamponné, garantie préservée.</p><div class="pr"><span>à partir de</span><b>169 €</b></div></article>
+    <div class="sh rv"><div><div class="micro">Prestations</div><h2>Des tarifs affichés, sans surprise.</h2></div><p>Prix indicatifs pour une citadine, pièces et main-d'œuvre comprises. Devis précis gratuit pour votre véhicule.</p></div>
+    <div class="rows rv">
+      <div class="r"><i>01</i><h3>Vidange</h3><p>Huile constructeur, filtre et contrôle des niveaux.</p><b><small>dès</small>89 €</b></div>
+      <div class="r"><i>02</i><h3>Freinage</h3><p>Plaquettes, disques et liquide, contrôle sur banc.</p><b><small>dès</small>129 €</b></div>
+      <div class="r"><i>03</i><h3>Révision</h3><p>Entretien constructeur complet, garantie préservée.</p><b><small>dès</small>169 €</b></div>
+      <div class="r"><i>04</i><h3>Pneumatiques</h3><p>Montage, équilibrage et géométrie, toutes marques.</p><b><small>montage</small>15 €</b></div>
+      <div class="r"><i>05</i><h3>Climatisation</h3><p>Recharge, recherche de fuite et désinfection.</p><b><small>recharge</small>79 €</b></div>
+      <div class="r"><i>06</i><h3>Diagnostic</h3><p>Lecture des codes défaut, explication claire.</p><b><small>forfait</small>49 €</b></div>
     </div>
   </div>
 </section>
 
-<section id="atelier" style="padding-top:0">
-  <div class="wrap split">
-    <div class="pics rv"><img src="img/moteur.webp" alt="Mécanicien penché sur un moteur" loading="lazy"><img src="img/engine.webp" alt="Bloc moteur" loading="lazy"><img src="img/atelier.webp" alt="Voiture dans l'atelier" loading="lazy"></div>
-    <div class="rv">
-      <div class="tag">L'atelier</div>
-      <h2 style="font-size:clamp(40px,5vw,62px);margin-top:14px">Un garage indépendant, une équipe de confiance.</h2>
-      <p style="color:var(--mute);margin-top:18px">Trois mécaniciens qualifiés, un équipement de diagnostic récent et des pièces d'origine ou de qualité équivalente.</p>
-      <ul class="checks"><li>Devis écrit et validé avant chaque intervention</li><li>Véhicule de courtoisie selon disponibilité</li><li>Pièces garanties 2 ans</li><li>Toutes marques, y compris hybrides</li></ul>
+<section id="atelier" style="padding:0">
+  <div class="duo rv">
+    <img src="img/moteur.webp" alt="Mécanicien penché sur un moteur" loading="lazy">
+    <div class="txt">
+      <div class="micro" style="color:var(--mute)">L'atelier</div>
+      <h2>Trois mécaniciens. Un seul standard d'exigence.</h2>
+      <p style="color:var(--mute)">Un équipement de diagnostic récent, des pièces d'origine ou équivalentes, et le temps de vous expliquer chaque intervention.</p>
+      <ul class="list"><li>Devis écrit avant travaux<span>✓</span></li><li>Véhicule de courtoisie<span>✓</span></li><li>Hybrides et électriques<span>✓</span></li></ul>
     </div>
   </div>
 </section>
 
-<section id="devis" class="quote">
-  <div class="wrap calc">
+<section id="estimation">
+  <div class="wrap est">
     <div class="rv">
-      <div class="tag">Estimation en ligne</div>
-      <h2 style="font-size:clamp(40px,5vw,62px);margin-top:14px">Combien va coûter mon entretien&nbsp;?</h2>
-      <p style="color:var(--mute);margin-top:18px">Choisissez la prestation et votre type de véhicule : l'estimation s'affiche tout de suite. Laissez vos coordonnées, nous vous rappelons pour fixer un rendez-vous.</p>
+      <div class="micro">Estimation en ligne</div>
+      <h2 style="font-size:clamp(34px,4.4vw,60px);font-weight:300;letter-spacing:-.04em;line-height:1;margin:16px 0 20px">Configurez votre entretien.</h2>
+      <p style="color:var(--mute);max-width:40ch">Choisissez la prestation et votre véhicule : le prix se met à jour instantanément. Laissez votre numéro, nous vous rappelons pour fixer le rendez-vous.</p>
     </div>
-    <form class="form rv" data-demo-form="✅ Demande envoyée ! (démonstration : rien n'a été transmis)">
-      <div class="row2">
-        <label>Prestation<select id="gP"><option value="89">Vidange</option><option value="129">Freinage</option><option value="169">Révision</option><option value="79">Climatisation</option><option value="49">Diagnostic</option></select></label>
-        <label>Véhicule<select id="gV"><option value="1">Citadine</option><option value="1.2">Berline / SUV</option><option value="1.4">Utilitaire</option></select></label>
-      </div>
-      <div class="estim"><span>Estimation indicative</span><b id="gE">89 €</b></div>
-      <div class="row2"><label>Nom<input required autocomplete="off" placeholder="Votre nom"></label><label>Téléphone<input required type="tel" autocomplete="off" placeholder="06 …"></label></div>
-      <button class="btn btn-y" style="justify-content:center">Être rappelé</button>
+    <form class="form rv" data-demo-form="Demande envoyée. (Démonstration : rien n'a été transmis.)">
+      <div class="field"><span>Prestation</span><div class="seg" id="gP"><button type="button" class="on" data-v="89">Vidange</button><button type="button" data-v="129">Freinage</button><button type="button" data-v="169">Révision</button><button type="button" data-v="79">Climatisation</button><button type="button" data-v="49">Diagnostic</button></div></div>
+      <div class="field"><span>Véhicule</span><div class="seg" id="gV"><button type="button" class="on" data-v="1">Citadine</button><button type="button" data-v="1.2">Berline / SUV</button><button type="button" data-v="1.4">Utilitaire</button></div></div>
+      <div class="total"><span>Estimation</span><b id="gE">89 €<small> TTC</small></b></div>
+      <div class="row2"><input required autocomplete="off" placeholder="Nom" aria-label="Nom"><input required type="tel" autocomplete="off" placeholder="Téléphone" aria-label="Téléphone"></div>
+      <button class="btn">Être rappelé <svg class="arrow" viewBox="0 0 16 10" fill="none" stroke="currentColor"><path d="M0 5h15M11 1l4 4-4 4"/></svg></button>
     </form>
   </div>
 </section>
 
-<section id="avis">
+<section id="avis" style="padding-top:0">
   <div class="wrap">
-    <div class="head rv"><div><div class="tag">Avis clients</div><h2>4,8/5 sur Google.</h2></div><p>Ce que nos clients disent de nous (avis fictifs, pour la démonstration).</p></div>
-    <div class="reviews rv">
-      <figure><div class="st">★★★★★</div><blockquote>« Devis respecté au centime près, voiture prête le lendemain. Enfin un garage honnête. »</blockquote><figcaption>Sophie · Muret</figcaption></figure>
-      <figure><div class="st">★★★★★</div><blockquote>« Panne diagnostiquée en 20 minutes alors que deux autres garages séchaient. Merci ! »</blockquote><figcaption>Karim · Seysses</figcaption></figure>
-      <figure><div class="st">★★★★★</div><blockquote>« Accueil top, explications claires et prix corrects. Je recommande les yeux fermés. »</blockquote><figcaption>Jean-Pierre · Eaunes</figcaption></figure>
+    <div class="sh rv"><div><div class="micro">Avis clients · 4,8/5</div><h2>Ils nous confient leur voiture.</h2></div><p>Avis fictifs, pour la démonstration.</p></div>
+    <div class="quotes rv">
+      <figure><div class="st">★★★★★</div><blockquote>« Devis respecté au centime près, voiture prête le lendemain. »</blockquote><figcaption>Sophie — Muret</figcaption></figure>
+      <figure><div class="st">★★★★★</div><blockquote>« Panne trouvée en vingt minutes, là où deux garages avaient séché. »</blockquote><figcaption>Karim — Seysses</figcaption></figure>
+      <figure><div class="st">★★★★★</div><blockquote>« Accueil impeccable et explications claires. Je recommande. »</blockquote><figcaption>Jean-Pierre — Eaunes</figcaption></figure>
     </div>
   </div>
 </section>
 
-<section id="infos" style="padding-top:0">
+<section id="infos" class="dark">
   <div class="wrap info rv">
-    <div><h3 class="cond">Horaires</h3><div class="hours" id="gH"><span>Lundi – Vendredi</span><span>8h – 12h · 14h – 18h30</span><span>Samedi</span><span>8h – 12h</span><span>Dimanche</span><span>Fermé</span></div></div>
-    <div><h3 class="cond">Adresse</h3><p>Zone artisanale, avenue de la Garonne<br>31600 Muret (adresse fictive)</p><a class="btn btn-o" style="margin-top:18px" href="#" data-demo="🗺️ Ouverture de l'itinéraire (démonstration)">Itinéraire</a></div>
-    <div><h3 class="cond">Contact</h3><p>05 61 00 00 00<br>contact@garage-delmas.fr</p><a class="btn btn-y" style="margin-top:18px" href="#" data-demo="📞 Appel vers le garage (numéro fictif)">Appeler</a></div>
+    <div><h3>Horaires</h3><div class="hours" id="gH"><span>Lundi – Vendredi</span><span>8h – 18h30</span><span>Samedi</span><span>8h – 12h</span><span>Dimanche</span><span>Fermé</span></div></div>
+    <div><h3>Adresse</h3><p>Avenue de la Garonne<br>31600 Muret (adresse fictive)</p><a class="btn wl" style="margin-top:22px" href="#" data-demo="Ouverture de l'itinéraire (démonstration)">Itinéraire</a></div>
+    <div><h3>Contact</h3><p>05 61 00 00 00<br>contact@garage-delmas.fr</p><a class="btn w" style="margin-top:22px" href="#" data-demo="Appel vers le garage (numéro fictif)">Appeler</a></div>
   </div>
 </section>
 </main>
-<footer><div class="wrap"><span>© <span data-year></span> Garage Delmas · entreprise fictive</span><span>Site réalisé par <a href="/" style="color:var(--acc)">Malo OneWeb</a></span></div></footer>
+<footer><div class="wrap"><span>© <span data-year></span> Garage Delmas — entreprise fictive</span><span>Site réalisé par <a href="/">Malo OneWeb</a></span></div></footer>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 <script>
 (() => {
   const t = document.getElementById('toast'); let tt;
   window.say = m => { t.textContent = m; t.classList.add('show'); clearTimeout(tt); tt = setTimeout(() => t.classList.remove('show'), 2600); };
+  // ouverture : rideau aux couleurs du site, une fois par visite
+  const op = document.getElementById('opening'), key = 'open:' + location.pathname;
+  let seen = false; try { seen = sessionStorage.getItem(key); sessionStorage.setItem(key, 1); } catch (e) {}
+  if (seen || matchMedia('(prefers-reduced-motion: reduce)').matches) op.remove();
+  else {
+    const [name] = document.title.split(' – ');
+    op.firstElementChild.innerHTML = name + '<small>Site de démonstration</small>';
+    requestAnimationFrame(() => op.classList.add('show'));
+    setTimeout(() => op.classList.add('out'), 850);
+    setTimeout(() => op.remove(), 1900);
+  }
   // liens « démo » : appel, itinéraire, réseaux… affichent un message au lieu d'agir
   document.addEventListener('click', e => {
     const a = e.target.closest('[data-demo]'); if (!a) return;
@@ -226,6 +256,9 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
   // apparitions au défilement
   const io = new IntersectionObserver(es => es.forEach(x => { if (x.isIntersecting) { x.target.classList.add('in'); io.unobserve(x.target); } }), { threshold: .12 });
   document.querySelectorAll('.rv').forEach(el => io.observe(el));
+  // sécurité : un bloc déjà au-dessus du bas de l'écran s'affiche toujours (défilement rapide, ancres)
+  let tk = 0; const sweep = () => { tk = 0; document.querySelectorAll('.rv:not(.in)').forEach(el => { if (el.getBoundingClientRect().top < innerHeight) el.classList.add('in'); }); };
+  addEventListener('scroll', () => { if (!tk) tk = requestAnimationFrame(sweep); }, { passive: true }); addEventListener('load', sweep);
   // année
   document.querySelectorAll('[data-year]').forEach(el => el.textContent = new Date().getFullYear());
 })();
@@ -233,9 +266,9 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
 
 <script>
 (() => {
-  const p = document.getElementById('gP'), v = document.getElementById('gV'), e = document.getElementById('gE');
-  const up = () => { e.textContent = Math.round(p.value * v.value) + ' €'; };
-  p.addEventListener('change', up); v.addEventListener('change', up);
+  const P = document.getElementById('gP'), V = document.getElementById('gV'), E = document.getElementById('gE');
+  const up = () => { E.innerHTML = Math.round(P.querySelector('.on').dataset.v * V.querySelector('.on').dataset.v) + ' €<small> TTC</small>'; };
+  [P, V].forEach(g => g.addEventListener('click', e => { const b = e.target.closest('button'); if (!b) return; g.querySelectorAll('button').forEach(x => x.classList.toggle('on', x === b)); up(); }));
   const d = new Date().getDay(), c = document.querySelectorAll('#gH span'), r = d === 0 ? 2 : d === 6 ? 1 : 0;
   c[r * 2].classList.add('now'); c[r * 2 + 1].classList.add('now');
 })();

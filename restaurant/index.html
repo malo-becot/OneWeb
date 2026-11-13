@@ -9,7 +9,8 @@
 
 <title>Le Comptoir des Carmes – Bistrot à Toulouse (démo)</title>
 <meta name="description" content="Site de démonstration réalisé par Malo OneWeb : bistrot fictif dans le quartier des Carmes à Toulouse.">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<meta name="theme-color" content="#efe9df">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;scroll-padding-top:110px}
@@ -23,200 +24,232 @@ button{font:inherit;cursor:pointer}
 .demo-bar a:hover{background:#3c9bff}
 .demo-bar .back{background:transparent;border:1px solid rgba(255,255,255,.3)}
 @media (max-width:600px){.demo-bar{gap:8px;padding:7px 12px;font-size:12px}.demo-bar .fx{display:none}.demo-bar a{padding:3px 10px}}
+.opening{position:fixed;inset:0;z-index:200;background:var(--ob,#111);color:var(--of,#fff);display:grid;place-items:center;pointer-events:none;clip-path:inset(0 0 0 0);transition:clip-path .9s cubic-bezier(.77,0,.18,1)}
+.opening span{font:600 clamp(26px,5vw,56px)/1.1 system-ui,-apple-system,'Segoe UI',sans-serif;letter-spacing:-.03em;opacity:0;transform:translateY(16px);transition:opacity .5s,transform .7s cubic-bezier(.2,.8,.2,1);padding:0 24px;text-align:center}
+.opening small{display:block;font-size:12px;letter-spacing:.3em;text-transform:uppercase;opacity:.6;margin-top:12px;font-weight:500}
+.opening.show span{opacity:1;transform:none}
+.opening.out{clip-path:inset(0 0 100% 0)}
+.opening.out span{opacity:0;transform:translateY(-20px)}
+.no-open .opening{display:none}
 .toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,20px);z-index:99;background:#111;color:#fff;font:400 14px/1.3 system-ui,sans-serif;padding:12px 18px;border-radius:12px;opacity:0;pointer-events:none;transition:opacity .3s,transform .3s;max-width:calc(100% - 32px);text-align:center;box-shadow:0 10px 30px rgba(0,0,0,.25)}
 .toast.show{opacity:1;transform:translate(-50%,0)}
 .rv{opacity:0;transform:translateY(28px);transition:opacity .8s cubic-bezier(.2,.8,.2,1),transform .8s cubic-bezier(.2,.8,.2,1)}
 .rv.in{opacity:1;transform:none}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}html{scroll-behavior:auto}}
 
-:root{--bg:#16110d;--bg2:#1f1813;--card:#261e18;--line:rgba(232,206,170,.16);--txt:#f3e9dc;--mute:#b6a48e;--gold:#d8a65b;--wine:#8e2c2c}
-body{background:var(--bg);color:var(--txt);font:300 17px/1.65 'Jost',system-ui,sans-serif}
-.serif{font-family:'Cormorant Garamond',Georgia,serif;font-weight:500;letter-spacing:-.01em;line-height:1}
-.wrap{width:min(1140px,100% - 40px);margin:0 auto}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font:400 14px/1 'Jost',sans-serif;letter-spacing:.14em;text-transform:uppercase;padding:16px 26px;border:1px solid var(--gold);color:var(--gold);background:transparent;transition:background .3s,color .3s}
-.btn:hover,.btn.f{background:var(--gold);color:var(--bg)}
-.btn.f:hover{background:#e6bb78}
-.eyebrow{font-size:12px;letter-spacing:.32em;text-transform:uppercase;color:var(--gold)}
-header{position:sticky;top:0;z-index:50;transition:background .3s,border-color .3s;border-bottom:1px solid transparent}
-header.s{background:rgba(22,17,13,.9);backdrop-filter:blur(10px);border-color:var(--line)}
-.nav{display:flex;align-items:center;height:76px;gap:32px}
-.logo{margin-right:auto;font-size:28px}
-.logo em{color:var(--gold)}
-.nav nav{display:flex;gap:28px;font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:var(--mute)}
-.nav nav a:hover{color:var(--txt)}
-@media (max-width:860px){.nav nav{display:none}.nav .btn{padding:12px 16px}.logo{font-size:22px}}
-.hero{position:relative;height:calc(100svh - 110px);min-height:560px;display:grid;place-items:center;text-align:center;overflow:hidden;margin-top:-76px}
-.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;animation:slow 20s ease-out forwards}
-@keyframes slow{from{transform:scale(1.12)}to{transform:scale(1)}}
-.hero::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(22,17,13,.45),rgba(22,17,13,.88) 75%),linear-gradient(0deg,var(--bg),transparent 30%)}
-.hero>div{position:relative;z-index:1;padding:0 20px}
-.hero h1{font-size:clamp(56px,10vw,128px);margin:22px 0 18px}
-.hero h1 em{font-style:italic;color:var(--gold)}
-.hero p{color:#e3d4c0;max-width:40ch;margin:0 auto}
-.hero .cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:34px}
-.orn{display:flex;align-items:center;justify-content:center;gap:14px;color:var(--gold)}
-.orn::before,.orn::after{content:"";width:46px;height:1px;background:var(--gold);opacity:.6}
-section{padding:110px 0}
+/* Inspiration : éditorial gastronomique, papier et typographie (type Noma / Aesop) */
+:root{--ob:#1d1b18;--of:#efe9df;--paper:#efe9df;--paper2:#e6ddcf;--ink:#1d1b18;--mute:#6e665b;--line:#cfc4b2;--acc:#9b3d25}
+body{background:var(--paper);color:var(--ink);font:400 15px/1.65 'Inter',system-ui,sans-serif}
+.serif{font-family:'Instrument Serif',Georgia,serif;font-weight:400;letter-spacing:-.01em;line-height:.98}
+.serif em{font-style:italic}
+.wrap{width:min(1280px,100% - 48px);margin:0 auto}
+.cap{font-size:11px;font-weight:500;letter-spacing:.16em;text-transform:uppercase}
+.btn{display:inline-flex;align-items:center;gap:10px;font:500 12px/1 'Inter',sans-serif;letter-spacing:.14em;text-transform:uppercase;padding:15px 22px;border:1px solid var(--ink);background:var(--ink);color:var(--paper);transition:background .25s,color .25s}
+.btn:hover{background:transparent;color:var(--ink)}
+.btn.o{background:transparent;color:var(--ink)}.btn.o:hover{background:var(--ink);color:var(--paper)}
+header{position:sticky;top:0;z-index:50;background:rgba(239,233,223,.94);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;height:64px}
+.nav nav{display:flex;gap:26px}
+.nav nav a{font-size:12px;letter-spacing:.14em;text-transform:uppercase}
+.nav nav a:hover{color:var(--acc)}
+.logo{font-size:26px;text-align:center}
+.nav .r{display:flex;justify-content:flex-end}
+.nav .r .btn{padding:12px 18px}
+@media (max-width:860px){.nav{grid-template-columns:1fr auto}.nav nav{display:none}.logo{text-align:left;font-size:22px}}
+/* couverture */
+.cover{padding:46px 0 0}
+.cover-top{display:flex;justify-content:space-between;gap:20px;color:var(--mute);border-bottom:1px solid var(--ink);padding-bottom:12px}
+.cover h1{font-size:clamp(60px,14vw,220px);letter-spacing:-.035em;line-height:.88;margin:28px 0 34px}
+.cover h1 em{color:var(--acc)}
+.cover-grid{display:grid;grid-template-columns:1fr 2fr;gap:24px;align-items:end;padding-bottom:80px}
+.cover-grid p{font-size:17px;max-width:32ch}
+.cover-grid .cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:26px}
+.cover-img{overflow:hidden}
+.cover-img img{width:100%;aspect-ratio:16/9;object-fit:cover;animation:unveil 1.6s cubic-bezier(.7,0,.2,1) .2s both}
+@keyframes unveil{from{clip-path:inset(0 0 100% 0)}to{clip-path:inset(0 0 0 0)}}
+figcaption{margin-top:10px;color:var(--mute);font-size:12px}
+@media (max-width:860px){.cover-grid{grid-template-columns:1fr}}
+section{padding:110px 0;border-top:1px solid var(--line)}
 /* histoire */
-.story{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center}
-.story h2{font-size:clamp(42px,5vw,64px);margin:16px 0 22px}
-.story p{color:var(--mute);margin-bottom:14px}
-.story .imgs{position:relative}
-.story .imgs img{width:78%;aspect-ratio:3/4;object-fit:cover}
-.story .imgs img+img{position:absolute;right:0;bottom:-40px;width:52%;aspect-ratio:1;border:8px solid var(--bg)}
-.sign{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:30px;color:var(--gold);margin-top:20px}
-@media (max-width:900px){.story{grid-template-columns:1fr;gap:70px}}
+.story{display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px;align-items:start}
+.story h2{font-size:clamp(40px,4.6vw,66px);grid-column:1/-1;max-width:16ch;margin-bottom:24px}
+.story .txt p{margin-bottom:14px;color:#3d3832}
+.story .txt .drop:first-letter{font-family:'Instrument Serif',serif;font-size:3.6em;float:left;line-height:.8;margin:6px 8px 0 0;color:var(--acc)}
+.story img{width:100%;object-fit:cover}
+.story .i1{aspect-ratio:4/5}.story .i2{aspect-ratio:4/5}
+@media (max-width:900px){.story{grid-template-columns:1fr 1fr}.story .txt{grid-column:1/-1}}
 /* ardoise */
-.slate{background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-.slate .box{max-width:720px;margin:0 auto;text-align:center;border:1px solid var(--line);padding:50px 30px;position:relative}
-.slate .box::before{content:"";position:absolute;inset:8px;border:1px solid var(--line);pointer-events:none}
-.slate h2{font-size:clamp(40px,5vw,56px);margin:14px 0 6px}
-.slate .date{color:var(--mute);font-size:14px;letter-spacing:.12em;text-transform:uppercase}
-.slate ul{list-style:none;margin:30px 0 26px;display:grid;gap:16px}
-.slate li{font-family:'Cormorant Garamond',serif;font-size:24px}
-.slate li small{display:block;font:300 14px 'Jost',sans-serif;color:var(--mute);letter-spacing:.04em}
-.slate .px{font-family:'Cormorant Garamond',serif;font-size:44px;color:var(--gold)}
+.slate{background:var(--ink);color:var(--paper);border:0}
+.slate .wrap{display:grid;grid-template-columns:1fr 1.3fr;gap:60px;align-items:center}
+.slate h2{font-size:clamp(46px,6vw,88px)}
+.slate .date{color:#a99f90;margin-top:16px}
+.slate ol{list-style:none;counter-reset:c}
+.slate li{counter-increment:c;display:grid;grid-template-columns:44px 1fr;padding:20px 0;border-bottom:1px solid rgba(239,233,223,.18)}
+.slate li::before{content:"0" counter(c);font-size:12px;color:#a99f90;padding-top:8px}
+.slate li span{font-family:'Instrument Serif',serif;font-size:28px;line-height:1.1}
+.slate li small{display:block;color:#a99f90;font-size:13px;margin-top:4px;grid-column:2}
+.slate .px{display:flex;justify-content:space-between;align-items:baseline;padding-top:20px}
+.slate .px b{font-family:'Instrument Serif',serif;font-weight:400;font-size:56px}
+@media (max-width:860px){.slate .wrap{grid-template-columns:1fr;gap:30px}}
 /* carte */
-.menu-head{text-align:center;margin-bottom:40px}
-.menu-head h2{font-size:clamp(46px,6vw,72px);margin-top:14px}
-.tabs{display:flex;justify-content:center;gap:6px;flex-wrap:wrap;margin-bottom:40px}
-.tabs button{background:none;border:0;color:var(--mute);font-size:13px;letter-spacing:.2em;text-transform:uppercase;padding:10px 16px;border-bottom:1px solid transparent;transition:all .25s}
-.tabs button.on,.tabs button:hover{color:var(--gold);border-color:var(--gold)}
-.dishes{max-width:820px;margin:0 auto;display:none;gap:4px}
+.mh{display:flex;justify-content:space-between;align-items:end;gap:30px;flex-wrap:wrap;margin-bottom:40px}
+.mh h2{font-size:clamp(46px,6vw,88px)}
+.tabs{display:flex;gap:24px;flex-wrap:wrap}
+.tabs button{background:none;border:0;font:500 12px 'Inter',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);padding:6px 0;border-bottom:1px solid transparent;transition:all .25s}
+.tabs button.on,.tabs button:hover{color:var(--ink);border-color:var(--ink)}
+.dishes{display:none;grid-template-columns:1fr 1fr;column-gap:60px;border-top:1px solid var(--ink)}
 .dishes.on{display:grid;animation:fade .5s ease}
-@keyframes fade{from{opacity:0;transform:translateY(10px)}}
-.dish{display:grid;grid-template-columns:1fr auto;gap:4px 20px;padding:18px 0;border-bottom:1px dashed var(--line)}
-.dish h3{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:26px}
-.dish b{font-family:'Cormorant Garamond',serif;font-size:26px;color:var(--gold);font-weight:500}
-.dish p{grid-column:1/-1;color:var(--mute);font-size:15px}
-.dish .tg{font:400 11px 'Jost',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--bg);background:var(--gold);padding:2px 7px;margin-left:10px;vertical-align:middle}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}}
+.dish{display:grid;grid-template-columns:1fr auto;gap:2px 20px;padding:22px 0;border-bottom:1px solid var(--line)}
+.dish h3{font-family:'Instrument Serif',serif;font-weight:400;font-size:27px;line-height:1.1}
+.dish b{font-family:'Instrument Serif',serif;font-weight:400;font-size:26px}
+.dish p{grid-column:1/-1;color:var(--mute);font-size:14px}
+.dish .tg{font:500 10px 'Inter',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--acc);margin-left:10px;vertical-align:middle}
+@media (max-width:760px){.dishes{grid-template-columns:1fr}}
 /* galerie */
-.gal{display:grid;grid-template-columns:2fr 1fr 1fr;gap:10px}
-.gal img{width:100%;height:100%;object-fit:cover;aspect-ratio:1;transition:transform .6s,filter .6s;filter:saturate(.9)}
-.gal div{overflow:hidden}
-.gal div:hover img{transform:scale(1.06);filter:saturate(1.1)}
-.gal div:first-child{grid-row:span 2}
-.gal div:first-child img{aspect-ratio:auto}
-@media (max-width:700px){.gal{grid-template-columns:1fr 1fr}.gal div:first-child{grid-column:span 2;grid-row:auto}.gal div:first-child img{aspect-ratio:16/10}}
+.gal{display:grid;grid-template-columns:repeat(12,1fr);gap:24px;align-items:start}
+.gal figure{overflow:hidden}
+.gal img{width:100%;object-fit:cover;transition:transform 1s cubic-bezier(.2,.8,.2,1)}
+.gal figure:hover img{transform:scale(1.04)}
+.g1{grid-column:1/8}.g1 img{aspect-ratio:4/3}
+.g2{grid-column:9/13;margin-top:100px}.g2 img{aspect-ratio:3/4}
+@media (max-width:760px){.g1,.g2{grid-column:1/-1;margin-top:0}}
 /* réservation */
-.resa{display:grid;grid-template-columns:1fr 1.1fr;gap:60px;align-items:start}
-.resa h2{font-size:clamp(42px,5vw,62px);margin:16px 0 20px}
-.hours{display:grid;grid-template-columns:1fr auto;gap:10px 20px;margin-top:26px;color:var(--mute)}
-.hours .now{color:var(--gold)}
-.form{border:1px solid var(--line);padding:34px;display:grid;gap:18px;background:var(--bg2)}
-.form label{display:grid;gap:8px;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--mute)}
-.form input,.form select{font:300 17px 'Jost',sans-serif;color:var(--txt);background:transparent;border:0;border-bottom:1px solid var(--line);padding:10px 0;outline:none;transition:border-color .25s;color-scheme:dark}
-.form input:focus,.form select:focus{border-color:var(--gold)}
-.form select option{background:var(--bg2)}
-.slots{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
-.slots button{background:none;border:1px solid var(--line);color:var(--txt);padding:10px 0;font-size:15px;transition:all .2s}
-.slots button.on,.slots button:hover{border-color:var(--gold);color:var(--gold)}
-.slots button.on{background:rgba(216,166,91,.1)}
-.row2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-@media (max-width:900px){.resa{grid-template-columns:1fr}}@media (max-width:520px){.row2{grid-template-columns:1fr}.slots{grid-template-columns:repeat(3,1fr)}}
-footer{padding:50px 0;border-top:1px solid var(--line);text-align:center;color:var(--mute);font-size:14px}
-footer .logo{display:block;margin:0 auto 14px}
+.resa{display:grid;grid-template-columns:1fr 1fr;gap:80px}
+.resa h2{font-size:clamp(46px,6vw,88px);margin-bottom:24px}
+.hours{display:grid;grid-template-columns:1fr auto;border-top:1px solid var(--ink)}
+.hours span{padding:12px 0;border-bottom:1px solid var(--line)}
+.hours .now{color:var(--acc)}
+.form{display:grid;gap:26px;align-content:start}
+.form label{display:grid;gap:8px;color:var(--mute)}
+.form input,.form select{font:400 18px 'Inter',sans-serif;color:var(--ink);background:transparent;border:0;border-bottom:1px solid var(--ink);padding:8px 0;outline:none;border-radius:0;width:100%}
+.form input:focus,.form select:focus{border-color:var(--acc)}
+.slots{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);border-left:1px solid var(--line)}
+.slots button{background:none;border:0;border-right:1px solid var(--line);border-bottom:1px solid var(--line);padding:13px 0;font:400 15px 'Inter',sans-serif;color:var(--ink);transition:all .2s}
+.slots button:hover{background:var(--paper2)}.slots button.on{background:var(--ink);color:var(--paper)}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+@media (max-width:860px){.resa{grid-template-columns:1fr;gap:50px}}@media (max-width:520px){.row2{grid-template-columns:1fr}}
+footer{border-top:1px solid var(--ink);padding:30px 0 40px}
+footer .wrap{display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap}
+footer .serif{font-size:clamp(40px,8vw,100px)}
+footer small{color:var(--mute)}
+footer a{color:var(--acc)}
 </style>
 </head>
 <body>
+<div class="opening" id="opening" aria-hidden="true"><span></span></div>
 <div class="demo-bar" role="note"><span><b>Site de démonstration</b><span class="fx"> réalisé par Malo OneWeb · entreprise fictive</span></span><a class="back" href="/#portfolio">← Portfolio</a><a href="/#contact">Créer mon site</a></div>
 
-<header id="hd"><div class="wrap nav">
-  <a href="#top" class="logo serif">Le Comptoir <em>des Carmes</em></a>
-  <nav><a href="#histoire">Histoire</a><a href="#ardoise">Ardoise</a><a href="#carte">La carte</a><a href="#reserver">Réserver</a></nav>
-  <a class="btn f" href="#reserver">Réserver</a>
+<header><div class="wrap nav">
+  <nav><a href="#histoire">Histoire</a><a href="#ardoise">Ardoise</a><a href="#carte">Carte</a></nav>
+  <a href="#top" class="logo serif">Le Comptoir</a>
+  <div class="r"><a class="btn" href="#reserver">Réserver</a></div>
 </div></header>
 
 <main id="top">
-<section class="hero" style="padding:0">
-  <img src="img/hero.webp" alt="Assiette gastronomique dressée sur une table" fetchpriority="high">
-  <div>
-    <div class="orn eyebrow">Bistrot · Toulouse</div>
-    <h1 class="serif">Le goût<br>du <em>marché.</em></h1>
-    <p>Cuisine de saison, produits du Sud-Ouest et vins de petits vignerons, au cœur du quartier des Carmes.</p>
-    <div class="cta"><a class="btn f" href="#reserver">Réserver une table</a><a class="btn" href="#carte">Voir la carte</a></div>
+<section class="cover" style="border-top:0">
+  <div class="wrap">
+    <div class="cover-top cap"><span>Bistrot · Quartier des Carmes</span><span>Toulouse</span></div>
+    <h1 class="serif">Le goût du <em>marché.</em></h1>
+    <div class="cover-grid">
+      <div><p>Cuisine de saison, produits du Sud-Ouest et vins de petits vignerons. Une trentaine de couverts, une ardoise qui change chaque jour.</p><div class="cta"><a class="btn" href="#reserver">Réserver une table</a><a class="btn o" href="#carte">La carte</a></div></div>
+      <figure class="cover-img"><img src="img/hero.webp" alt="Assiette gastronomique dressée sur une table" fetchpriority="high"><figcaption>Fig. 1 — Plat du chef</figcaption></figure>
+    </div>
   </div>
 </section>
 
 <section id="histoire">
   <div class="wrap story">
-    <div class="rv">
-      <div class="eyebrow">Notre histoire</div>
-      <h2 class="serif">Une cuisine sincère, faite chaque matin.</h2>
-      <p>Chaque jour, le chef compose son ardoise avec ce que les producteurs du marché Victor-Hugo ont de meilleur. Rien n'est surgelé, tout est fait maison.</p>
-      <p>Une trentaine de couverts, une salle en pierre et brique, et une terrasse ombragée aux beaux jours.</p>
-      <div class="sign">Thomas &amp; Clara</div>
-    </div>
-    <div class="imgs rv"><img src="img/salle.webp" alt="Salle du restaurant aux lumières tamisées" loading="lazy"><img src="img/assiette.webp" alt="Assiette du jour" loading="lazy"></div>
+    <h2 class="serif rv">Une cuisine sincère, faite <em>chaque matin.</em></h2>
+    <div class="txt rv"><p class="drop">Chaque jour, le chef compose son ardoise avec ce que les producteurs du marché Victor-Hugo ont de meilleur. Rien n'est surgelé, tout est fait maison.</p><p>Une salle en pierre et brique, une terrasse ombragée aux beaux jours, et la conviction qu'un bon repas tient à peu de choses.</p><p class="cap" style="color:var(--acc);margin-top:20px">Thomas &amp; Clara, fondateurs</p></div>
+    <figure class="rv"><img class="i1" src="img/salle.webp" alt="Salle du restaurant aux lumières tamisées" loading="lazy"><figcaption>Fig. 2 — La salle</figcaption></figure>
+    <figure class="rv"><img class="i2" src="img/assiette.webp" alt="Assiette du jour" loading="lazy"><figcaption>Fig. 3 — Entrée du jour</figcaption></figure>
   </div>
 </section>
 
 <section id="ardoise" class="slate">
-  <div class="wrap"><div class="box rv">
-    <div class="eyebrow">L'ardoise du jour</div>
-    <h2 class="serif">Menu du midi</h2>
-    <div class="date" id="today"></div>
-    <ul><li>Velouté de potimarron, éclats de châtaigne<small>ou terrine de campagne maison</small></li><li>Magret de canard, jus au miel et thym<small>ou dos de cabillaud, beurre blanc</small></li><li>Croustade aux pommes du Gers<small>ou café gourmand</small></li></ul>
-    <div class="px">19 €</div><div class="date" style="margin-top:6px">Entrée · plat · dessert</div>
-  </div></div>
+  <div class="wrap">
+    <div class="rv"><div class="cap" style="color:#a99f90">L'ardoise du jour</div><h2 class="serif" style="margin-top:14px">Menu du <em>midi.</em></h2><div class="date cap" id="today"></div></div>
+    <div class="rv">
+      <ol><li><span>Velouté de potimarron, éclats de châtaigne</span><small>ou terrine de campagne maison</small></li><li><span>Magret de canard, jus au miel et thym</span><small>ou dos de cabillaud, beurre blanc</small></li><li><span>Croustade aux pommes du Gers</span><small>ou café gourmand</small></li></ol>
+      <div class="px"><span class="cap" style="color:#a99f90">Entrée · plat · dessert</span><b>19 €</b></div>
+    </div>
+  </div>
 </section>
 
 <section id="carte">
   <div class="wrap">
-    <div class="menu-head rv"><div class="eyebrow">La carte</div><h2 class="serif">À la carte</h2></div>
-    <div class="tabs rv" id="tabs"><button class="on" data-t="e">Entrées</button><button data-t="p">Plats</button><button data-t="d">Desserts</button><button data-t="v">Vins</button></div>
+    <div class="mh rv"><h2 class="serif">À la <em>carte.</em></h2><div class="tabs" id="tabs"><button class="on" data-t="e">Entrées</button><button data-t="p">Plats</button><button data-t="d">Desserts</button><button data-t="v">Vins</button></div></div>
+    <div class="rv">
     <div class="dishes on" data-c="e">
       <div class="dish"><h3>Foie gras mi-cuit maison</h3><b>16</b><p>Chutney de figues, pain de campagne toasté</p></div>
       <div class="dish"><h3>Œuf parfait<span class="tg">Végé</span></h3><b>11</b><p>Crème de champignons, noisettes torréfiées</p></div>
       <div class="dish"><h3>Tartare de truite des Pyrénées</h3><b>13</b><p>Pomme verte, raifort et herbes fraîches</p></div>
+      <div class="dish"><h3>Burrata crémeuse</h3><b>12</b><p>Tomates anciennes, huile d'olive fumée</p></div>
     </div>
     <div class="dishes" data-c="p">
       <div class="dish"><h3>Cassoulet du Comptoir<span class="tg">Signature</span></h3><b>24</b><p>Haricots tarbais, saucisse de Toulouse, confit de canard</p></div>
       <div class="dish"><h3>Pièce du boucher</h3><b>26</b><p>Bœuf d'Aubrac, frites maison, sauce au poivre</p></div>
       <div class="dish"><h3>Risotto de saison<span class="tg">Végé</span></h3><b>19</b><p>Courge rôtie, sauge, parmesan 24 mois</p></div>
+      <div class="dish"><h3>Dos de cabillaud</h3><b>22</b><p>Beurre blanc, poireaux fondants</p></div>
     </div>
     <div class="dishes" data-c="d">
       <div class="dish"><h3>Croustade gersoise</h3><b>9</b><p>Pommes caramélisées, armagnac, glace vanille</p></div>
       <div class="dish"><h3>Mousse au chocolat</h3><b>8</b><p>Chocolat noir 70 %, fleur de sel</p></div>
       <div class="dish"><h3>Assiette de fromages</h3><b>11</b><p>Sélection affinée de la fromagerie du marché</p></div>
+      <div class="dish"><h3>Café gourmand</h3><b>9</b><p>Trois mignardises du moment</p></div>
     </div>
     <div class="dishes" data-c="v">
-      <div class="dish"><h3>Fronton rouge, domaine local</h3><b>6 / 28</b><p>Négrette fruitée · verre / bouteille</p></div>
+      <div class="dish"><h3>Fronton rouge</h3><b>6 / 28</b><p>Négrette fruitée · verre / bouteille</p></div>
       <div class="dish"><h3>Gaillac blanc sec</h3><b>6 / 27</b><p>Mauzac et loin-de-l'œil · verre / bouteille</p></div>
       <div class="dish"><h3>Madiran</h3><b>34</b><p>Tannat puissant, idéal avec le cassoulet</p></div>
+      <div class="dish"><h3>Jurançon moelleux</h3><b>7</b><p>Au verre, avec le foie gras</p></div>
+    </div>
     </div>
   </div>
 </section>
 
-<section style="padding-top:0">
-  <div class="wrap gal rv"><div><img src="img/terrasse.webp" alt="Terrasse animée d'un restaurant" loading="lazy"></div><div><img src="img/table.webp" alt="Plats partagés sur une table" loading="lazy"></div><div><img src="img/assiette.webp" alt="Assiette du chef" loading="lazy"></div><div><img src="img/hero.webp" alt="Assiette dressée" loading="lazy"></div><div><img src="img/salle.webp" alt="Salle du restaurant" loading="lazy"></div></div>
+<section style="padding-top:60px">
+  <div class="wrap gal">
+    <figure class="g1 rv"><img src="img/terrasse.webp" alt="Terrasse animée d'un restaurant" loading="lazy"><figcaption>Fig. 4 — La terrasse</figcaption></figure>
+    <figure class="g2 rv"><img src="img/table.webp" alt="Plats partagés sur une table" loading="lazy"><figcaption>Fig. 5 — À partager</figcaption></figure>
+  </div>
 </section>
 
-<section id="reserver" style="padding-top:0">
+<section id="reserver">
   <div class="wrap resa">
     <div class="rv">
-      <div class="eyebrow">Réservation</div>
-      <h2 class="serif">Réservez votre table.</h2>
-      <p style="color:var(--mute)">12 rue des Filatiers, 31000 Toulouse (adresse fictive). Pour les groupes de plus de 8 personnes, appelez-nous.</p>
-      <div class="hours" id="hrs"><span>Mardi – Vendredi</span><span>12h – 14h · 19h30 – 22h30</span><span>Samedi</span><span>19h30 – 23h</span><span>Dimanche – Lundi</span><span>Fermé</span></div>
-      <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:30px"><a class="btn" href="#" data-demo="📞 Appel vers le restaurant (numéro fictif)">05 61 00 00 00</a><a class="btn" href="#" data-demo="🗺️ Ouverture de l'itinéraire (démonstration)">Itinéraire</a></div>
+      <h2 class="serif">Réserver une <em>table.</em></h2>
+      <p style="color:var(--mute);margin-bottom:30px">12 rue des Filatiers, 31000 Toulouse (adresse fictive). Groupes de plus de 8 personnes : par téléphone.</p>
+      <div class="hours" id="hrs"><span>Mardi – Vendredi</span><span>12h–14h · 19h30–22h30</span><span>Samedi</span><span>19h30 – 23h</span><span>Dimanche – Lundi</span><span>Fermé</span></div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:30px"><a class="btn o" href="#" data-demo="Appel vers le restaurant (numéro fictif)">05 61 00 00 00</a><a class="btn o" href="#" data-demo="Ouverture de l'itinéraire (démonstration)">Itinéraire</a></div>
     </div>
     <form class="form rv" id="rf">
-      <div class="row2"><label>Date<input type="date" id="rd" required></label><label>Couverts<select id="rp"><option>1</option><option selected>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option></select></label></div>
-      <label>Horaire</label>
-      <div class="slots" id="slots"><button type="button">12:00</button><button type="button" class="on">12:30</button><button type="button">13:00</button><button type="button">13:30</button><button type="button">19:30</button><button type="button">20:00</button><button type="button">20:30</button><button type="button">21:00</button></div>
-      <div class="row2"><label>Nom<input required autocomplete="off" placeholder="Votre nom"></label><label>Téléphone<input required type="tel" autocomplete="off" placeholder="06 …"></label></div>
-      <button class="btn f">Confirmer la réservation</button>
+      <div class="row2"><label class="cap">Date<input type="date" id="rd" required></label><label class="cap">Couverts<select id="rp"><option>1</option><option selected>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option></select></label></div>
+      <div><div class="cap" style="color:var(--mute);margin-bottom:10px">Horaire</div><div class="slots" id="slots"><button type="button">12:00</button><button type="button" class="on">12:30</button><button type="button">13:00</button><button type="button">13:30</button><button type="button">19:30</button><button type="button">20:00</button><button type="button">20:30</button><button type="button">21:00</button></div></div>
+      <div class="row2"><label class="cap">Nom<input required autocomplete="off"></label><label class="cap">Téléphone<input required type="tel" autocomplete="off"></label></div>
+      <button class="btn" style="justify-content:center">Confirmer la réservation</button>
     </form>
   </div>
 </section>
 </main>
-<footer><div class="wrap"><span class="logo serif" style="font-size:30px">Le Comptoir <em style="color:var(--gold)">des Carmes</em></span>© <span data-year></span> · restaurant fictif · site réalisé par <a href="/" style="color:var(--gold)">Malo OneWeb</a></div></footer>
+<footer><div class="wrap"><span class="serif">Le Comptoir des <em>Carmes</em></span><small>© <span data-year></span> · restaurant fictif · site réalisé par <a href="/">Malo OneWeb</a></small></div></footer>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 <script>
 (() => {
   const t = document.getElementById('toast'); let tt;
   window.say = m => { t.textContent = m; t.classList.add('show'); clearTimeout(tt); tt = setTimeout(() => t.classList.remove('show'), 2600); };
+  // ouverture : rideau aux couleurs du site, une fois par visite
+  const op = document.getElementById('opening'), key = 'open:' + location.pathname;
+  let seen = false; try { seen = sessionStorage.getItem(key); sessionStorage.setItem(key, 1); } catch (e) {}
+  if (seen || matchMedia('(prefers-reduced-motion: reduce)').matches) op.remove();
+  else {
+    const [name] = document.title.split(' – ');
+    op.firstElementChild.innerHTML = name + '<small>Site de démonstration</small>';
+    requestAnimationFrame(() => op.classList.add('show'));
+    setTimeout(() => op.classList.add('out'), 850);
+    setTimeout(() => op.remove(), 1900);
+  }
   // liens « démo » : appel, itinéraire, réseaux… affichent un message au lieu d'agir
   document.addEventListener('click', e => {
     const a = e.target.closest('[data-demo]'); if (!a) return;
@@ -230,6 +263,9 @@ footer .logo{display:block;margin:0 auto 14px}
   // apparitions au défilement
   const io = new IntersectionObserver(es => es.forEach(x => { if (x.isIntersecting) { x.target.classList.add('in'); io.unobserve(x.target); } }), { threshold: .12 });
   document.querySelectorAll('.rv').forEach(el => io.observe(el));
+  // sécurité : un bloc déjà au-dessus du bas de l'écran s'affiche toujours (défilement rapide, ancres)
+  let tk = 0; const sweep = () => { tk = 0; document.querySelectorAll('.rv:not(.in)').forEach(el => { if (el.getBoundingClientRect().top < innerHeight) el.classList.add('in'); }); };
+  addEventListener('scroll', () => { if (!tk) tk = requestAnimationFrame(sweep); }, { passive: true }); addEventListener('load', sweep);
   // année
   document.querySelectorAll('[data-year]').forEach(el => el.textContent = new Date().getFullYear());
 })();
@@ -237,7 +273,6 @@ footer .logo{display:block;margin:0 auto 14px}
 
 <script>
 (() => {
-  const hd = document.getElementById('hd'); const sc = () => hd.classList.toggle('s', scrollY > 40); addEventListener('scroll', sc, { passive: true }); sc();
   const now = new Date();
   document.getElementById('today').textContent = now.toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long' });
   const tabs = document.getElementById('tabs');
@@ -251,7 +286,7 @@ footer .logo{display:block;margin:0 auto 14px}
   document.getElementById('rf').addEventListener('submit', e => {
     e.preventDefault(); if (!e.target.reportValidity()) return;
     const d = new Date(rd.value + 'T12:00').toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long' });
-    say(`✅ Table pour ${document.getElementById('rp').value}, ${d} à ${sl.querySelector('.on').textContent} (démonstration)`);
+    say(`Table pour ${document.getElementById('rp').value}, ${d} à ${sl.querySelector('.on').textContent} (démonstration)`);
   });
   const day = now.getDay(), c = document.querySelectorAll('#hrs span'), r = day >= 2 && day <= 5 ? 0 : day === 6 ? 1 : 2;
   c[r * 2].classList.add('now'); c[r * 2 + 1].classList.add('now');
